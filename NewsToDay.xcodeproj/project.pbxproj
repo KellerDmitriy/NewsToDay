@@ -58,8 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */,
-				E182C6A92BA74C4400C66D3F /* Model */,
-				E182C6AD2BA74C9700C66D3F /* HomeFlow */,
+				E182C6A92BA74C4400C66D3F /* Models */,
+				E182C6AD2BA74C9700C66D3F /* Screens */,
 				E182C6B12BA74FDF00C66D3F /* Services */,
 				E182C69C2BA74B3600C66D3F /* Assets.xcassets */,
 				E182C69E2BA74B3600C66D3F /* Preview Content */,
@@ -83,12 +83,12 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		E182C6A92BA74C4400C66D3F /* Model */ = {
+		E182C6A92BA74C4400C66D3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E182C6AE2BA74F7D00C66D3F /* NewsModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E182C6AA2BA74C5800C66D3F /* StorageManager */ = {
@@ -99,12 +99,12 @@
 			path = StorageManager;
 			sourceTree = "<group>";
 		};
-		E182C6AD2BA74C9700C66D3F /* HomeFlow */ = {
+		E182C6AD2BA74C9700C66D3F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E182C69A2BA74B3400C66D3F /* ContentView.swift */,
+				E182C6B32BA7523A00C66D3F /* Authentication */,
 			);
-			path = HomeFlow;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		E182C6B12BA74FDF00C66D3F /* Services */ = {
@@ -114,6 +114,14 @@
 				E182C6AA2BA74C5800C66D3F /* StorageManager */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		E182C6B32BA7523A00C66D3F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E182C69A2BA74B3400C66D3F /* ContentView.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
