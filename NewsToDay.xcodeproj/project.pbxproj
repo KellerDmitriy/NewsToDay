@@ -17,6 +17,8 @@
 		E182C6B62BA7531D00C66D3F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E182C6B52BA7531D00C66D3F /* Realm */; };
 		E182C6B82BA7531D00C66D3F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E182C6B72BA7531D00C66D3F /* RealmSwift */; };
 		E182C6BA2BA75E0B00C66D3F /* AuthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6B92BA75E0B00C66D3F /* AuthScreenView.swift */; };
+		E182C6BC2BA78AAC00C66D3F /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6BB2BA78AAC00C66D3F /* URLManager.swift */; };
+		E182C6BE2BA78AE500C66D3F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6BD2BA78AE500C66D3F /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		E182C6AB2BA74C7900C66D3F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		E182C6AE2BA74F7D00C66D3F /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		E182C6B92BA75E0B00C66D3F /* AuthScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenView.swift; sourceTree = "<group>"; };
+		E182C6BB2BA78AAC00C66D3F /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		E182C6BD2BA78AE500C66D3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				E182C6A72BA74C2C00C66D3F /* NetworkManager.swift */,
+				E182C6BB2BA78AAC00C66D3F /* URLManager.swift */,
+				E182C6BD2BA78AE500C66D3F /* NetworkError.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -209,11 +215,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E182C6A82BA74C2C00C66D3F /* NetworkManager.swift in Sources */,
+				E182C6BE2BA78AE500C66D3F /* NetworkError.swift in Sources */,
 				E182C69B2BA74B3400C66D3F /* ContentView.swift in Sources */,
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				E182C6AC2BA74C7900C66D3F /* StorageManager.swift in Sources */,
 				E182C6BA2BA75E0B00C66D3F /* AuthScreenView.swift in Sources */,
 				E182C6AF2BA74F7D00C66D3F /* NewsModel.swift in Sources */,
+				E182C6BC2BA78AAC00C66D3F /* URLManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
