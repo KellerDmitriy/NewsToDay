@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CustomTabBar: View {
     var body: some View {
+
         Text("Курнул, ну, вроде не навоз")
+
     }
 }
 
