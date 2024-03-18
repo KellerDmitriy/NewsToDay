@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  NewsToDay
+
+  Created by Максим Нурутдинов on 19.03.2024.
+  
+*/
+"Language" = "Language";
+"Terms & Conditions" = "Terms & Conditions";
+"Profile" = "Profile";
+
+"Categories" = "Categories";
+
+"Select your favorite topics" = "Select your favorite topics";
+"First to know" = "First to know";
+"Sign Out" = "Sign Out";
+
+"Bookmarks" = "Bookmarks";
+"Saved articles to the library" = "Saved articles to the library";
+"You haven't saved" = "You haven't saved any articles yet. Start reading and bookmarking them now";
+
+"Browse" = "Browse";
+"Discover things of this world" = "Discover things of this world";
+"Search" = "Search";
+"Random" = "Random";
+"Sports" = "Sports";
+"Gaming" = "Gaming";
+"Politics" = "Politics";
+"Life" = "Life";
+"Recommended for you" = "Recommended for you";
+"See All" = "See All";
