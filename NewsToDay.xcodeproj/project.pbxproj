@@ -15,6 +15,8 @@
 		3C354B9F2BA790E8005EB350 /* HorizontalCategoryCardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C354B9E2BA790E8005EB350 /* HorizontalCategoryCardSection.swift */; };
 		3C354BA12BA792AB005EB350 /* VerticalRecomendedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C354BA02BA792AB005EB350 /* VerticalRecomendedSection.swift */; };
 		3C354BA32BA792CD005EB350 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C354BA22BA792CD005EB350 /* SectionTitle.swift */; };
+		3C354BA62BA798E5005EB350 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C354BA52BA798E5005EB350 /* OnboardingView.swift */; };
+		3CE067D52BA9E89900CDDD6A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE067D42BA9E89900CDDD6A /* Launch Screen.storyboard */; };
 		E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */; };
 		E182C69B2BA74B3400C66D3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C69A2BA74B3400C66D3F /* ContentView.swift */; };
 		E182C69D2BA74B3600C66D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E182C69C2BA74B3600C66D3F /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		3C354B9E2BA790E8005EB350 /* HorizontalCategoryCardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCategoryCardSection.swift; sourceTree = "<group>"; };
 		3C354BA02BA792AB005EB350 /* VerticalRecomendedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalRecomendedSection.swift; sourceTree = "<group>"; };
 		3C354BA22BA792CD005EB350 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		3C354BA52BA798E5005EB350 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3CE067D42BA9E89900CDDD6A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E182C6952BA74B3400C66D3F /* NewsToDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsToDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsToDayApp.swift; sourceTree = "<group>"; };
 		E182C69A2BA74B3400C66D3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		3C354BA42BA798DB005EB350 /* OnboardingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3C354BA52BA798E5005EB350 /* OnboardingView.swift */,
+			);
+			path = OnboardingScreen;
+			sourceTree = "<group>";
+		};
 		E182C68C2BA74B3400C66D3F = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +119,7 @@
 				E182C6AD2BA74C9700C66D3F /* Screens */,
 				E182C6B12BA74FDF00C66D3F /* Services */,
 				E182C69C2BA74B3600C66D3F /* Assets.xcassets */,
+				3CE067D42BA9E89900CDDD6A /* Launch Screen.storyboard */,
 				E182C69E2BA74B3600C66D3F /* Preview Content */,
 			);
 			path = NewsToDay;
@@ -147,6 +160,7 @@
 		E182C6AD2BA74C9700C66D3F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3C354BA42BA798DB005EB350 /* OnboardingScreen */,
 				3C354B922BA7652E005EB350 /* MainScreen */,
 				E182C69A2BA74B3400C66D3F /* ContentView.swift */,
 				E182C6B32BA7523A00C66D3F /* Authentication */,
@@ -236,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CE067D52BA9E89900CDDD6A /* Launch Screen.storyboard in Resources */,
 				E182C6A02BA74B3600C66D3F /* Preview Assets.xcassets in Resources */,
 				E182C69D2BA74B3600C66D3F /* Assets.xcassets in Resources */,
 			);
@@ -251,6 +266,7 @@
 				3C354BA32BA792CD005EB350 /* SectionTitle.swift in Sources */,
 				E182C6A82BA74C2C00C66D3F /* NetworkManager.swift in Sources */,
 				3C354BA12BA792AB005EB350 /* VerticalRecomendedSection.swift in Sources */,
+				3C354BA62BA798E5005EB350 /* OnboardingView.swift in Sources */,
 				3C354B942BA76539005EB350 /* MainScreen.swift in Sources */,
 				E182C69B2BA74B3400C66D3F /* ContentView.swift in Sources */,
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
@@ -401,6 +417,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -435,6 +452,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
