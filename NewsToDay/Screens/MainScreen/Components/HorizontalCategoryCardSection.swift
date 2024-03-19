@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HorizontalCategoryCardSection: View {
-    @ObservedObject var vm: MainScreenVM
-
+    let sections: [Categories]
+    var news: [NewsResults] = []
+    
     private struct Drawing {
         static let cardWidth: CGFloat = 256
         static let cardHeight: CGFloat = 256
@@ -25,31 +26,14 @@ struct HorizontalCategoryCardSection: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(vm.sections, id: \.self) { section in
-
+                ForEach(sections) { section in
                     NavigationLink {
                         MainScreenDetailView()
                     } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                                .frame(width: Drawing.cardWidth, height: Drawing.cardHeight)
-                                .foregroundStyle(Color.indigo)
-                                .overlay(alignment: .bottomLeading) {
-                                    VStack(alignment: .leading, spacing: Drawing.bottomLeadingPadding) {
-                                        Text(section.description.uppercased())
-                                            .font(.footnote.weight(Drawing.footnoteFontWeight))
-
-                                        Text("The latest situation in the presidential election")
-                                            .font(.headline.weight(Drawing.headlineFontWeight))
-                                    }
-                                    .padding()
-                                }
-                                .overlay(alignment: .topTrailing) {
-                                    Image(systemName: "bookmark")
-                                        .padding(Drawing.bookmarkImagePadding)
-                                }
-                        }
-                        .foregroundColor(.white)
+                        ArticleCell(
+                            rawImage: nil,
+                            section: section
+                        )
                     }
                 }
             }
@@ -59,5 +43,7 @@ struct HorizontalCategoryCardSection: View {
 }
 
 #Preview {
-    HorizontalCategoryCardSection(vm: MainScreenVM())
+    NavigationView {
+        HorizontalCategoryCardSection(sections: Categories.allCases)
+    }
 }

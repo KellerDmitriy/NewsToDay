@@ -14,7 +14,7 @@ struct CustomBarView: View {
     var body: some View {
         TabView(selection: $tabSelection) {
                 
-            MainScreen().tag(1)
+            MainContentScreen().tag(1)
             Text("Categories").tag(2)
             Text("Bookmarks").tag(3)
             Text("Profile").tag(4)
