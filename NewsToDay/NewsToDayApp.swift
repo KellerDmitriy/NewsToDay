@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct NewsToDayApp: App {
+    
+    @AppStorage("isOnboarding") var isOnboarding = false
+
     var body: some Scene {
         WindowGroup {
-            CustomBarView()
+            if !isOnboarding {
+                OnboardingView(isOnboarding: $isOnboarding)
+            } else {
+                MainScreen()
+            }
         }
     }
 }
