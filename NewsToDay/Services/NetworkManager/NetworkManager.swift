@@ -65,7 +65,7 @@ private extension NetworkManager {
             .success(url)
             .map { URLRequest(url: $0) }
             .map(addApiKey(apiKey))
-            .asyncFlatMap(session.data)
+            .asyncMap(session.data)
             .map(\.0)
             .decode(T.self, decoder: decoder)
             .mapError(NetworkError.init)
@@ -95,7 +95,7 @@ public extension Result where Failure == Error {
     }
         
     @inlinable
-    func asyncFlatMap<T>(
+    func asyncMap<T>(
         _ transform: (Success) async throws -> T
     ) async -> Result<T, Failure> {
         switch self {
