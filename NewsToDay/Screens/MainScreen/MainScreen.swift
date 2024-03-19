@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct MainScreen: View {
+    let sections: [Categories]
+    @Binding var query: String
+    @Binding var selectedSection: Categories
     
-    @StateObject var vm = MainScreenVM()
-        
+    @Environment(\.displayScale) var scale
+            
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
@@ -18,13 +21,20 @@ struct MainScreen: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
-                SearchBar(text: $vm.searchText)
+                SearchBar(text: $query)
                 
-                HorizontalCategorySelectorSection(vm: vm)
+                HorizontalCategorySelectorSection(
+                    sections: sections,
+                    selected: $selectedSection
+                )
                 
-                HorizontalCategoryCardSection(vm: vm)
+                HorizontalCategoryCardSection(sections: sections)
                 
-                SectionTitle(sectionTitle: "Recomended for you", buttonTitle: "See all", item: EmptyView())
+                SectionTitle(
+                    sectionTitle: "Recomended for you",
+                    buttonTitle: "See all",
+                    item: EmptyView()
+                )
                 
                 VerticalRecomendedSection()
             }
@@ -35,6 +45,10 @@ struct MainScreen: View {
 
 #Preview {
     NavigationView {
-        MainScreen()
+        MainScreen(
+            sections: Categories.allCases,
+            query: .constant("query"),
+            selectedSection: .constant(.general)
+        )
     }
 }

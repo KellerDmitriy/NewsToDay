@@ -26,6 +26,7 @@ enum NetworkError: Error {
     case noData
     case decodingError(Error)
     case invalidURL
+    case unknown(Error)
 }
 
 enum NewsEndpoint: APIEndpoint {
@@ -58,8 +59,6 @@ final class APIManager {
     static let shared = APIManager()
     private init() {}
     
-    private let apiKey = "2b9cf27ea13e45eb89926c533fb14c6b"
-    
     func createURL(for endpoint: APIEndpoint) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.baseURL.scheme
@@ -74,8 +73,8 @@ final class APIManager {
             }
         }
         
-        let apiKeyQueryItem = URLQueryItem(name: "apiKey", value: apiKey)
-        urlComponents.queryItems?.append(apiKeyQueryItem)
+//        let apiKeyQueryItem = URLQueryItem(name: "apiKey", value: apiKey)
+//        urlComponents.queryItems?.append(apiKeyQueryItem)
         
         return urlComponents.url
     }
