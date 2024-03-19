@@ -17,7 +17,7 @@ struct NewsToDayApp: App {
             if !isOnboarding {
                 OnboardingView(isOnboarding: $isOnboarding)
             } else {
-                MainScreen()
+                CustomBarView()
             }
         }
     }

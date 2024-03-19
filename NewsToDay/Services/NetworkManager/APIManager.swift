@@ -72,10 +72,6 @@ final class APIManager {
                 urlComponents.queryItems?.append(queryItem)
             }
         }
-        
-//        let apiKeyQueryItem = URLQueryItem(name: "apiKey", value: apiKey)
-//        urlComponents.queryItems?.append(apiKeyQueryItem)
-        
         return urlComponents.url
     }
 }
