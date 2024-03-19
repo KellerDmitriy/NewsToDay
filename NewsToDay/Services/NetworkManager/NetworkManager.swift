@@ -16,7 +16,6 @@ final class NetworkManager {
     }
     
     func fetchData(with category: String) async throws -> NewsModel {
-    
         let endpoint = NewsEndpoint.newsFor(category: category)
         
         guard let url = APIManager.shared.createURL(for: endpoint) else {
