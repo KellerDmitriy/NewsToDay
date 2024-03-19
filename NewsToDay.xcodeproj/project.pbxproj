@@ -25,6 +25,8 @@
 		E182C6B62BA7531D00C66D3F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E182C6B52BA7531D00C66D3F /* Realm */; };
 		E182C6B82BA7531D00C66D3F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E182C6B72BA7531D00C66D3F /* RealmSwift */; };
 		E182C6BA2BA75E0B00C66D3F /* AuthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6B92BA75E0B00C66D3F /* AuthScreenView.swift */; };
+		E1F8DBE32BA97D2600F3C9E1 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8DBE22BA97D2600F3C9E1 /* URLManager.swift */; };
+		E1F8DBE52BA97D5600F3C9E1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8DBE42BA97D5600F3C9E1 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,8 +47,8 @@
 		E182C6AB2BA74C7900C66D3F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		E182C6AE2BA74F7D00C66D3F /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		E182C6B92BA75E0B00C66D3F /* AuthScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenView.swift; sourceTree = "<group>"; };
-		E182C6BB2BA78AAC00C66D3F /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
-		E182C6BD2BA78AE500C66D3F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		E1F8DBE22BA97D2600F3C9E1 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		E1F8DBE42BA97D5600F3C9E1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				E182C6A72BA74C2C00C66D3F /* NetworkManager.swift */,
-				E182C6BB2BA78AAC00C66D3F /* URLManager.swift */,
-				E182C6BD2BA78AE500C66D3F /* NetworkError.swift */,
+				E1F8DBE22BA97D2600F3C9E1 /* URLManager.swift */,
+				E1F8DBE42BA97D5600F3C9E1 /* NetworkError.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -253,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C354BA32BA792CD005EB350 /* SectionTitle.swift in Sources */,
+				E1F8DBE52BA97D5600F3C9E1 /* NetworkError.swift in Sources */,
 				E182C6A82BA74C2C00C66D3F /* NetworkManager.swift in Sources */,
 				3C354BA12BA792AB005EB350 /* VerticalRecomendedSection.swift in Sources */,
 				3C354B942BA76539005EB350 /* MainScreen.swift in Sources */,
@@ -260,6 +263,7 @@
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				E182C6AC2BA74C7900C66D3F /* StorageManager.swift in Sources */,
 				3C354B9F2BA790E8005EB350 /* HorizontalCategoryCardSection.swift in Sources */,
+				E1F8DBE32BA97D2600F3C9E1 /* URLManager.swift in Sources */,
 				3C354B962BA766BD005EB350 /* MainScreenVM.swift in Sources */,
 				E182C6BA2BA75E0B00C66D3F /* AuthScreenView.swift in Sources */,
 				3C354B9B2BA78B0C005EB350 /* SearchBar.swift in Sources */,
