@@ -10,10 +10,11 @@ import SwiftUI
 struct CustomBarView: View {
     
     @State private var tabSelection = 1
+    
     var body: some View {
         TabView(selection: $tabSelection) {
                 
-            Text("Home").tag(1)
+            MainScreen().tag(1)
             Text("Categories").tag(2)
             Text("Bookmarks").tag(3)
             Text("Profile").tag(4)
