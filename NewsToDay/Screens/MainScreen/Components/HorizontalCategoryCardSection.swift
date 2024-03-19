@@ -10,6 +10,8 @@ import SwiftUI
 struct HorizontalCategoryCardSection: View {
     @ObservedObject var vm: MainScreenVM
 
+    var news: [NewsResults] = []
+    
     private struct Drawing {
         static let cardWidth: CGFloat = 256
         static let cardHeight: CGFloat = 256

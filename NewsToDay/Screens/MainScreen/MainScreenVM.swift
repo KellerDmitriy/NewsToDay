@@ -10,7 +10,7 @@ import Combine
 final class MainScreenVM: ObservableObject {
     
     @Published var searchText: String = ""
-    @Published var sections = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
+    @Published var sections: [String] = []
     @Published var selectedSection: String? = nil
     @Published var news: [NewsResults] = []
     
@@ -18,6 +18,7 @@ final class MainScreenVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init() {
+        sections = Categories.allCases.map { $0.rawValue.capitalized }
         selectedSection = sections.first
         fetchData()
     }
@@ -25,7 +26,7 @@ final class MainScreenVM: ObservableObject {
     private func fetchData() {
         Task {
             do {
-                let newsModel = try await self.networkManager.fetchData(with: "business")
+                let newsModel = try await self.networkManager.fetchData(with: selectedSection ?? "")
                 await MainActor.run {
                     self.news = newsModel.articles ?? []
                 }
