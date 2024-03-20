@@ -11,11 +11,14 @@ import SwiftUI
 struct NewsToDayApp: App {
     
     @AppStorage("isOnboarding") var isOnboarding = false
+    @AppStorage("isSelectedCategory") var isSelectedCategory = false
 
     var body: some Scene {
         WindowGroup {
             if !isOnboarding {
                 OnboardingView(isOnboarding: $isOnboarding)
+            } else if isOnboarding && !isSelectedCategory {
+                CategoriesView()
             } else {
                 CustomBarView()
             }
