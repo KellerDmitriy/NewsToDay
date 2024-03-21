@@ -22,19 +22,6 @@ final class MainScreenVM: ObservableObject {
         selectedSection = .general
     }
     
-//    private func fetchData() {
-//        Task {
-//            do {
-//                let newsModel = try await self.networkManager.fetchData(with: selectedSection ?? "")
-//                await MainActor.run {
-//                    self.news = newsModel.articles ?? []
-//                }
-//            } catch {
-//                print("Ошибка при получении данных: \(error)")
-//            }
-//        }
-//    }
-    
     func onAppear() {
         state = .loading
         Task(priority: .high) { [weak self] in

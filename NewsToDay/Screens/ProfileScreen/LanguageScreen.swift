@@ -13,14 +13,14 @@ struct LanguageScreen: View {
     
     var body: some View {
         VStack {
-            LanguageButton(title: "English", imageName: "checkmark", action: {
+            CustomButton(title: "English", imageName: "checkmark", action: {
                 languageManager.changeLanguage(to: .english)
-            }, isSelected: languageManager.currentLanguage == .english)
+            }, buttonType: .language, isSelected: languageManager.currentLanguage == .english)
             .padding([.horizontal, .top])
             
-            LanguageButton(title: "Russian", imageName: "checkmark", action: {
+            CustomButton(title: "Russian", imageName: "checkmark", action: {
                 languageManager.changeLanguage(to: .russian)
-            }, isSelected: languageManager.currentLanguage == .russian)
+            }, buttonType: .language, isSelected: languageManager.currentLanguage == .russian)
             .padding([.horizontal, .top])
             
             Spacer()
@@ -32,6 +32,6 @@ struct LanguageScreen: View {
 #Preview {
     NavigationView {
         LanguageScreen()
-//            .environmentObject(LanguageManager())
+//           .environmentObject(LanguageManager())
     }
 }

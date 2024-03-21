@@ -24,9 +24,9 @@ struct ProfileScreen: View {
             }
             .hidden()
             
-            ProfileButton(title: "Language") {
+            CustomButton(title: "Language", imageName: "chevron.right", action: {
                 isShowingLanguageScreen = true
-            }
+            }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()
             
@@ -35,15 +35,15 @@ struct ProfileScreen: View {
             }
             .hidden()
             
-            ProfileButton(title: "Terms & Conditions") {
+            CustomButton(title: "Terms & Conditions", action: {
                 isShowingTermsConditionsScreen = true
-            }
+            }, buttonType: .profile, isSelected: false)
             .padding()
             
             
-            ProfileButton(title: "Sign Out", imageName: "arrow.right.circle") {
+            CustomButton(title: "Sign Out", imageName: "arrow.right.circle", action: {
                 // action
-            }
+            }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()
             
@@ -52,7 +52,7 @@ struct ProfileScreen: View {
     }
 }
 
-#Preview {
+#Preview  {
     NavigationView {
         ProfileScreen()
     }
