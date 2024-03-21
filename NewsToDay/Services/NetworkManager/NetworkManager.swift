@@ -33,44 +33,17 @@ final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchData(with category: String) async throws -> NewsResults {
+    func fetchDataFor(category: String) async -> Result<NewsModel, NetworkError>  {
         let endpoint = NewsEndpoint.newsFor(category: category)
-        
-        guard let url = APIManager.shared.createURL(for: endpoint) else {
-                   throw NetworkError.invalidURL
-               }
-        print(url)
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        do {
-            let result = try decoder.decode(NewsResults.self, from: data)
-            print(result)
-            return result
-        } catch {
-            throw NetworkError.decodingError(error)
-        }
+        return await fetch(endpoint)
     }
     
-    func fetchData(with searchText: String) async throws -> NewsModel {
+    func fetchDataWith(searchText: String) async -> Result<NewsModel, NetworkError> {
         let endpoint = NewsEndpoint.newsWith(searchText: searchText)
-        
-        guard let url = APIManager.shared.createURL(for: endpoint) else {
-                   throw NetworkError.invalidURL
-               }
-        print(url)
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        do {
-            let result = try decoder.decode(NewsModel.self, from: data)
-            print(result)
-            return result
-        } catch {
-            throw NetworkError.decodingError(error)
-        }
+        return await fetch(endpoint)
     }
     
-    
-    func fetch(_ endpoint: NewsEndpoint) async -> Result<NewsModel, NetworkError> {
+    func fetch<T: Decodable>(_ endpoint: NewsEndpoint) async -> Result<T, NetworkError> {
         guard let url = APIManager.shared.createURL(for: endpoint) else {
             return .failure(.invalidURL)
         }
@@ -112,7 +85,7 @@ public extension Result where Failure == Error {
             self = .failure(error)
         }
     }
-        
+    
     @inlinable
     func asyncMap<T>(
         _ transform: (Success) async throws -> T

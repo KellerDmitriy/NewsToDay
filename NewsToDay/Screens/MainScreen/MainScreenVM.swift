@@ -20,6 +20,7 @@ final class MainScreenVM: ObservableObject {
     init() {
         sections = Categories.allCases
         selectedSection = .general
+        
     }
     
     func onAppear() {
@@ -27,7 +28,7 @@ final class MainScreenVM: ObservableObject {
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .fetch(.newsFor(category: selectedSection.rawValue))
+                .fetchDataFor(category: selectedSection.rawValue)
                 .map(\.articles)
                 .map { $0.map(State.ready) }
                 .mapError(State.error)
@@ -35,10 +36,7 @@ final class MainScreenVM: ObservableObject {
             await MainActor.run {
                 switch newState {
                 case .success(let success):
-                    success.map { new in
-                        self.state = new
-                    }
-                    
+                    self.state = success != nil ? success! : .error(.noData)
                 case .failure(let failure):
                     self.state = failure
                 }
