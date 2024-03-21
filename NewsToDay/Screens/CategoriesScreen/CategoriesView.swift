@@ -31,41 +31,6 @@ struct CategoriesView: View {
         case screen
     }
     
-    enum Categories: String, CaseIterable, Hashable, Identifiable {
-        var id: String { rawValue }
-        
-        case sports = "Sports"
-        case politics = "Politics"
-        case life = "Life"
-        case gaming = "Gaming"
-        case animals = "Animals"
-        case nature = "Nature"
-        case food = "Food"
-        case art = "Art"
-        case history = "History"
-        case fashion = "Fashion"
-        case covid19 = "Covid-19"
-        case middleeast = "Middle East"
-        
-        var image: String {
-            switch self {
-            case .sports: "🏈"
-            case .politics: "⚖️"
-            case .life: "🌞"
-            case .gaming: "🎮"
-            case .animals: "🐻"
-            case .nature: "🌴"
-            case .food: "🍔"
-            case .art: "🎨"
-            case .history: "📜"
-            case .fashion: "👗"
-            case .covid19: "😷"
-            case .middleeast: "⚔️"
-            }
-        }
-    }
-    
-    
     var body: some View {
         if mode == .onboarding {
             VStack {
