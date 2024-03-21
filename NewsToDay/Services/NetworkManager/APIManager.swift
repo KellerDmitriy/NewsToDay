@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+//для категорий https://newsapi.org/v2/top-headlines?category=business&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
+//для поиска https://newsapi.org/v2/everything?q=Apple&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
 protocol APIEndpoint {
     var baseURL: URL { get }
     var path: String { get }
@@ -42,7 +43,6 @@ enum NewsEndpoint: APIEndpoint {
     
     var path: String {
         switch self {
-            
         case .newsFor(category: _):
             return "/v2/top-headlines"
         case .newsWith(searchText: _):
@@ -50,8 +50,7 @@ enum NewsEndpoint: APIEndpoint {
         }
            
     }
-//для категорий https://newsapi.org/v2/top-headlines?category=business&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
-//для поиска https://newsapi.org/v2/everything?q=Apple&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
+
     var parameters: [String : String]? {
         switch self {
         case .newsFor(category: let category):

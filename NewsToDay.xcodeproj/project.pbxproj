@@ -28,7 +28,6 @@
 		E11FACD42BAA377D005B06E2 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD32BAA377D005B06E2 /* ArticleCell.swift */; };
 		E11FACD62BAA378C005B06E2 /* MainContentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD52BAA378C005B06E2 /* MainContentScreen.swift */; };
 		E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */; };
-		E182C69B2BA74B3400C66D3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C69A2BA74B3400C66D3F /* ContentView.swift */; };
 		E182C69D2BA74B3600C66D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E182C69C2BA74B3600C66D3F /* Assets.xcassets */; };
 		E182C6A02BA74B3600C66D3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E182C69F2BA74B3600C66D3F /* Preview Assets.xcassets */; };
 		E182C6A82BA74C2C00C66D3F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6A72BA74C2C00C66D3F /* NetworkManager.swift */; };
@@ -71,7 +70,6 @@
 		E11FACD52BAA378C005B06E2 /* MainContentScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentScreen.swift; sourceTree = "<group>"; };
 		E182C6952BA74B3400C66D3F /* NewsToDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsToDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsToDayApp.swift; sourceTree = "<group>"; };
-		E182C69A2BA74B3400C66D3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E182C69C2BA74B3600C66D3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E182C69F2BA74B3600C66D3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E182C6A72BA74C2C00C66D3F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -153,17 +151,20 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		E103A3A52BAC29CB00ECE8B8 /* Helper */ = {
+		E103A3A82BAC4E5900ECE8B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E103A3A62BAC2A1B00ECE8B8 /* AppDelegate.swift */,
+				E182C69C2BA74B3600C66D3F /* Assets.xcassets */,
+				E1ECA39A2BAC262A0072449D /* GoogleService-Info.plist */,
+				3CD0E80A2BAA085800246E23 /* Launch Screen.storyboard */,
 			);
-			path = Helper;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E11FACD02BAA0437005B06E2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E103A3A62BAC2A1B00ECE8B8 /* AppDelegate.swift */,
 				E11FACD12BAA0437005B06E2 /* Constants.swift */,
 			);
 			path = Helpers;
@@ -188,15 +189,12 @@
 		E182C6972BA74B3400C66D3F /* NewsToDay */ = {
 			isa = PBXGroup;
 			children = (
-				E103A3A52BAC29CB00ECE8B8 /* Helper */,
 				E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */,
 				E182C6A92BA74C4400C66D3F /* Models */,
 				E182C6AD2BA74C9700C66D3F /* Screens */,
 				E182C6B12BA74FDF00C66D3F /* Services */,
 				E11FACD02BAA0437005B06E2 /* Helpers */,
-				E182C69C2BA74B3600C66D3F /* Assets.xcassets */,
-				E1ECA39A2BAC262A0072449D /* GoogleService-Info.plist */,
-				3CD0E80A2BAA085800246E23 /* Launch Screen.storyboard */,
+				E103A3A82BAC4E5900ECE8B8 /* Resources */,
 				E182C69E2BA74B3600C66D3F /* Preview Content */,
 				B90BD5D22BA8E470007E8CE9 /* Localizable.strings */,
 			);
@@ -239,13 +237,11 @@
 		E182C6AD2BA74C9700C66D3F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F97BB3FB2BAC4566008327E6 /* ProfileScreen */,
-				3C99FD0E2BAB70CE0015C13B /* CategoriesScreen */,
 				3CD0E8072BAA07F300246E23 /* OnboardingScreen */,
 				B90BD5C92BA8B603007E8CE9 /* TabBar */,
-				E182C69A2BA74B3400C66D3F /* ContentView.swift */,
-				3C354B922BA7652E005EB350 /* MainScreen */,
 				E182C6B32BA7523A00C66D3F /* Authentication */,
+				3C354B922BA7652E005EB350 /* MainScreen */,
+				3C99FD0E2BAB70CE0015C13B /* CategoriesScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -382,8 +378,6 @@
 				3C354BA12BA792AB005EB350 /* VerticalRecomendedSection.swift in Sources */,
 				3C354B942BA76539005EB350 /* MainScreen.swift in Sources */,
 				B9E158892BA9CC61000AA390 /* CustomTabBar.swift in Sources */,
-				E182C69B2BA74B3400C66D3F /* ContentView.swift in Sources */,
-				F97BB4062BAC4566008327E6 /* ProfileScreen.swift in Sources */,
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				F97BB4072BAC4566008327E6 /* LanguageScreen.swift in Sources */,
 				3C99FD142BAB71250015C13B /* CategoriesView.swift in Sources */,
