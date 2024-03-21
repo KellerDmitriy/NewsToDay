@@ -20,6 +20,7 @@ struct NewsToDayApp: App {
             print("Family: \(family) Font names: \(names)")
         }
     }
+    
     var body: some Scene {
         WindowGroup {
             if !isOnboarding {
@@ -31,4 +32,5 @@ struct NewsToDayApp: App {
             }
         }
     }
+    
 }

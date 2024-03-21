@@ -10,6 +10,7 @@ import SwiftUI
 struct HorizontalCategoryCardSection: View {
     
     let sections: [Categories]
+    #warning("Нигде не используется. Зачем здесь?")
     var news: [NewsResults] = []
 
     var body: some View {

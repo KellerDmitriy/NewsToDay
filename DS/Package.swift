@@ -7,15 +7,9 @@ let package = Package(
     name: "DS",
     platforms: [.iOS(.v15)],
     products: [
-        .library(
-            name: "DS",
-            targets: ["DS"]),
+        .library(name: "DS", targets: ["DS"]),
     ],
     targets: [
-        .target(
-            name: "DS"),
-        .testTarget(
-            name: "DSTests",
-            dependencies: ["DS"]),
+        .target(name: "DS", resources: [.process("Inter")]),
     ]
 )

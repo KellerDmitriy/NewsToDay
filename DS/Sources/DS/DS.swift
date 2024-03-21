@@ -37,7 +37,7 @@ public enum DS {
     public enum Fonts {
         
         /// Inter font size 48
-        public struct Inter48 {
+        public enum Inter48 {
             /// Bold Inter font size 48
             public static let bold700 = Font.custom("Inter-Bold", size: 48)
             /// ExtraBold Inter font size 48
