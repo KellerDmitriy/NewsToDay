@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import DS
 
 struct HorizontalCategorySelectorSection: View {
+    
     let sections: [Categories]
-    @Binding var selected: Categories
-//    @ObservedObject var vm: MainScreenVM
+    @State var selected: Categories
     @Namespace private var namespace
 
     private struct Drawing {
@@ -28,7 +29,7 @@ struct HorizontalCategorySelectorSection: View {
                 ForEach(sections, id: \.self) { section in
 
                     Text(section.rawValue)
-                        .foregroundStyle(selected == section ? Color.white : Color.gray)
+                        .foregroundStyle(selected == section ? DS.Colors.Theme.whiteAccent : DS.Colors.Theme.secondaryText)
                         .padding(.vertical, Drawing.verticalPadding)
                         .padding(.horizontal, Drawing.horizontalPadding)
                         .cornerRadius(Drawing.cornerRadius)
@@ -36,8 +37,8 @@ struct HorizontalCategorySelectorSection: View {
                             if selected == section {
                                 RoundedRectangle(cornerRadius: Drawing.selectedCornerRadius)
                                     .fill(selected == section
-                                          ? Color.indigo
-                                          : Color.indigo.opacity(Drawing.selectedBackgroundColorOpacity))
+                                          ? DS.Colors.Theme.indigoAccent
+                                          : DS.Colors.Theme.secondaryText)
                                     .matchedGeometryEffect(id: "section", in: namespace)
                             }
                         })
@@ -55,7 +56,5 @@ struct HorizontalCategorySelectorSection: View {
 
 #Preview {
     HorizontalCategorySelectorSection(
-        sections: Categories.allCases,
-        selected: .constant(.business)
-    )
+        sections: Categories.allCases, selected: .business)
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct MainContentScreen: View {
     @StateObject var viewModel = MainScreenVM()
@@ -20,7 +21,7 @@ struct MainContentScreen: View {
                 ProgressView()
                 
             case .error(let networkError):
-                Text("Error\(networkError)")
+                Text("Error\(networkError.localizedDescription)")
                 
             case .ready(let articles):
                 MainScreen(

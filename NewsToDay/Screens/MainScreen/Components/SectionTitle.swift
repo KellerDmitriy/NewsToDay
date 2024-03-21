@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import DS
 
 struct SectionTitle<NavigationItem:View>: View {
-
+    
     var sectionTitle: String
     var buttonTitle: String
     var item: NavigationItem
@@ -16,12 +17,14 @@ struct SectionTitle<NavigationItem:View>: View {
     var body: some View {
         HStack {
             Text(sectionTitle)
-                .font(.headline).bold()
+                .font(DS.Fonts.Inter20.semiBold600)
             Spacer()
             NavigationLink {
                 item
             } label: {
                 Text(buttonTitle)
+                    .font(DS.Fonts.Inter14.medium500)
+                    .foregroundStyle(DS.Colors.Theme.secondaryText)
             }
         }
         .padding(.horizontal)

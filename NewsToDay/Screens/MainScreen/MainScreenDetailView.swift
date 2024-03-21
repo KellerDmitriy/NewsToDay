@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct News {
     let categories: String
@@ -36,17 +37,17 @@ struct MainScreenDetailView: View {
                             
                         }, label: {
                             Image(systemName: "arrowshape.turn.up.forward.fill")
-                                .foregroundColor(.white)
+                                .foregroundColor(DS.Colors.Theme.whiteAccent)
                         })
                     }
                     .padding()
                     
                     HStack {
                         Text(item.categories)
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(DS.Colors.Theme.whiteAccent)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            .background(Color.indigo)
+                            .background(DS.Colors.Theme.indigoAccent)
                             .cornerRadius(16)
                         Spacer()
                     }
@@ -54,8 +55,8 @@ struct MainScreenDetailView: View {
                     
                     HStack {
                         Text(item.title)
-                            .font(.title)
-                            .foregroundStyle(.white)
+                            .font(DS.Fonts.Inter20.bold700)
+                            .foregroundStyle(DS.Colors.Theme.whiteAccent)
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -63,11 +64,12 @@ struct MainScreenDetailView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.author)
-                                .foregroundStyle(.white)
+                                .font(DS.Fonts.Inter16.semiBold600)
+                                .foregroundStyle(DS.Colors.Theme.whiteAccent)
                             
                             Text("Author")
-                                .font(.subheadline)
-                                .foregroundStyle(.gray)
+                                .font(DS.Fonts.Inter14.regular400)
+                                .foregroundStyle(DS.Colors.Theme.grayLight)
                         }
                         Spacer()
                     }
@@ -78,12 +80,14 @@ struct MainScreenDetailView: View {
             ScrollView {
                 HStack {
                     Text("Results")
-                        .bold()
+                        .font(DS.Fonts.Inter16.semiBold600)
                     Spacer()
                 }
                 .padding()
 
                 Text(item.description)
+                    .foregroundStyle(DS.Colors.Theme.secondaryText)
+                    .font(DS.Fonts.Inter16.regular400)
                     .padding(.horizontal)
             }
             

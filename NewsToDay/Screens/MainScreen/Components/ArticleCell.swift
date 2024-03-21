@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct ArticleCell: View {
     let rawImage: CGImage?
@@ -35,14 +36,14 @@ struct ArticleCell: View {
                 }
             }
             .frame(width: Drawing.cardWidth, height: Drawing.cardHeight)
-            .foregroundStyle(Color.indigo)
+            .foregroundStyle(DS.Colors.Theme.indigoAccent)
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: Drawing.bottomLeadingPadding) {
                     Text(section.rawValue.uppercased())
-                        .font(.footnote.weight(Drawing.footnoteFontWeight))
+                        .font(DS.Fonts.Inter12.regular400)
                     
                     Text("The latest situation in the presidential election")
-                        .font(.headline.weight(Drawing.headlineFontWeight))
+                        .font(DS.Fonts.Inter16.bold700)
                 }
                 .padding()
             }
