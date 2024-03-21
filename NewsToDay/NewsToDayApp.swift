@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct NewsToDayApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
