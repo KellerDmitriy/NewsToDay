@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainScreen: View {
-    let sections: [Categories]
+    
     @Binding var query: String
     @Binding var selectedSection: Categories
     
-    @Environment(\.displayScale) var scale
+    let sections: [Categories]
             
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -39,16 +39,15 @@ struct MainScreen: View {
                 VerticalRecomendedSection()
             }
         }
-        .navigationTitle("Browse")
     }
 }
 
 #Preview {
     NavigationView {
         MainScreen(
-            sections: Categories.allCases,
             query: .constant("query"),
-            selectedSection: .constant(.general)
+            selectedSection: .constant(.business),
+            sections: Categories.allCases
         )
     }
 }

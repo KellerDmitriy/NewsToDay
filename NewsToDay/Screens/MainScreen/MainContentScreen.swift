@@ -14,23 +14,24 @@ struct MainContentScreen: View {
         Group {
             switch viewModel.state {
             case .empty:
-                EmptyView()
+                Text("Empty")
                 
             case .loading:
                 ProgressView()
                 
             case .error(let networkError):
-                EmptyView()
+                Text("Error")
                 
             case .ready(let articles):
                 MainScreen(
-                    sections: viewModel.sections,
                     query: $viewModel.searchText,
-                    selectedSection: $viewModel.selectedSection
+                    selectedSection: $viewModel.selectedSection,
+                    sections: viewModel.sections
                 )
             }
         }
         .onAppear(perform: viewModel.onAppear)
+        .navigationTitle("Browse")
     }
 }
 
