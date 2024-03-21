@@ -31,6 +31,7 @@ enum NetworkError: Error {
 
 enum NewsEndpoint: APIEndpoint {
     case newsFor(category: Categories.RawValue)
+    case newsWith(searchText: String)
     
     var baseURL: URL {
         guard let url = URL(string:"https://newsapi.org") else {
@@ -41,15 +42,23 @@ enum NewsEndpoint: APIEndpoint {
     
     var path: String {
         switch self {
+            
         case .newsFor(category: _):
             return "/v2/top-headlines"
+        case .newsWith(searchText: _):
+            return "/v2/everything"
         }
+           
     }
-    
+//для категорий https://newsapi.org/v2/top-headlines?category=business&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
+//для поиска https://newsapi.org/v2/everything?q=Apple&apiKey=2b9cf27ea13e45eb89926c533fb14c6b
     var parameters: [String : String]? {
         switch self {
         case .newsFor(category: let category):
             let params = ["category": category]
+            return params
+        case .newsWith(searchText: let searchText):
+            let params = ["q" : searchText]
             return params
         }
     }
