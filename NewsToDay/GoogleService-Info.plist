@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDKqjyPnU9SI7VAj_wTXj0Iepb9pgVNb_E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>677213135962</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>keller.NewsToDay</string>
+	<key>PROJECT_ID</key>
+	<string>newstoday-aa261</string>
+	<key>STORAGE_BUCKET</key>
+	<string>newstoday-aa261.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:677213135962:ios:28d1f2cad2c35917c0a463</string>
+</dict>
+</plist>

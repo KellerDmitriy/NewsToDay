@@ -33,8 +33,26 @@ final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchData(with category: String) async throws -> NewsModel {
+    func fetchData(with category: String) async throws -> NewsResults {
         let endpoint = NewsEndpoint.newsFor(category: category)
+        
+        guard let url = APIManager.shared.createURL(for: endpoint) else {
+                   throw NetworkError.invalidURL
+               }
+        print(url)
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        do {
+            let result = try decoder.decode(NewsResults.self, from: data)
+            print(result)
+            return result
+        } catch {
+            throw NetworkError.decodingError(error)
+        }
+    }
+    
+    func fetchData(with searchText: String) async throws -> NewsModel {
+        let endpoint = NewsEndpoint.newsWith(searchText: searchText)
         
         guard let url = APIManager.shared.createURL(for: endpoint) else {
                    throw NetworkError.invalidURL
@@ -50,6 +68,7 @@ final class NetworkManager {
             throw NetworkError.decodingError(error)
         }
     }
+    
     
     func fetch(_ endpoint: NewsEndpoint) async -> Result<NewsModel, NetworkError> {
         guard let url = APIManager.shared.createURL(for: endpoint) else {

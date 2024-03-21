@@ -20,7 +20,7 @@ struct MainContentScreen: View {
                 ProgressView()
                 
             case .error(let networkError):
-                Text("Error")
+                Text("Error\(networkError)")
                 
             case .ready(let articles):
                 MainScreen(
