@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct LanguageScreen: View {
-//    @EnvironmentObject var languageManager: LanguageManager
-    @StateObject private var languageManager = LanguageManager()
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.Language
+    
+    //    @StateObject private var languageManager = LocalizationManager.shared
     
     var body: some View {
         VStack {
-            CustomButton(title: "English", imageName: "checkmark", action: {
-                languageManager.changeLanguage(to: .english)
-            }, buttonType: .language, isSelected: languageManager.currentLanguage == .english)
+            CustomButton(
+                title: "English",
+                imageName: "checkmark",
+                action: {
+                language = .english
+            }, buttonType: .language, 
+                isSelected: language == .english)
             .padding([.horizontal, .top])
             
-            CustomButton(title: "Russian", imageName: "checkmark", action: {
-                languageManager.changeLanguage(to: .russian)
-            }, buttonType: .language, isSelected: languageManager.currentLanguage == .russian)
+            CustomButton(
+                title: "Russian",
+                imageName: "checkmark",
+                action: {
+                language = .russian
+            }, buttonType: .language, 
+                         isSelected:
+                            language == .russian)
             .padding([.horizontal, .top])
             
             Spacer()
@@ -32,6 +42,6 @@ struct LanguageScreen: View {
 #Preview {
     NavigationView {
         LanguageScreen()
-//           .environmentObject(LanguageManager())
+        //           .environmentObject(LanguageManager())
     }
 }
