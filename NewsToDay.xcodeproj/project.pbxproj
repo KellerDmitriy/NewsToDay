@@ -193,6 +193,7 @@
 				E182C6A92BA74C4400C66D3F /* Models */,
 				E182C6AD2BA74C9700C66D3F /* Screens */,
 				E182C6B12BA74FDF00C66D3F /* Services */,
+				F97BB45B2BAC7F90008327E6 /* Extension */,
 				E11FACD02BAA0437005B06E2 /* Helpers */,
 				E103A3A82BAC4E5900ECE8B8 /* Resources */,
 				E182C69E2BA74B3600C66D3F /* Preview Content */,
@@ -250,6 +251,7 @@
 		E182C6B12BA74FDF00C66D3F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F97BB4502BAC7CD7008327E6 /* LanguageSelectionManager.swift */,
 				E182C6A62BA74C1200C66D3F /* NetworkManager */,
 				E182C6AA2BA74C5800C66D3F /* StorageManager */,
 			);
@@ -280,11 +282,17 @@
 			children = (
 				F97BB44E2BAC7CD7008327E6 /* LanguageManager.swift */,
 				F97BB44F2BAC7CD7008327E6 /* ProfileHeader.swift */,
-				F97BB4502BAC7CD7008327E6 /* LanguageSelectionManager.swift */,
 				F97BB4512BAC7CD7008327E6 /* CustomButton.swift */,
-				F97BB4522BAC7CD7008327E6 /* ExtColorHex.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F97BB45B2BAC7F90008327E6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F97BB4522BAC7CD7008327E6 /* ExtColorHex.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

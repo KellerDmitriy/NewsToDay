@@ -14,7 +14,7 @@ public enum SelectedLanguage: String {
     case english = "en"
 }
 
-public class LocalizationManager: ObservableObject {
+final class LocalizationManager: ObservableObject {
     // MARK: - Varibles
     public static let shared = LocalizationManager()
     @AppStorage("selectedLanguage") private var languageString: String = SelectedLanguage.russian.rawValue
@@ -34,3 +34,12 @@ public class LocalizationManager: ObservableObject {
     }
 }
 
+//extension String {
+//    var localized: String {
+//        let lang = UDService.getLanguage() создать метод который будет менять язык. удалить лангвичМенеджер и переименовать LanguageSelectionManager на LanguageManager
+
+//        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+//        let bundle = Bundle(path: path!)
+//        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+//    }
+//}

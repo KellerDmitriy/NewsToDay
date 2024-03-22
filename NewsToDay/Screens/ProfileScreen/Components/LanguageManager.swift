@@ -8,7 +8,7 @@
 import Foundation
 
 class LanguageManager: ObservableObject {
-    @Published var currentLanguage: SelectedLanguage = .russian
+    @Published var currentLanguage: SelectedLanguage = .english
     
     func changeLanguage(to language: SelectedLanguage) {
         currentLanguage = language
