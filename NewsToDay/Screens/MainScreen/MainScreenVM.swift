@@ -6,6 +6,7 @@
 //
 
 import Combine
+import NetworkManager
 
 final class MainScreenVM: ObservableObject {
     
@@ -36,7 +37,10 @@ final class MainScreenVM: ObservableObject {
             await MainActor.run {
                 switch newState {
                 case .success(let success):
-                    self.state = success != nil ? success! : .error(.noData)
+                    #warning("Nil coalescing")
+                    self.state = success ?? .error(.noData)
+//                    self.state = success != nil ? success! : .error(.noData)
+                    
                 case .failure(let failure):
                     self.state = failure
                 }
