@@ -7,6 +7,16 @@
 
 import Foundation
 
+public enum NetworkError: Error {
+    case invalidResponse
+    case transportError(Error)
+    case serverError(statusCode: Int)
+    case noData
+    case decodingError(Error)
+    case invalidURL
+    case unknown(Error)
+}
+
 extension NetworkError {
     init(_ error: Error) {
         switch error {
@@ -33,24 +43,11 @@ public final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    public func fetchDataFor(category: String) async -> Result<NewsModel, NetworkError>  {
-        let endpoint = NewsEndpoint.newsFor(category: category)
-        return await fetch(endpoint)
+    public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .everything(about: searchText))
     }
     
-    public func fetchDataWith(searchText: String) async -> Result<NewsModel, NetworkError> {
-        let endpoint = NewsEndpoint.newsWith(searchText: searchText)
-        return await fetch(endpoint)
-    }
-    
-    func fetch<T: Decodable>(_ endpoint: NewsEndpoint) async -> Result<T, NetworkError> {
-        guard let url = APIManager.shared.createURL(for: endpoint) else {
-            return .failure(.invalidURL)
-        }
-        return await request(for: url)
-    }
-    
-    func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
+    public func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .headlines(category: category))
     }
 }

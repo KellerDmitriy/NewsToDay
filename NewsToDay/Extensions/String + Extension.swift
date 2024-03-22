@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     var localized: String {
-        let lang = LocalizationManager.shared.Language.rawValue
+        let lang = LocalizationManager.shared.language.rawValue
         let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")

@@ -27,7 +27,7 @@ struct HorizontalCategorySelectorSection: View {
             HStack(spacing: Drawing.spacing) {
                 ForEach(sections, id: \.self) { section in
 
-                    Text(section.rawValue)
+                    Text(section.rawValue.localized)
                         .foregroundStyle(selected == section ? Color.white : Color.gray)
                         .padding(.vertical, Drawing.verticalPadding)
                         .padding(.horizontal, Drawing.horizontalPadding)

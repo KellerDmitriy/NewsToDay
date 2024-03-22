@@ -31,7 +31,7 @@ struct MainContentScreen: View {
             }
         }
         .onAppear(perform: viewModel.onAppear)
-        .navigationTitle("Browse")
+        .navigationTitle("Browse".localized)
     }
 }
 

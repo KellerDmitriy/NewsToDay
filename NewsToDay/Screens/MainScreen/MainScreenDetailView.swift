@@ -42,7 +42,7 @@ struct MainScreenDetailView: View {
                     .padding()
                     
                     HStack {
-                        Text(item.categories)
+                        Text(item.categories.localized)
                             .foregroundStyle(Color.white)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
@@ -53,7 +53,7 @@ struct MainScreenDetailView: View {
                     .padding()
                     
                     HStack {
-                        Text(item.title)
+                        Text(item.title.localized)
                             .font(.title)
                             .foregroundStyle(.white)
                         Spacer()
@@ -62,10 +62,10 @@ struct MainScreenDetailView: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(item.author)
+                            Text(item.author.localized)
                                 .foregroundStyle(.white)
                             
-                            Text("Author")
+                            Text("Author".localized)
                                 .font(.subheadline)
                                 .foregroundStyle(.gray)
                         }
@@ -77,7 +77,7 @@ struct MainScreenDetailView: View {
             
             ScrollView {
                 HStack {
-                    Text("Results")
+                    Text("Results".localized)
                         .bold()
                     Spacer()
                 }

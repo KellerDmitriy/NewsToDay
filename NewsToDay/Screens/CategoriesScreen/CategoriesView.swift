@@ -36,7 +36,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Select some of your favorite topics to let us suggest better news for you.")
+                        Text("Select some of your favorite topics to let us suggest better news for you.".localized)
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -56,7 +56,7 @@ struct CategoriesView: View {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Text(category.image)
-                                    Text(category.rawValue)
+                                    Text(category.rawValue.localized)
                                     Spacer()
                                 }
                                 .foregroundStyle(selectedCategories.contains(category) ? Color.white : Color.black.opacity(0.6))
@@ -88,7 +88,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Thousands of articles in each category")
+                        Text("Thousands of articles in each category".localized)
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -123,7 +123,7 @@ struct CategoriesView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Categories")
+            .navigationTitle("Categories".localized)
         }
     }
 }

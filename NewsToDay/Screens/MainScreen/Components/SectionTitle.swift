@@ -15,13 +15,13 @@ struct SectionTitle<NavigationItem:View>: View {
     
     var body: some View {
         HStack {
-            Text(sectionTitle)
+            Text(sectionTitle.localized)
                 .font(.headline).bold()
             Spacer()
             NavigationLink {
                 item
             } label: {
-                Text(buttonTitle)
+                Text(buttonTitle.localized)
             }
         }
         .padding(.horizontal)

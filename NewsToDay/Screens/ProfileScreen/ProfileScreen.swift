@@ -48,7 +48,7 @@ struct ProfileScreen: View {
             Spacer()
             
         }
-        .navigationTitle("Profile")
+        .navigationTitle("Profile".localized)
     }
 }
 

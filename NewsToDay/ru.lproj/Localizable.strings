@@ -23,11 +23,25 @@
 
 "Browse" = "Браузер";
 "Discover things of this world" = "Открывайте для себя вещи этого мира";
-"Search" = "Поиск";
-"Random" = "Случайные";
-"Sports" = "Спорт";
-"Gaming" = "Игры";
-"Politics" = "Политика";
-"Life" = "Жизнь";
+
 "Recommended for you" = "Рекомендации для вас";
 "See All" = "Показать все";
+
+"business" = "Бизнес";
+"entertainment" = "Развлечения";
+"general" = "Общее";
+"health" = "Здоровье";
+"science" = "Наука";
+"sports" = "Спорт";
+"technology" = "Технологии";
+"politics" = "Политика";
+"life" = "Жизнь";
+"gaming" = "Игры";
+"animals" = "Животные";
+"nature" = "Природа";
+"food" = "Еда";
+"art" = "Искусство";
+"history" = "История";
+"fashion" = "Мода";
+"covid19" = "Ковид-19";
+"middleeast" = "Ближний Восток";

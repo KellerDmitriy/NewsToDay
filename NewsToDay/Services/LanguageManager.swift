@@ -15,19 +15,19 @@ enum SelectedLanguage: String {
 }
 
 final class LocalizationManager: ObservableObject {
-    // MARK: - Varibles
-    public static let shared = LocalizationManager()
+    // MARK: -Properties
+    static let shared = LocalizationManager()
     
-    var Language: SelectedLanguage {
+    var language: SelectedLanguage {
         get {
-            guard  let LanguageString =  UserDefaults .standard.string(forKey: "selectedLanguage" ) else {
+            guard  let languageString =  UserDefaults .standard.string(forKey: "selectedLanguage" ) else {
                 saveLanguage(.english)
                 return .english
             }
             
-            return  SelectedLanguage(rawValue: LanguageString) ?? .english
+            return  SelectedLanguage(rawValue: languageString) ?? .english
         } set {
-            if newValue != Language {
+            if newValue != language {
                 saveLanguage(newValue)
             }
         }

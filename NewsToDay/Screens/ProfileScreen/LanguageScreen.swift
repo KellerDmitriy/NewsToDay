@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct LanguageScreen: View {
-    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.Language
-    
-    //    @StateObject private var languageManager = LocalizationManager.shared
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     var body: some View {
         VStack {
             CustomButton(
-                title: "English",
+                title: "English".localized,
                 imageName: "checkmark",
                 action: {
                 language = .english
@@ -24,7 +22,7 @@ struct LanguageScreen: View {
             .padding([.horizontal, .top])
             
             CustomButton(
-                title: "Russian",
+                title: "Russian".localized,
                 imageName: "checkmark",
                 action: {
                 language = .russian
@@ -35,7 +33,7 @@ struct LanguageScreen: View {
             
             Spacer()
         }
-        .navigationTitle("Language")
+        .navigationTitle("Language".localized)
     }
 }
 

@@ -23,7 +23,7 @@ struct TermsConditionsScreen: View {
             }
         }
         .padding()
-        .navigationTitle("Terms & Conditions")
+        .navigationTitle("Terms & Conditions".localized)
     }
 }
 
