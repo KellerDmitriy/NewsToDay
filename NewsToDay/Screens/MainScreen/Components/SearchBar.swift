@@ -26,7 +26,7 @@ struct SearchBar: View {
             Image(systemName: Drawing.iconName)
                 .foregroundColor(Color.gray.opacity(Drawing.iconColorOpacity))
                 .padding(Drawing.iconPadding)
-            TextField("Search", text: $text)
+            TextField("Search".localized, text: $text)
         }
         .frame(height: Drawing.textFieldHeight)
         .frame(maxWidth: .infinity)

@@ -36,10 +36,12 @@ struct CustomBarView: View {
                     Label("house", systemImage: "bookmark")
                 }
 
-            Text("Profile")
+            NavigationView {
+                ProfileScreen()
                 .tag(4)
+            }
                 .tabItem {
-                    Label("house", systemImage: "person")
+                    Label("profile", systemImage: "person")
                 }
         }
 //        .overlay(alignment: .bottom) {

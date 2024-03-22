@@ -51,6 +51,10 @@ enum Categories: String, CaseIterable, Hashable, Identifiable {
         case .technology: "👩🏾‍💻"
         }
     }
+    
+    var localizedString: String {
+        return NSLocalizedString(rawValue, comment: "")
+    }
 }
 
 

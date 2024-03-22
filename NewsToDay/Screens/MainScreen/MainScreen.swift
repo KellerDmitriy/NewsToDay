@@ -17,7 +17,7 @@ struct MainScreen: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                Text("Discover things of this world")
+                Text("Discover things of this world".localized)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
@@ -31,8 +31,8 @@ struct MainScreen: View {
                 HorizontalCategoryCardSection(sections: sections)
                 
                 SectionTitle(
-                    sectionTitle: "Recomended for you",
-                    buttonTitle: "See all",
+                    sectionTitle: "Recomended for you".localized,
+                    buttonTitle: "See all".localized,
                     item: EmptyView()
                 )
                 

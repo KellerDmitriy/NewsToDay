@@ -20,7 +20,7 @@ struct MainContentScreen: View {
                 ProgressView()
                 
             case .error(let networkError):
-                Text("Error\(networkError)")
+                Text("Error\(networkError.localizedDescription)")
                 
             case .ready(let articles):
                 MainScreen(
@@ -31,7 +31,7 @@ struct MainContentScreen: View {
             }
         }
         .onAppear(perform: viewModel.onAppear)
-        .navigationTitle("Browse")
+        .navigationTitle("Browse".localized)
     }
 }
 

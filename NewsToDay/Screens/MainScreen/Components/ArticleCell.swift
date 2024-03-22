@@ -41,7 +41,7 @@ struct ArticleCell: View {
                     Text(section.rawValue.uppercased())
                         .font(.footnote.weight(Drawing.footnoteFontWeight))
                     
-                    Text("The latest situation in the presidential election")
+                    Text("The latest situation in the presidential election".localized)
                         .font(.headline.weight(Drawing.headlineFontWeight))
                 }
                 .padding()

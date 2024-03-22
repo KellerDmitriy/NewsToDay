@@ -29,7 +29,7 @@ final class MainScreenVM: ObservableObject {
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .fetchDataFor(category: selectedSection.rawValue)
+                .getNewsFor(category: selectedSection.rawValue)
                 .map(\.articles)
                 .map { $0.map(State.ready) }
                 .mapError(State.error)
@@ -37,10 +37,7 @@ final class MainScreenVM: ObservableObject {
             await MainActor.run {
                 switch newState {
                 case .success(let success):
-                    #warning("Nil coalescing")
                     self.state = success ?? .error(.noData)
-//                    self.state = success != nil ? success! : .error(.noData)
-                    
                 case .failure(let failure):
                     self.state = failure
                 }
