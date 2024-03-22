@@ -193,7 +193,7 @@
 				E182C6A92BA74C4400C66D3F /* Models */,
 				E182C6AD2BA74C9700C66D3F /* Screens */,
 				E182C6B12BA74FDF00C66D3F /* Services */,
-				F97BB45B2BAC7F90008327E6 /* Extension */,
+				F97BB45B2BAC7F90008327E6 /* Extensions */,
 				E11FACD02BAA0437005B06E2 /* Helpers */,
 				E103A3A82BAC4E5900ECE8B8 /* Resources */,
 				E182C69E2BA74B3600C66D3F /* Preview Content */,
@@ -287,12 +287,12 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		F97BB45B2BAC7F90008327E6 /* Extension */ = {
+		F97BB45B2BAC7F90008327E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F97BB4522BAC7CD7008327E6 /* ExtColorHex.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
