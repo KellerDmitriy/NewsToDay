@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NetworkManager
 
 struct HorizontalCategoryCardSection: View {
     let sections: [Categories]

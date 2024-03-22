@@ -22,8 +22,8 @@ extension NetworkError {
     }
 }
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+public final class NetworkManager {
+    public static let shared = NetworkManager()
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
@@ -33,12 +33,12 @@ final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchDataFor(category: String) async -> Result<NewsModel, NetworkError>  {
+    public func fetchDataFor(category: String) async -> Result<NewsModel, NetworkError>  {
         let endpoint = NewsEndpoint.newsFor(category: category)
         return await fetch(endpoint)
     }
     
-    func fetchDataWith(searchText: String) async -> Result<NewsModel, NetworkError> {
+    public func fetchDataWith(searchText: String) async -> Result<NewsModel, NetworkError> {
         let endpoint = NewsEndpoint.newsWith(searchText: searchText)
         return await fetch(endpoint)
     }
@@ -49,9 +49,24 @@ final class NetworkManager {
         }
         return await request(for: url)
     }
+    
+    func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .headlines(category: category))
+    }
 }
 
 private extension NetworkManager {
+    func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, NetworkError> {
+        await Result
+            .success(endpoint)
+            .map(\.urlRequest)
+            .map(addApiKey(apiKey))
+            .asyncMap(session.data)
+            .map(\.0)
+            .decode(T.self, decoder: decoder)
+            .mapError(NetworkError.init)
+    }
+    
     func request<T: Decodable>(for url: URL) async -> Result<T, NetworkError> {
         await Result
             .success(url)

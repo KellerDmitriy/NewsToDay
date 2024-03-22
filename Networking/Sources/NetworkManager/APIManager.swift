@@ -20,7 +20,7 @@ extension APIEndpoint {
     }
 }
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case invalidResponse
     case transportError(Error)
     case serverError(statusCode: Int)
@@ -31,7 +31,7 @@ enum NetworkError: Error {
 }
 
 enum NewsEndpoint: APIEndpoint {
-    case newsFor(category: Categories.RawValue)
+    case newsFor(category: String)
     case newsWith(searchText: String)
     
     var baseURL: URL {
