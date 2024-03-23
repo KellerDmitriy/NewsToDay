@@ -11,7 +11,8 @@ import DS
 struct SearchBar: View {
     
     @Binding var text: String
-
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
     private struct Drawing {
         static let iconPadding: CGFloat = 12
         static let iconName: String = "magnifyingglass"
@@ -26,7 +27,7 @@ struct SearchBar: View {
             Image(systemName: Drawing.iconName)
                 .foregroundColor(DS.Colors.Theme.secondaryText)
                 .padding(Drawing.iconPadding)
-            TextField("Search".localized, text: $text)
+            TextField("Search".localized(language), text: $text)
         }
         .frame(height: Drawing.textFieldHeight)
         .frame(maxWidth: .infinity)

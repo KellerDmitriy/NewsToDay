@@ -12,11 +12,13 @@ import DS
 struct MainContentScreen: View {
     @EnvironmentObject var viewModel: MainScreenVM
     
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
     var body: some View {
         Group {
             switch viewModel.state {
             case .empty:
-                Text("Empty")
+                Text("Empty".localized(language))
             case .loading:
                 MainScreenWithShimmer()
                 
@@ -38,7 +40,7 @@ struct MainContentScreen: View {
             }
         }
         .onAppear(perform: viewModel.onAppear)
-        .navigationTitle("Browse".localized)
+        .navigationTitle("Browse".localized(language))
     }
 }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TermsConditionsScreen: View {
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     private enum Drawing {
         static let foreground = "7C82A1"
@@ -23,7 +24,7 @@ struct TermsConditionsScreen: View {
             }
         }
         .padding()
-        .navigationTitle("Terms & Conditions".localized)
+        .navigationTitle("Terms & Conditions".localized(language))
     }
 }
 

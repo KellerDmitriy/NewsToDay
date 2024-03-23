@@ -11,11 +11,12 @@ import NetworkManager
 struct MainScreenWithShimmer: View {
     let sections = Categories.allCases
     @State var query: String = ""
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                ScreenHeader(title: "Discover things of this world")
+                ScreenHeader(title: "Discover things of this world".localized(language))
                 SearchBar(text: $query)
                 
                 HorizontalSelector(sections) { category in
@@ -31,8 +32,8 @@ struct MainScreenWithShimmer: View {
                 .shimmering()
                 
                 SectionTitle(
-                    sectionTitle: "Recomended for you".localized,
-                    buttonTitle: "See all".localized,
+                    sectionTitle: "Recomended for you".localized(language),
+                    buttonTitle: "See all".localized(language),
                     item: EmptyView()
                 )
                 
