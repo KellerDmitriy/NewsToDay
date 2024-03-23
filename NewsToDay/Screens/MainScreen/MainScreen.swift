@@ -14,6 +14,7 @@ struct MainScreen: View {
     @Binding var query: String
     @Binding var selectedCategory: Categories
     @Binding var categories: Set<Categories>
+    var isSearching: Bool
     
     let articles: [NewsResults]
             
@@ -24,25 +25,30 @@ struct MainScreen: View {
                 
                 SearchBar(text: $query)
                 
-                HorizontalCategorySelectorSection(
-                    categories: categories,
-                    selected: $selectedCategory
-                )
-                
-                HorizontalCategoryCardSection(
-                    articles: articles,
-                    category: selectedCategory
-                )
-                
-                SectionTitle(
-                    sectionTitle: "Recomended for you".localized,
-                    buttonTitle: "See all".localized,
-                    item: EmptyView()
-                )
-                
-                VerticalRecomendedSection(item: articles)
+                if !isSearching {
+                    HorizontalCategorySelectorSection(
+                        categories: categories,
+                        selected: $selectedCategory
+                    )
+                    
+                    HorizontalCategoryCardSection(
+                        articles: articles,
+                        category: selectedCategory
+                    )
+                    
+                    SectionTitle(
+                        sectionTitle: "Recomended for you".localized,
+                        buttonTitle: "See all".localized,
+                        item: EmptyView()
+                    )
+                    
+                    VerticalRecomendedSection(item: articles)
+                } else {
+                    VerticalRecomendedSection(item: articles)
+                }
             }
         }
+        .animation(.bouncy, value: isSearching)
     }
 }
 
@@ -50,7 +56,9 @@ struct MainScreen: View {
     NavigationView {
         MainScreen(
             query: .constant("query"),
-            selectedCategory: .constant(.business), categories: .constant(Set(Categories.allCases)),
+            selectedCategory: .constant(.business),
+            categories: .constant(Set(Categories.allCases)),
+            isSearching: false,
             articles: [NewsResults.preview, NewsResults.preview]
         )
     }

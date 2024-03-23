@@ -13,9 +13,13 @@ final class MainScreenVM: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var categories: Set<Categories> = []
-    @Published var selectedCategory: Categories = .business
+    @Published var selectedCategory: Categories = .general
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
+    
+    var isSearching: Bool {
+        !searchText.isEmpty
+    }
     
     private let networkManager = NetworkManager.shared
     private var cancellables: Set<AnyCancellable> = []
@@ -31,10 +35,7 @@ final class MainScreenVM: ObservableObject {
     }
     
     func onChangeSearch() {
-        Task {
-            await networkManager
-                .getNewsWith(searchText: searchText)
-        }
+        
     }
     
     func onAppear() {

@@ -13,7 +13,6 @@ struct MainScreenWithShimmer: View {
     @State var query: String = ""
     
     let sections: Set<Categories> = Set(Categories.allCases)
-    @Binding var selectedSections: Categories
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -24,7 +23,7 @@ struct MainScreenWithShimmer: View {
                 
                 HorizontalCategorySelectorSection(
                     categories: sections,
-                    selected: $selectedSections
+                    selected: .constant(.business)
                 )
                 .redacted(reason: .placeholder)
                 .shimmering()
@@ -53,10 +52,11 @@ struct MainScreenWithShimmer: View {
                     .redacted(reason: .placeholder)
                     .shimmering()
             }
+            .disabled(true)
         }
     }
 }
 
 #Preview {
-    MainScreenWithShimmer(selectedSections: .constant(.animals))
+    MainScreenWithShimmer()
 }

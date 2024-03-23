@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomBarView: View {
     
+    @EnvironmentObject var mainViewModel: MainScreenVM
+    
     @State private var tabSelection = 0
     
     var body: some View {
@@ -16,6 +18,7 @@ struct CustomBarView: View {
                 
             NavigationView{
                 MainContentScreen()
+                    .environmentObject(mainViewModel)
                     .tag(1)
             }
             .tabItem {
@@ -24,6 +27,7 @@ struct CustomBarView: View {
             
             NavigationView {
                 CategoriesView(mode: .screen)
+                    .environmentObject(mainViewModel)
                     .tag(2)
             }
             .tabItem {
@@ -52,4 +56,5 @@ struct CustomBarView: View {
 
 #Preview {
     CustomBarView()
+        .environmentObject(MainScreenVM())
 }
