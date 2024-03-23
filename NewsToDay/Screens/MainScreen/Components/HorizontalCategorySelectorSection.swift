@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import DS
 
 struct HorizontalCategorySelectorSection: View {
+    
     let sections: [Categories]
-    @Binding var selected: Categories
-//    @ObservedObject var vm: MainScreenVM
+    @State var selected: Categories
     @Namespace private var namespace
 
+    #warning("Better to use enum.")
     private struct Drawing {
         static let spacing: CGFloat = 16
         static let verticalPadding: CGFloat = 8
@@ -26,21 +28,16 @@ struct HorizontalCategorySelectorSection: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Drawing.spacing) {
                 ForEach(sections, id: \.self) { section in
-
-                    Text(section.rawValue.localized)
-                        .foregroundStyle(selected == section ? Color.white : Color.gray)
+                    Text(section.rawValue)
+                        .foregroundStyle(
+                            selected == section 
+                            ? DS.Colors.Theme.whiteAccent
+                            : DS.Colors.Theme.secondaryText
+                        )
                         .padding(.vertical, Drawing.verticalPadding)
                         .padding(.horizontal, Drawing.horizontalPadding)
                         .cornerRadius(Drawing.cornerRadius)
-                        .background(content: {
-                            if selected == section {
-                                RoundedRectangle(cornerRadius: Drawing.selectedCornerRadius)
-                                    .fill(selected == section
-                                          ? Color.indigo
-                                          : Color.indigo.opacity(Drawing.selectedBackgroundColorOpacity))
-                                    .matchedGeometryEffect(id: "section", in: namespace)
-                            }
-                        })
+                        .background(computeBackground(for: section))
                         .onTapGesture {
                             withAnimation(.easeInOut) {
                                 selected = section
@@ -51,11 +48,24 @@ struct HorizontalCategorySelectorSection: View {
             .padding(.horizontal)
         }
     }
+    
+    @ViewBuilder
+    private func computeBackground(for section: Categories) -> some View {
+        if selected == section {
+            RoundedRectangle(cornerRadius: Drawing.selectedCornerRadius)
+                .fill(
+                    selected == section
+                    ? DS.Colors.Theme.indigoAccent
+                    : DS.Colors.Theme.secondaryText
+                )
+                .matchedGeometryEffect(id: "section", in: namespace)
+        }
+    }
 }
 
 #Preview {
     HorizontalCategorySelectorSection(
         sections: Categories.allCases,
-        selected: .constant(.business)
+        selected: .business
     )
 }

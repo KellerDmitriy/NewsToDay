@@ -9,20 +9,10 @@ import SwiftUI
 import NetworkManager
 
 struct HorizontalCategoryCardSection: View {
-    let sections: [Categories]
-    var news: [NewsResults] = []
     
-    private struct Drawing {
-        static let cardWidth: CGFloat = 256
-        static let cardHeight: CGFloat = 256
-        static let cornerRadius: CGFloat = 12
-        static let bottomLeadingPadding: CGFloat = 12
-        static let footnoteFontSize: CGFloat = 12
-        static let footnoteFontWeight: Font.Weight = .light
-        static let headlineFontSize: CGFloat = 18
-        static let headlineFontWeight: Font.Weight = .bold
-        static let bookmarkImagePadding: CGFloat = 12
-    }
+    let sections: [Categories]
+    #warning("Нигде не используется. Зачем здесь?")
+    var news: [NewsResults] = []
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {

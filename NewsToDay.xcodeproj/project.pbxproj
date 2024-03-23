@@ -18,13 +18,15 @@
 		3C99FD142BAB71250015C13B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C99FD132BAB71250015C13B /* CategoriesView.swift */; };
 		3CD0E8092BAA07F300246E23 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0E8082BAA07F300246E23 /* OnboardingView.swift */; };
 		3CD0E80B2BAA085800246E23 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD0E80A2BAA085800246E23 /* Launch Screen.storyboard */; };
+		3CEB33DD2BAEC93200E9D73C /* DS in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB33DC2BAEC93200E9D73C /* DS */; };
+		3CEB33DF2BAEC9F200E9D73C /* MainScreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB33DE2BAEC9F200E9D73C /* MainScreenHeader.swift */; };
+		3CEB33E62BAED7A300E9D73C /* DS in Frameworks */ = {isa = PBXBuildFile; productRef = 3CEB33E52BAED7A300E9D73C /* DS */; };
 		86BCEC1E2BACCA3400AB3CB0 /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 86BCEC1D2BACCA3400AB3CB0 /* Networking */; };
 		86BCEC2A2BACCB4400AB3CB0 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 86BCEC292BACCB4400AB3CB0 /* Networking */; };
 		B90BD5D02BA8E470007E8CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B90BD5D22BA8E470007E8CE9 /* Localizable.strings */; };
 		B9942ACA2BAA2C4F00867AF0 /* SignIn in Resources */ = {isa = PBXBuildFile; fileRef = B9942AC92BAA2C4F00867AF0 /* SignIn */; };
 		B9E158882BA9CC61000AA390 /* CustomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E158862BA9CC61000AA390 /* CustomBarView.swift */; };
 		B9E158892BA9CC61000AA390 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E158872BA9CC61000AA390 /* CustomTabBar.swift */; };
-		E103A3A72BAC2A1B00ECE8B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103A3A62BAC2A1B00ECE8B8 /* AppDelegate.swift */; };
 		E11FACD22BAA0437005B06E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD12BAA0437005B06E2 /* Constants.swift */; };
 		E11FACD42BAA377D005B06E2 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD32BAA377D005B06E2 /* ArticleCell.swift */; };
 		E11FACD62BAA378C005B06E2 /* MainContentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD52BAA378C005B06E2 /* MainContentScreen.swift */; };
@@ -60,13 +62,14 @@
 		3C99FD132BAB71250015C13B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		3CD0E8082BAA07F300246E23 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3CD0E80A2BAA085800246E23 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		3CEB33DC2BAEC93200E9D73C /* DS */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DS; sourceTree = "<group>"; };
+		3CEB33DE2BAEC9F200E9D73C /* MainScreenHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeader.swift; sourceTree = "<group>"; };
 		86BCEC1D2BACCA3400AB3CB0 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		B90BD5D12BA8E470007E8CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B90BD5D32BA8E48E007E8CE9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B9942AC92BAA2C4F00867AF0 /* SignIn */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SignIn; sourceTree = "<group>"; };
 		B9E158862BA9CC61000AA390 /* CustomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarView.swift; sourceTree = "<group>"; };
 		B9E158872BA9CC61000AA390 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
-		E103A3A62BAC2A1B00ECE8B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11FACD12BAA0437005B06E2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E11FACD32BAA377D005B06E2 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		E11FACD52BAA378C005B06E2 /* MainContentScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentScreen.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13C6BF02BAE212B007FCE74 /* RealmSwift in Frameworks */,
+				3CEB33E62BAED7A300E9D73C /* DS in Frameworks */,
 				E13C6BF32BAE217B007FCE74 /* FirebaseAuth in Frameworks */,
 				E13C6BEE2BAE212B007FCE74 /* Realm in Frameworks */,
 				E13C6BE82BAD5CCA007FCE74 /* Networking in Frameworks */,
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E11FACD32BAA377D005B06E2 /* ArticleCell.swift */,
+				3CEB33DE2BAEC9F200E9D73C /* MainScreenHeader.swift */,
 				3C354B9A2BA78B0C005EB350 /* SearchBar.swift */,
 				3C354B9C2BA78BE1005EB350 /* HorizontalCategorySelectorSection.swift */,
 				3C354B9E2BA790E8005EB350 /* HorizontalCategoryCardSection.swift */,
@@ -173,7 +178,6 @@
 		E11FACD02BAA0437005B06E2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E103A3A62BAC2A1B00ECE8B8 /* AppDelegate.swift */,
 				E11FACD12BAA0437005B06E2 /* Constants.swift */,
 			);
 			path = Helpers;
@@ -189,6 +193,7 @@
 		E182C68C2BA74B3400C66D3F = {
 			isa = PBXGroup;
 			children = (
+				3CEB33DC2BAEC93200E9D73C /* DS */,
 				86BCEC1D2BACCA3400AB3CB0 /* Networking */,
 				E182C6972BA74B3400C66D3F /* NewsToDay */,
 				E182C6962BA74B3400C66D3F /* Products */,
@@ -318,6 +323,7 @@
 				E13C6BED2BAE212B007FCE74 /* Realm */,
 				E13C6BEF2BAE212B007FCE74 /* RealmSwift */,
 				E13C6BF22BAE217B007FCE74 /* FirebaseAuth */,
+				3CEB33E52BAED7A300E9D73C /* DS */,
 			);
 			productName = NewsToDay;
 			productReference = E182C6952BA74B3400C66D3F /* NewsToDay.app */;
@@ -352,6 +358,7 @@
 				E13C6BE62BAD5CCA007FCE74 /* XCLocalSwiftPackageReference "Networking" */,
 				E13C6BEC2BAE212B007FCE74 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				E13C6BF12BAE217B007FCE74 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3CEB33E22BAECF6F00E9D73C /* XCLocalSwiftPackageReference "DS" */,
 			);
 			productRefGroup = E182C6962BA74B3400C66D3F /* Products */;
 			projectDirPath = "";
@@ -375,6 +382,7 @@
 				E1ECA39B2BAC262A0072449D /* GoogleService-Info.plist in Resources */,
 				3CD0E80B2BAA085800246E23 /* Launch Screen.storyboard in Resources */,
 				E182C69D2BA74B3600C66D3F /* Assets.xcassets in Resources */,
+				3CEB33DD2BAEC93200E9D73C /* DS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +400,7 @@
 				3C354BA12BA792AB005EB350 /* VerticalRecomendedSection.swift in Sources */,
 				3C354B942BA76539005EB350 /* MainScreen.swift in Sources */,
 				B9E158892BA9CC61000AA390 /* CustomTabBar.swift in Sources */,
+				3CEB33DF2BAEC9F200E9D73C /* MainScreenHeader.swift in Sources */,
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				3C99FD142BAB71250015C13B /* CategoriesView.swift in Sources */,
 				F97BB45A2BAC7CD7008327E6 /* ColorHex + Extension.swift in Sources */,
@@ -410,7 +419,6 @@
 				3C354B982BA782E5005EB350 /* MainScreenDetailView.swift in Sources */,
 				F97BB4532BAC7CD7008327E6 /* ProfileScreen.swift in Sources */,
 				E11FACD22BAA0437005B06E2 /* Constants.swift in Sources */,
-				E103A3A72BAC2A1B00ECE8B8 /* AppDelegate.swift in Sources */,
 				F97BB4572BAC7CD7008327E6 /* ProfileHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -541,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -562,6 +570,7 @@
 				DEVELOPMENT_TEAM = KYB528F2CP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsToDay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -597,6 +606,7 @@
 				DEVELOPMENT_TEAM = KYB528F2CP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsToDay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -645,6 +655,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		3CEB33E22BAECF6F00E9D73C /* XCLocalSwiftPackageReference "DS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = DS;
+		};
 		E13C6BE62BAD5CCA007FCE74 /* XCLocalSwiftPackageReference "Networking" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Networking;
@@ -671,6 +685,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3CEB33E52BAED7A300E9D73C /* DS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DS;
+		};
 		86BCEC292BACCB4400AB3CB0 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
