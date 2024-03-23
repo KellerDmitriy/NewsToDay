@@ -8,28 +8,6 @@
 import SwiftUI
 import DS
 
-struct ErrorScreen: View {
-    
-    let error: Error
-    let action: () -> ()
-    
-    var body: some View {
-        ZStack {
-            MainScreenWithShimmer()
-                .disabled(true)
-            
-            VStack(spacing: 20) {
-                Text("Error\(error.localizedDescription)")
-                Button("Reload") {
-                    action()
-                }
-            }
-            .padding()
-            .background(Material.regular)
-            .cornerRadius(15)
-        }
-    }
-}
 
 struct MainContentScreen: View {
     @EnvironmentObject var viewModel: MainScreenVM
@@ -41,15 +19,14 @@ struct MainContentScreen: View {
                 Text("Empty")
             case .loading:
                 MainScreenWithShimmer()
-                    
+                
                 
             case .error(let networkError):
-                ErrorScreen(error: networkError) {
+                ErrorView(error: networkError) {
                     viewModel.onAppear()
                 }
                 
             case .ready(let articles):
-                
                 MainScreen(
                     query: $viewModel.searchText,
                     selectedCategory: $viewModel.selectedCategory,
@@ -57,7 +34,7 @@ struct MainContentScreen: View {
                     isSearching: viewModel.isSearching,
                     articles: articles
                 )
-                
+                .environmentObject(viewModel)
             }
         }
         .onAppear(perform: viewModel.onAppear)

@@ -25,6 +25,7 @@ struct ArticleCell: View {
     let news: NewsResults
     let category: Categories
     
+    @EnvironmentObject var vm: MainScreenVM
     @Environment(\.displayScale) var scale
     @State private var isBookmark = false
     
@@ -55,6 +56,7 @@ struct ArticleCell: View {
             .overlay(alignment: .topTrailing) {
                 Button(action: {
                     isBookmark.toggle()
+                    vm.addToBookmarks(bookmark: news)
                 }, label: {
                     Image(systemName: isBookmark ? "bookmark.fill" : "bookmark")
                         .font(.title)
@@ -69,4 +71,5 @@ struct ArticleCell: View {
 
 #Preview {
     ArticleCell(rawImage: nil, news: NewsResults.preview, category: .business)
+        .environmentObject(MainScreenVM())
 }

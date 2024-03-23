@@ -10,6 +10,7 @@ import NetworkManager
 
 struct HorizontalCategoryCardSection: View {
     
+    @EnvironmentObject var vm: MainScreenVM
     var articles: [NewsResults]
     var category: Categories
 
@@ -21,6 +22,7 @@ struct HorizontalCategoryCardSection: View {
                         MainScreenDetailView(item: section)
                     } label: {
                         ArticleCell(rawImage: nil, news: section, category: category)
+                            .environmentObject(vm)
                     }
                 }
             }
@@ -32,5 +34,6 @@ struct HorizontalCategoryCardSection: View {
 #Preview {
     NavigationView {
         HorizontalCategoryCardSection(articles: [NewsResults.preview, NewsResults.preview], category: .business)
+            .environmentObject(MainScreenVM())
     }
 }

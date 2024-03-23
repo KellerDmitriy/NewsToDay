@@ -13,6 +13,7 @@ final class MainScreenVM: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var categories: Set<Categories> = []
+    @Published var bookmarks: Set<NewsResults> = []
     @Published var selectedCategory: Categories = .general
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
@@ -60,6 +61,10 @@ final class MainScreenVM: ObservableObject {
                 }
             }
         }
+    }
+    
+    func addToBookmarks(bookmark: NewsResults) {
+        self.bookmarks.insert(bookmark)
     }
     
     enum State: Error {

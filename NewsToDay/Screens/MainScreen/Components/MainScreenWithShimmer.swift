@@ -17,7 +17,7 @@ struct MainScreenWithShimmer: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                MainScreenHeader()
+                ScreenHeader(title: "Discover things of this world")
                 
                 SearchBar(text: $query)
                 

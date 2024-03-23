@@ -11,6 +11,7 @@ import NetworkManager
 
 struct MainScreen: View {
     
+    @EnvironmentObject var vm: MainScreenVM
     @Binding var query: String
     @Binding var selectedCategory: Categories
     @Binding var categories: Set<Categories>
@@ -21,7 +22,7 @@ struct MainScreen: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                MainScreenHeader()
+                ScreenHeader(title: "Discover things of this world")
                 
                 SearchBar(text: $query)
                 
@@ -35,6 +36,7 @@ struct MainScreen: View {
                         articles: articles,
                         category: selectedCategory
                     )
+                    .environmentObject(vm)
                     
                     SectionTitle(
                         sectionTitle: "Recomended for you".localized,
@@ -61,5 +63,6 @@ struct MainScreen: View {
             isSearching: false,
             articles: [NewsResults.preview, NewsResults.preview]
         )
+        .environmentObject(MainScreenVM())
     }
 }
