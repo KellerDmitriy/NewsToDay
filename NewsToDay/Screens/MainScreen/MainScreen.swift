@@ -10,6 +10,7 @@ import DS
 import NetworkManager
 
 struct MainScreen: View {
+    @EnvironmentObject var vm: MainScreenVM
     
     @Binding var query: String
     @Binding var selectedCategory: Categories
@@ -21,27 +22,29 @@ struct MainScreen: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                MainScreenHeader()
-                
+                ScreenHeader(title: "Discover things of this world")
                 SearchBar(text: $query)
                 
                 if !isSearching {
-                    HorizontalCategorySelectorSection(
-                        categories: categories,
-                        selected: $selectedCategory
-                    )
-                    
-                    HorizontalCategoryCardSection(
-                        articles: articles,
-                        category: selectedCategory
-                    )
-                    
+                    HorizontalSelector(Array(categories), spacing: 0) { category in
+                        CategoryCell(category: category, selected: $selectedCategory)
+                    }
+                    HorizontalSelector(articles) { news in
+                        NavigationLink(destination: MainScreenDetailView(item: news)) {
+                            ArticleCell(
+                                nil,
+                                title: selectedCategory.rawValue.uppercased(),
+                                description: news.title ?? "No title",
+                                isBookmark: vm.bookmarks.contains(news),
+                                action: { vm.manage(bookmark: news) }
+                            )
+                        }
+                    }
                     SectionTitle(
                         sectionTitle: "Recomended for you".localized,
                         buttonTitle: "See all".localized,
                         item: EmptyView()
                     )
-                    
                     VerticalRecomendedSection(item: articles)
                 } else {
                     VerticalRecomendedSection(item: articles)
@@ -61,5 +64,6 @@ struct MainScreen: View {
             isSearching: false,
             articles: [NewsResults.preview, NewsResults.preview]
         )
+        .environmentObject(MainScreenVM())
     }
 }

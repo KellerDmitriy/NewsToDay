@@ -15,7 +15,7 @@ struct CustomBarView: View {
     
     var body: some View {
         TabView(selection: $tabSelection) {
-                
+            
             NavigationView{
                 MainContentScreen()
                     .environmentObject(mainViewModel)
@@ -34,23 +34,26 @@ struct CustomBarView: View {
                 Label("house", systemImage: "squareshape.split.2x2")
             }
             
-            Text("Bookmarks")
-                .tag(3)
-                .tabItem {
-                    Label("house", systemImage: "bookmark")
-                }
-
+            NavigationView {
+                BookmarksView()
+                    .environmentObject(mainViewModel)
+                    .tag(3)
+            }
+            .tabItem {
+                Label("house", systemImage: "bookmark")
+            }
+            
             NavigationView {
                 ProfileScreen()
-                .tag(4)
+                    .tag(4)
             }
-                .tabItem {
-                    Label("profile", systemImage: "person")
-                }
+            .tabItem {
+                Label("profile", systemImage: "person")
+            }
         }
-//        .overlay(alignment: .bottom) {
-//            CustomTabBar(tabSelection: $tabSelection)
-//        }
+        //        .overlay(alignment: .bottom) {
+        //            CustomTabBar(tabSelection: $tabSelection)
+        //        }
     }
 }
 

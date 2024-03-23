@@ -13,6 +13,7 @@ final class MainScreenVM: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var categories: Set<Categories> = []
+    @Published var bookmarks: Set<NewsResults> = []
     @Published var selectedCategory: Categories = .general
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
@@ -59,6 +60,13 @@ final class MainScreenVM: ObservableObject {
                     self.state = failure
                 }
             }
+        }
+    }
+    
+    func manage(bookmark: NewsResults) {
+        switch bookmarks.contains(bookmark) {
+        case true: bookmarks.remove(bookmark)
+        case false: bookmarks.insert(bookmark)
         }
     }
     

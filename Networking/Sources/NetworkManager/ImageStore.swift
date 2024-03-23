@@ -9,20 +9,17 @@ import Foundation
 import CoreImage
 
 final class ImageStore: ObservableObject {
-    private var storage: [String: CGImage] = .init()
+    private let cache = NSCache<NSURL, CGImage>()
     
-    func loadImage(for urlString: String) {
-        Task(priority: .medium) { [weak self] in
-            let result = URL(string: urlString)
-                .flatMap(CIImage.init)
-                .flatMap(\.cgImage)
-                .map { ($0, urlString) }
-        _ = await MainActor.run { result }
-                .map { self?.storage.updateValue($0.0, forKey: $0.1) }
-        }
+    func save(_ image: CGImage, for urlString: String) {
+        NSURL(string: urlString)
+            .map { (image, $0) }
+            .map(cache.setObject)
     }
     
     func getImage(for urlString: String) -> CGImage? {
-        storage[urlString]
+        NSURL(string: urlString)
+            .flatMap(cache.object)
     }
+
 }

@@ -9,34 +9,26 @@ import SwiftUI
 import NetworkManager
 
 struct MainScreenWithShimmer: View {
-    
+    let sections = Categories.allCases
     @State var query: String = ""
-    
-    let sections: Set<Categories> = Set(Categories.allCases)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                MainScreenHeader()
-                
+                ScreenHeader(title: "Discover things of this world")
                 SearchBar(text: $query)
                 
-                HorizontalCategorySelectorSection(
-                    categories: sections,
-                    selected: .constant(.business)
-                )
+                HorizontalSelector(sections) { category in
+                    CategoryCell(category: category, selected: .constant(.art))
+                }
                 .redacted(reason: .placeholder)
                 .shimmering()
                 
-                HorizontalCategoryCardSection(
-                    articles: [
-                        NewsResults.preview,
-                        NewsResults.preview
-                    ],
-                    category: sections.first!
-                )
-                    .redacted(reason: .placeholder)
-                    .shimmering()
+                HorizontalSelector([NewsResults.preview, NewsResults.preview]) { news in
+                    ArticleCell(nil, title: "", description: "", isBookmark: false, action: {})
+                }
+                .redacted(reason: .placeholder)
+                .shimmering()
                 
                 SectionTitle(
                     sectionTitle: "Recomended for you".localized,
@@ -49,8 +41,8 @@ struct MainScreenWithShimmer: View {
                     NewsResults.preview,
                     NewsResults.preview,
                 ])
-                    .redacted(reason: .placeholder)
-                    .shimmering()
+                .redacted(reason: .placeholder)
+                .shimmering()
             }
             .disabled(true)
         }

@@ -124,7 +124,10 @@ public extension View {
     ///   - delay:A delay in seconds. Defaults to `0.25`.
     @available(*, deprecated, message: "Use shimmering(active:animation:gradient:bandSize:) instead.")
     @ViewBuilder func shimmering(
-        active: Bool = true, duration: Double, bounce: Bool = false, delay: Double = 0.25
+        active: Bool = true,
+        duration: Double,
+        bounce: Bool = false,
+        delay: Double = 0.25
     ) -> some View {
         shimmering(
             active: active,
