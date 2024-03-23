@@ -23,8 +23,8 @@
 		3CEB33E62BAED7A300E9D73C /* DS in Frameworks */ = {isa = PBXBuildFile; productRef = 3CEB33E52BAED7A300E9D73C /* DS */; };
 		86BCEC1E2BACCA3400AB3CB0 /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 86BCEC1D2BACCA3400AB3CB0 /* Networking */; };
 		86BCEC2A2BACCB4400AB3CB0 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 86BCEC292BACCB4400AB3CB0 /* Networking */; };
+		B903F9572BAF02FD0029CC97 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B903F9562BAF02FD0029CC97 /* SignInView.swift */; };
 		B90BD5D02BA8E470007E8CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B90BD5D22BA8E470007E8CE9 /* Localizable.strings */; };
-		B9942ACA2BAA2C4F00867AF0 /* SignIn in Resources */ = {isa = PBXBuildFile; fileRef = B9942AC92BAA2C4F00867AF0 /* SignIn */; };
 		B9E158882BA9CC61000AA390 /* CustomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E158862BA9CC61000AA390 /* CustomBarView.swift */; };
 		B9E158892BA9CC61000AA390 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E158872BA9CC61000AA390 /* CustomTabBar.swift */; };
 		E11FACD22BAA0437005B06E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FACD12BAA0437005B06E2 /* Constants.swift */; };
@@ -65,9 +65,9 @@
 		3CEB33DC2BAEC93200E9D73C /* DS */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DS; sourceTree = "<group>"; };
 		3CEB33DE2BAEC9F200E9D73C /* MainScreenHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeader.swift; sourceTree = "<group>"; };
 		86BCEC1D2BACCA3400AB3CB0 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		B903F9562BAF02FD0029CC97 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B90BD5D12BA8E470007E8CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B90BD5D32BA8E48E007E8CE9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B9942AC92BAA2C4F00867AF0 /* SignIn */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SignIn; sourceTree = "<group>"; };
 		B9E158862BA9CC61000AA390 /* CustomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarView.swift; sourceTree = "<group>"; };
 		B9E158872BA9CC61000AA390 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		E11FACD12BAA0437005B06E2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -154,6 +154,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B903F9582BAF033E0029CC97 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				B903F9562BAF02FD0029CC97 /* SignInView.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		B90BD5C92BA8B603007E8CE9 /* TabBar */ = {
@@ -244,7 +252,7 @@
 		E182C6AD2BA74C9700C66D3F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B9942AC92BAA2C4F00867AF0 /* SignIn */,
+				B903F9582BAF033E0029CC97 /* SignIn */,
 				3CD0E8072BAA07F300246E23 /* OnboardingScreen */,
 				B90BD5C92BA8B603007E8CE9 /* TabBar */,
 				E182C6B32BA7523A00C66D3F /* Authentication */,
@@ -374,9 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				86BCEC1E2BACCA3400AB3CB0 /* Networking in Resources */,
-
 				E182C6A02BA74B3600C66D3F /* Preview Assets.xcassets in Resources */,
 				B90BD5D02BA8E470007E8CE9 /* Localizable.strings in Resources */,
 				E1ECA39B2BAC262A0072449D /* GoogleService-Info.plist in Resources */,
@@ -415,6 +421,7 @@
 				B9E158882BA9CC61000AA390 /* CustomBarView.swift in Sources */,
 				3CD0E8092BAA07F300246E23 /* OnboardingView.swift in Sources */,
 				F97BB4552BAC7CD7008327E6 /* TermsConditionsScreen.swift in Sources */,
+				B903F9572BAF02FD0029CC97 /* SignInView.swift in Sources */,
 				F97BB4542BAC7CD7008327E6 /* LanguageScreen.swift in Sources */,
 				3C354B982BA782E5005EB350 /* MainScreenDetailView.swift in Sources */,
 				F97BB4532BAC7CD7008327E6 /* ProfileScreen.swift in Sources */,
