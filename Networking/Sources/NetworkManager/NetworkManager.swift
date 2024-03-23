@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreImage
 
 public enum NetworkError: Error {
     case invalidResponse
@@ -51,6 +52,16 @@ public final class NetworkManager {
     public func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .headlines(category: category))
     }
+    
+//    public func loadImages(for news: [NewsModel]) async -> Result<[CGImage], NetworkError> {
+//        Result.success(news)
+//            .map { news -> [URL] in
+//                news.compactMap(\.articles)
+//                    .flatMap { $0 }
+//                    .compactMap(\.urlToImage)
+//                    .compactMap(URL.init)
+//            }
+//    }
 }
 
 private extension NetworkManager {
