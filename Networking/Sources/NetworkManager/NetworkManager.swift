@@ -7,6 +7,16 @@
 
 import Foundation
 
+public enum NetworkError: Error {
+    case invalidResponse
+    case transportError(Error)
+    case serverError(statusCode: Int)
+    case noData
+    case decodingError(Error)
+    case invalidURL
+    case unknown(Error)
+}
+
 extension NetworkError {
     init(_ error: Error) {
         switch error {
@@ -22,8 +32,8 @@ extension NetworkError {
     }
 }
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+public final class NetworkManager {
+    public static let shared = NetworkManager()
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
@@ -33,25 +43,27 @@ final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchDataFor(category: String) async -> Result<NewsModel, NetworkError>  {
-        let endpoint = NewsEndpoint.newsFor(category: category)
-        return await fetch(endpoint)
+    public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .everything(about: searchText))
     }
     
-    func fetchDataWith(searchText: String) async -> Result<NewsModel, NetworkError> {
-        let endpoint = NewsEndpoint.newsWith(searchText: searchText)
-        return await fetch(endpoint)
-    }
-    
-    func fetch<T: Decodable>(_ endpoint: NewsEndpoint) async -> Result<T, NetworkError> {
-        guard let url = APIManager.shared.createURL(for: endpoint) else {
-            return .failure(.invalidURL)
-        }
-        return await request(for: url)
+    public func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .headlines(category: category))
     }
 }
 
 private extension NetworkManager {
+    func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, NetworkError> {
+        await Result
+            .success(endpoint)
+            .map(\.urlRequest)
+            .map(addApiKey(apiKey))
+            .asyncMap(session.data)
+            .map(\.0)
+            .decode(T.self, decoder: decoder)
+            .mapError(NetworkError.init)
+    }
+    
     func request<T: Decodable>(for url: URL) async -> Result<T, NetworkError> {
         await Result
             .success(url)

@@ -30,8 +30,8 @@ struct MainScreen: View {
                 HorizontalCategoryCardSection(sections: sections)
                 
                 SectionTitle(
-                    sectionTitle: "Recomended for you",
-                    buttonTitle: "See all",
+                    sectionTitle: "Recomended for you".localized,
+                    buttonTitle: "See all".localized,
                     item: EmptyView()
                 )
                 

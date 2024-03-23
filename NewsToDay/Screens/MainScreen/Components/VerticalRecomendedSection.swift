@@ -27,7 +27,7 @@ struct VerticalRecomendedSection: View {
                     Text("UI/UX Design")
                         .font(.headline.weight(Drawing.headlineFontWeight))
 
-                    Text("A Simple Trick For Creating Color Palettes Quickly")
+                    Text("A Simple Trick For Creating Color Palettes Quickly".localized)
                         .font(.headline)
                 }
                 Spacer()
