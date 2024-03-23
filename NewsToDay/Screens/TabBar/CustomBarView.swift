@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomBarView: View {
     
+    @EnvironmentObject var mainViewModel: MainScreenVM
+    
     @State private var tabSelection = 0
     
     var body: some View {
@@ -44,4 +46,5 @@ struct CustomBarView: View {
 
 #Preview {
     CustomBarView()
+        .environmentObject(MainScreenVM())
 }

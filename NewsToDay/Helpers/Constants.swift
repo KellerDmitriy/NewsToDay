@@ -45,7 +45,7 @@ enum Categories: String, CaseIterable, Hashable, Identifiable {
         case .middleeast: "⚔️"
         case .business: "💲"
         case .entertainment: "🗾"
-        case .general: ""
+        case .general: "🪖"
         case .health: "🚑"
         case .science: "🧬"
         case .technology: "👩🏾‍💻"

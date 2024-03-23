@@ -8,27 +8,33 @@
 import SwiftUI
 import DS
 
+
 struct MainContentScreen: View {
-    @StateObject var viewModel = MainScreenVM()
+    @EnvironmentObject var viewModel: MainScreenVM
     
     var body: some View {
         Group {
             switch viewModel.state {
             case .empty:
                 Text("Empty")
-                
             case .loading:
-                ProgressView()
+                MainScreenWithShimmer()
+                
                 
             case .error(let networkError):
-                Text("Error\(networkError.localizedDescription)")
+                ErrorView(error: networkError) {
+                    viewModel.onAppear()
+                }
                 
             case .ready(let articles):
                 MainScreen(
                     query: $viewModel.searchText,
-                    selectedSection: $viewModel.selectedSection,
-                    sections: viewModel.sections
+                    selectedCategory: $viewModel.selectedCategory,
+                    categories: $viewModel.categories,
+                    isSearching: viewModel.isSearching,
+                    articles: articles
                 )
+                .environmentObject(viewModel)
             }
         }
         .onAppear(perform: viewModel.onAppear)
@@ -38,4 +44,5 @@ struct MainContentScreen: View {
 
 #Preview {
     MainContentScreen()
+        .environmentObject(MainScreenVM())
 }
