@@ -10,21 +10,17 @@ import NetworkManager
 
 struct HorizontalCategoryCardSection: View {
     
-    let sections: [Categories]
-    #warning("Нигде не используется. Зачем здесь?")
-    var news: [NewsResults] = []
+    var articles: [NewsResults]
+    var category: Categories
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(sections) { section in
+                ForEach(articles) { section in
                     NavigationLink {
-                        MainScreenDetailView()
+                        MainScreenDetailView(item: section)
                     } label: {
-                        ArticleCell(
-                            rawImage: nil,
-                            section: section
-                        )
+                        ArticleCell(rawImage: nil, news: section, category: category)
                     }
                 }
             }
@@ -35,6 +31,6 @@ struct HorizontalCategoryCardSection: View {
 
 #Preview {
     NavigationView {
-        HorizontalCategoryCardSection(sections: Categories.allCases)
+        HorizontalCategoryCardSection(articles: [NewsResults.preview, NewsResults.preview], category: .business)
     }
 }

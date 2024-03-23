@@ -9,7 +9,7 @@ import SwiftUI
 import DS
 
 struct MainContentScreen: View {
-    @StateObject var viewModel = MainScreenVM()
+    @EnvironmentObject var viewModel: MainScreenVM
     
     var body: some View {
         Group {
@@ -18,16 +18,23 @@ struct MainContentScreen: View {
                 Text("Empty")
                 
             case .loading:
-                ProgressView()
-                
+                MainScreenWithShimmer(
+                    selectedSections: $viewModel.selectedCategory
+                )
             case .error(let networkError):
-                Text("Error\(networkError.localizedDescription)")
+                VStack {
+                    Text("Error\(networkError.localizedDescription)")
+                    Button("Reload") {
+                        viewModel.onAppear()
+                    }
+                }
                 
             case .ready(let articles):
                 MainScreen(
                     query: $viewModel.searchText,
-                    selectedSection: $viewModel.selectedSection,
-                    sections: viewModel.sections
+                    selectedCategory: $viewModel.selectedCategory,
+                    categories: $viewModel.categories,
+                    articles: articles
                 )
             }
         }
@@ -38,4 +45,5 @@ struct MainContentScreen: View {
 
 #Preview {
     MainContentScreen()
+        .environmentObject(MainScreenVM())
 }

@@ -10,12 +10,11 @@ import DS
 
 struct HorizontalCategorySelectorSection: View {
     
-    let sections: [Categories]
-    @State var selected: Categories
+    let categories: Set<Categories>
+    @Binding var selected: Categories
     @Namespace private var namespace
 
-    #warning("Better to use enum.")
-    private struct Drawing {
+    private enum Drawing {
         static let spacing: CGFloat = 16
         static let verticalPadding: CGFloat = 8
         static let horizontalPadding: CGFloat = 16
@@ -27,7 +26,7 @@ struct HorizontalCategorySelectorSection: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Drawing.spacing) {
-                ForEach(sections, id: \.self) { section in
+                ForEach(Array(categories), id: \.self) { section in
                     Text(section.rawValue)
                         .foregroundStyle(
                             selected == section 
@@ -65,7 +64,7 @@ struct HorizontalCategorySelectorSection: View {
 
 #Preview {
     HorizontalCategorySelectorSection(
-        sections: Categories.allCases,
-        selected: .business
+        categories: Set(Categories.allCases),
+        selected: .constant(.business)
     )
 }

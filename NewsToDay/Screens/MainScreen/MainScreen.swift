@@ -7,13 +7,15 @@
 
 import SwiftUI
 import DS
+import NetworkManager
 
 struct MainScreen: View {
     
     @Binding var query: String
-    @Binding var selectedSection: Categories
+    @Binding var selectedCategory: Categories
+    @Binding var categories: Set<Categories>
     
-    let sections: [Categories]
+    let articles: [NewsResults]
             
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -23,11 +25,14 @@ struct MainScreen: View {
                 SearchBar(text: $query)
                 
                 HorizontalCategorySelectorSection(
-                    sections: sections,
-                    selected: selectedSection
+                    categories: categories,
+                    selected: $selectedCategory
                 )
                 
-                HorizontalCategoryCardSection(sections: sections)
+                HorizontalCategoryCardSection(
+                    articles: articles,
+                    category: selectedCategory
+                )
                 
                 SectionTitle(
                     sectionTitle: "Recomended for you".localized,
@@ -35,7 +40,7 @@ struct MainScreen: View {
                     item: EmptyView()
                 )
                 
-                VerticalRecomendedSection()
+                VerticalRecomendedSection(item: articles)
             }
         }
     }
@@ -45,8 +50,8 @@ struct MainScreen: View {
     NavigationView {
         MainScreen(
             query: .constant("query"),
-            selectedSection: .constant(.business),
-            sections: Categories.allCases
+            selectedCategory: .constant(.business), categories: .constant(Set(Categories.allCases)),
+            articles: [NewsResults.preview, NewsResults.preview]
         )
     }
 }
