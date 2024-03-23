@@ -6,13 +6,19 @@
 //
 
 import SwiftUI
+import DS
+import FirebaseCore
 
 @main
-struct NewsToDayApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+struct NewsToDayApp: App {    
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
+        
+    init() {
+        FontsProvider.registerFonts()
+        FirebaseApp.configure()
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : DS.Fonts.largeTitle]
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -25,5 +31,6 @@ struct NewsToDayApp: App {
             }
         }
     }
+    
 }
 

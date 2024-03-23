@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct MainContentScreen: View {
     @StateObject var viewModel = MainScreenVM()

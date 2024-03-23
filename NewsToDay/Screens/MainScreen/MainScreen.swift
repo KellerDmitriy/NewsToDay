@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct MainScreen: View {
     
@@ -17,15 +18,13 @@ struct MainScreen: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                Text("Discover things of this world".localized)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
+                MainScreenHeader()
                 
                 SearchBar(text: $query)
                 
                 HorizontalCategorySelectorSection(
                     sections: sections,
-                    selected: $selectedSection
+                    selected: selectedSection
                 )
                 
                 HorizontalCategoryCardSection(sections: sections)
