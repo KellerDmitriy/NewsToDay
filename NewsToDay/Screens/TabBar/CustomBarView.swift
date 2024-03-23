@@ -14,46 +14,33 @@ struct CustomBarView: View {
     @State private var tabSelection = 0
     
     var body: some View {
-        TabView(selection: $tabSelection) {
-            
-            NavigationView{
-                MainContentScreen()
-                    .environmentObject(mainViewModel)
-                    .tag(1)
+        VStack {
+            switch tabSelection {
+            case 1:
+                NavigationView {
+                    MainContentScreen()
+                }
+            case 2:
+                NavigationView {
+                    CategoriesView(mode: .screen)
+                }
+            case 3:
+                NavigationView {
+                    Text("Bookmarks")
+                }
+            case 4:
+                NavigationView {
+                    ProfileScreen()
+                }
+            default:
+                NavigationView {
+                    MainContentScreen()
+                }
             }
-            .tabItem {
-                Label("house", systemImage: "house")
-            }
-            
-            NavigationView {
-                CategoriesView(mode: .screen)
-                    .environmentObject(mainViewModel)
-                    .tag(2)
-            }
-            .tabItem {
-                Label("house", systemImage: "squareshape.split.2x2")
-            }
-            
-            NavigationView {
-                BookmarksView()
-                    .environmentObject(mainViewModel)
-                    .tag(3)
-            }
-            .tabItem {
-                Label("house", systemImage: "bookmark")
-            }
-            
-            NavigationView {
-                ProfileScreen()
-                    .tag(4)
-            }
-            .tabItem {
-                Label("profile", systemImage: "person")
-            }
+            CustomTabBar(tabSelection: $tabSelection)
+                .padding(.bottom)
         }
-        //        .overlay(alignment: .bottom) {
-        //            CustomTabBar(tabSelection: $tabSelection)
-        //        }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

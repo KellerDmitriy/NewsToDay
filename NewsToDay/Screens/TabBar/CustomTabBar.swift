@@ -19,6 +19,7 @@ struct CustomTabBar: View {
     // MARK: - Properties
     @Binding var tabSelection: Int
     @Namespace private var animationNamespace
+    
     let tabBarItems: [(String)] = ["house", "squareshape.split.2x2", "bookmark", "person"]
     
     var body: some View {
@@ -26,16 +27,24 @@ struct CustomTabBar: View {
         ZStack {
             RoundedRectangle(cornerRadius: tabBarCorner)
                 .frame(height: tabBarHeight)
-                .foregroundColor(Color(.secondarySystemBackground))
-                .opacity(0.5)
+                .foregroundColor(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: tabBarCorner)
+                        .stroke(Color(hex: "#ACAFC3"), lineWidth: 1)
+                        .mask(
+                            RoundedRectangle(cornerRadius: tabBarCorner)
+                                .frame(height: tabBarHeight)
+                                .offset(y: -1)
+                        )
+                )
+            
             HStack {
                 ForEach(tabBarItems, id: \.self) { item in
                     createTabBarButton(imageName: item)
                 }
             }
-            .frame(height: tabBarHeight)
+            .frame(height: tabBarHeight )
         }
-        .padding(.horizontal)
     }
     
     // MARK: - Private Methods
@@ -47,7 +56,6 @@ struct CustomTabBar: View {
             tabSelection = index + 1 
         } label: {
             VStack() {
-                Spacer()
                 
                 Image(systemName: imageName)
                     .resizable()
@@ -56,7 +64,7 @@ struct CustomTabBar: View {
                     .padding(tabBarTitlePadding)
                     .offset(y: -tabBarTitleOffset)
             }
-            .foregroundColor(isSelected ? .blue : .gray)
+            .foregroundColor(isSelected ? Color(hex: "#475AD7") : Color(hex: "#ACAFC3"))
         }
     }
 }
