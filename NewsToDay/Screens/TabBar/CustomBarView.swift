@@ -12,43 +12,38 @@ struct CustomBarView: View {
     @State private var tabSelection = 0
     
     var body: some View {
-        TabView(selection: $tabSelection) {
-                
-            NavigationView{
-                MainContentScreen()
-                    .tag(1)
-            }
-            .tabItem {
-                Label("house", systemImage: "house")
-            }
-            
-            NavigationView {
-                CategoriesView(mode: .screen)
-                    .tag(2)
-            }
-            .tabItem {
-                Label("house", systemImage: "squareshape.split.2x2")
-            }
-            
-            Text("Bookmarks")
-                .tag(3)
-                .tabItem {
-                    Label("house", systemImage: "bookmark")
+        VStack {
+            // Основное содержимое ваших вкладок
+            switch tabSelection {
+            case 1:
+                NavigationView {
+                    MainContentScreen()
                 }
-
-            NavigationView {
-                ProfileScreen()
-                .tag(4)
-            }
-                .tabItem {
-                    Label("profile", systemImage: "person")
+            case 2:
+                NavigationView {
+                    CategoriesView(mode: .screen)
                 }
+            case 3:
+                NavigationView {
+                    Text("Bookmarks")
+                }
+            case 4:
+                NavigationView {
+                    ProfileScreen()
+                }
+            default:
+                NavigationView {
+                    MainContentScreen()
+                }
+            }
+            // Кастомный таббар
+            CustomTabBar(tabSelection: $tabSelection)
+                .padding(.bottom)
         }
-//        .overlay(alignment: .bottom) {
-//            CustomTabBar(tabSelection: $tabSelection)
-//        }
+        .edgesIgnoringSafeArea(.bottom) // Игнорировать SafeArea внизу
     }
 }
+
 
 #Preview {
     CustomBarView()
