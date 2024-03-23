@@ -7,13 +7,16 @@
 
 import SwiftUI
 import DS
+import NetworkManager
 
 struct MainScreen: View {
     
     @Binding var query: String
-    @Binding var selectedSection: Categories
+    @Binding var selectedCategory: Categories
+    @Binding var categories: Set<Categories>
+    var isSearching: Bool
     
-    let sections: [Categories]
+    let articles: [NewsResults]
             
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -22,22 +25,30 @@ struct MainScreen: View {
                 
                 SearchBar(text: $query)
                 
-                HorizontalCategorySelectorSection(
-                    sections: sections,
-                    selected: selectedSection
-                )
-                
-                HorizontalCategoryCardSection(sections: sections)
-                
-                SectionTitle(
-                    sectionTitle: "Recomended for you".localized,
-                    buttonTitle: "See all".localized,
-                    item: EmptyView()
-                )
-                
-                VerticalRecomendedSection()
+                if !isSearching {
+                    HorizontalCategorySelectorSection(
+                        categories: categories,
+                        selected: $selectedCategory
+                    )
+                    
+                    HorizontalCategoryCardSection(
+                        articles: articles,
+                        category: selectedCategory
+                    )
+                    
+                    SectionTitle(
+                        sectionTitle: "Recomended for you".localized,
+                        buttonTitle: "See all".localized,
+                        item: EmptyView()
+                    )
+                    
+                    VerticalRecomendedSection(item: articles)
+                } else {
+                    VerticalRecomendedSection(item: articles)
+                }
             }
         }
+        .animation(.bouncy, value: isSearching)
     }
 }
 
@@ -45,8 +56,10 @@ struct MainScreen: View {
     NavigationView {
         MainScreen(
             query: .constant("query"),
-            selectedSection: .constant(.business),
-            sections: Categories.allCases
+            selectedCategory: .constant(.business),
+            categories: .constant(Set(Categories.allCases)),
+            isSearching: false,
+            articles: [NewsResults.preview, NewsResults.preview]
         )
     }
 }

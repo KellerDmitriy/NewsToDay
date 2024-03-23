@@ -8,27 +8,56 @@
 import SwiftUI
 import DS
 
+struct ErrorScreen: View {
+    
+    let error: Error
+    let action: () -> ()
+    
+    var body: some View {
+        ZStack {
+            MainScreenWithShimmer()
+                .disabled(true)
+            
+            VStack(spacing: 20) {
+                Text("Error\(error.localizedDescription)")
+                Button("Reload") {
+                    action()
+                }
+            }
+            .padding()
+            .background(Material.regular)
+            .cornerRadius(15)
+        }
+    }
+}
+
 struct MainContentScreen: View {
-    @StateObject var viewModel = MainScreenVM()
+    @EnvironmentObject var viewModel: MainScreenVM
     
     var body: some View {
         Group {
             switch viewModel.state {
             case .empty:
                 Text("Empty")
-                
             case .loading:
-                ProgressView()
+                MainScreenWithShimmer()
+                    
                 
             case .error(let networkError):
-                Text("Error\(networkError.localizedDescription)")
+                ErrorScreen(error: networkError) {
+                    viewModel.onAppear()
+                }
                 
             case .ready(let articles):
+                
                 MainScreen(
                     query: $viewModel.searchText,
-                    selectedSection: $viewModel.selectedSection,
-                    sections: viewModel.sections
+                    selectedCategory: $viewModel.selectedCategory,
+                    categories: $viewModel.categories,
+                    isSearching: viewModel.isSearching,
+                    articles: articles
                 )
+                
             }
         }
         .onAppear(perform: viewModel.onAppear)
@@ -38,4 +67,5 @@ struct MainContentScreen: View {
 
 #Preview {
     MainContentScreen()
+        .environmentObject(MainScreenVM())
 }

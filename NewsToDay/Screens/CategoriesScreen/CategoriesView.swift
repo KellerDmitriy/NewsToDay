@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoriesView: View {
     
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
-    @State private var selectedCategories: Set<Categories> = []
+    @EnvironmentObject var viewModel: MainScreenVM
     @State var mode: Mode = .onboarding
     
     enum Drawing {
@@ -47,10 +47,10 @@ struct CategoriesView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2)) {
                         ForEach(Categories.allCases) { category in
                             Button(action: {
-                                if selectedCategories.contains(category) {
-                                    selectedCategories.remove(category)
+                                if viewModel.categories.contains(category) {
+                                    viewModel.categories.remove(category)
                                 } else {
-                                    selectedCategories.insert(category)
+                                    viewModel.categories.insert(category)
                                 }
                             }) {
                                 HStack(spacing: 8) {
@@ -59,10 +59,10 @@ struct CategoriesView: View {
                                     Text(category.rawValue.localized)
                                     Spacer()
                                 }
-                                .foregroundStyle(selectedCategories.contains(category) ? Color.white : Color.black.opacity(0.6))
+                                .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
                                 .font(.headline.bold())
                                 .padding(.vertical, 20)
-                                .background(selectedCategories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
+                                .background(viewModel.categories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
                                 .cornerRadius(8)
                             }
                         }
@@ -99,10 +99,10 @@ struct CategoriesView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2)) {
                         ForEach(Categories.allCases) { category in
                             Button(action: {
-                                if selectedCategories.contains(category) {
-                                    selectedCategories.remove(category)
+                                if viewModel.categories.contains(category) {
+                                    viewModel.categories.remove(category)
                                 } else {
-                                    selectedCategories.insert(category)
+                                    viewModel.categories.insert(category)
                                 }
                             }) {
                                 HStack(spacing: 8) {
@@ -111,10 +111,10 @@ struct CategoriesView: View {
                                     Text(category.rawValue)
                                     Spacer()
                                 }
-                                .foregroundStyle(selectedCategories.contains(category) ? Color.white : Color.black.opacity(0.6))
+                                .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
                                 .font(.headline.bold())
                                 .padding(.vertical, 20)
-                                .background(selectedCategories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
+                                .background(viewModel.categories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
                                 .cornerRadius(8)
                             }
                         }
@@ -131,5 +131,6 @@ struct CategoriesView: View {
 #Preview {
     NavigationView {
         CategoriesView(mode: .onboarding)
+            .environmentObject(MainScreenVM())
     }
 }

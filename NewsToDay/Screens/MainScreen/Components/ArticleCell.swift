@@ -7,12 +7,9 @@
 
 import SwiftUI
 import DS
+import NetworkManager
 
 struct ArticleCell: View {
-    let rawImage: CGImage?
-    let section: Categories
-    
-    @Environment(\.displayScale) var scale
     
     private struct Drawing {
         static let cardWidth: CGFloat = 256
@@ -21,8 +18,15 @@ struct ArticleCell: View {
         static let bottomLeadingPadding: CGFloat = 12
         static let footnoteFontWeight: Font.Weight = .light
         static let headlineFontWeight: Font.Weight = .bold
-        static let bookmarkImagePadding: CGFloat = 12
+        static let bookmarkImagePadding: CGFloat = 30
     }
+    
+    let rawImage: CGImage?
+    let news: NewsResults
+    let category: Categories
+    
+    @Environment(\.displayScale) var scale
+    @State private var isBookmark = false
     
     var body: some View {
         ZStack {
@@ -39,17 +43,24 @@ struct ArticleCell: View {
             .foregroundStyle(DS.Colors.Theme.indigoAccent)
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: Drawing.bottomLeadingPadding) {
-                    Text(section.rawValue.uppercased())
+                    Text(category.rawValue.uppercased())
                         .font(DS.Fonts.Inter12.regular400)
                     
-                    Text("The latest situation in the presidential election")
+                    Text(news.title ?? "Some title")
                         .font(DS.Fonts.Inter16.bold700)
+                        .multilineTextAlignment(.leading)
                 }
                 .padding()
             }
             .overlay(alignment: .topTrailing) {
-                Image(systemName: "bookmark")
-                    .padding(Drawing.bookmarkImagePadding)
+                Button(action: {
+                    isBookmark.toggle()
+                }, label: {
+                    Image(systemName: isBookmark ? "bookmark.fill" : "bookmark")
+                        .font(.title)
+                        .foregroundColor(isBookmark ? .red : DS.Colors.Theme.whiteAccent)
+                })
+                .padding(Drawing.bookmarkImagePadding)
             }
         }
         .foregroundColor(.white)
@@ -57,5 +68,5 @@ struct ArticleCell: View {
 }
 
 #Preview {
-    ArticleCell(rawImage: nil, section: .business)
+    ArticleCell(rawImage: nil, news: NewsResults.preview, category: .business)
 }

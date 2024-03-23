@@ -13,6 +13,8 @@ import FirebaseCore
 struct NewsToDayApp: App {    
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
+    
+    @StateObject var mainViewModel = MainScreenVM()
         
     init() {
         FontsProvider.registerFonts()
@@ -26,8 +28,10 @@ struct NewsToDayApp: App {
                 OnboardingView(isOnboarding: $isOnboarding)
             } else if isOnboarding && !isSelectedCategory {
                 CategoriesView()
+                    .environmentObject(mainViewModel)
             } else {
                 CustomBarView()
+                    .environmentObject(mainViewModel)
             }
         }
     }

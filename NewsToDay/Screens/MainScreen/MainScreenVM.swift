@@ -6,30 +6,47 @@
 //
 
 import Combine
+import Foundation
 import NetworkManager
 
 final class MainScreenVM: ObservableObject {
     
     @Published var searchText: String = ""
-    @Published var sections: [Categories] = []
-    @Published var selectedSection: Categories
+    @Published var categories: Set<Categories> = []
+    @Published var selectedCategory: Categories = .general
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
     
+    var isSearching: Bool {
+        !searchText.isEmpty
+    }
+    
     private let networkManager = NetworkManager.shared
-
+    private var cancellables: Set<AnyCancellable> = []
+        
     init() {
-        sections = Categories.allCases
-        selectedSection = .general
+        $searchText
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.onChangeSearch()
+                print("change text")
+            }
+            .store(in: &cancellables)
+    }
+    
+    func onChangeSearch() {
         
     }
     
     func onAppear() {
         state = .loading
+        if let firstCategory = categories.first {
+            selectedCategory = firstCategory
+        }
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .getNewsFor(category: selectedSection.rawValue)
+                .getNewsFor(category: selectedCategory.rawValue)
                 .map(\.articles)
                 .map { $0.map(State.ready) }
                 .mapError(State.error)
