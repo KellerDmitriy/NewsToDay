@@ -1,41 +1,29 @@
-// MARK: - DS (Design System)
-/// Design System for the app
-
 import SwiftUI
 
+// MARK: - DS (Design System)
+/// Design System for the app
 public enum DS {
     /// Палитра цветов NewsToDay
     public enum Colors {
-        
-        /// Theme, которая будет содержит все цвета темы.
-        public struct Theme {
-            
+        /// Тема которая содержит основные цвета.
+        public enum Theme {
             /// Белый акцентный цвет.
             public static let whiteAccent = Color(hex: "#FFFFFF")
-            
             /// Индиговый акцентный цвет.
             public static let indigoAccent = Color(hex: "#475AD7")
-            
             /// Основной цвет текста.
             public static let primaryText = Color(hex: "#333647")
-            
             /// Второстепенный цвет текста.
             public static let secondaryText = Color(hex: "#7C82A1")
-            
-            ///
             public static let grayLight = Color(hex: "#ACAFC3")
-
             /// Цвет текста кнопки.
             public static let buttonText = Color(hex: "#666C8E")
-            
             /// Цвет фона кнопки.
             public static let buttonBackground = Color(hex: "#13353F2B")
         }
     }
     
-    
     public enum Fonts {
-        
         /// Inter font size 48
         public enum Inter48 {
             /// Bold Inter font size 48
@@ -47,7 +35,7 @@ public enum DS {
         }
         
         /// Inter font size 36
-        public struct Inter36 {
+        public enum Inter36 {
             /// Bold Inter font size 36
             public static let bold700 = Font.custom("Inter-Bold", size: 36)
             /// ExtraBold Inter font size 36
@@ -57,7 +45,7 @@ public enum DS {
         }
         
         /// Inter font size 28
-        public struct Inter28 {
+        public enum Inter28 {
             /// Bold Inter font size 28
             public static let bold700 = Font.custom("Inter-Bold", size: 28)
             /// ExtraBold Inter font size 28
@@ -67,7 +55,7 @@ public enum DS {
         }
         
         /// Inter font size 24
-        public struct Inter24 {
+        public enum Inter24 {
             /// Bold Inter font size 24
             public static let bold700 = Font.custom("Inter-Bold", size: 24)
             /// ExtraBold Inter font size 24
@@ -89,7 +77,7 @@ public enum DS {
         }
         
         /// Inter font size 20
-        public struct Inter20 {
+        public enum Inter20 {
             /// Bold Inter font size 20
             public static let bold700 = Font.custom("Inter-Bold", size: 20)
             /// ExtraBold Inter font size 20
@@ -111,7 +99,7 @@ public enum DS {
         }
         
         /// Inter font size 18
-        public struct Inter18 {
+        public enum Inter18 {
             /// Bold Inter font size 18
             public static let bold700 = Font.custom("Inter-Bold", size: 18)
             /// ExtraBold Inter font size 18
@@ -133,7 +121,7 @@ public enum DS {
         }
         
         /// Inter font size 16
-        public struct Inter16 {
+        public enum Inter16 {
             /// Bold Inter font size 16
             public static let bold700 = Font.custom("Inter-Bold", size: 16)
             /// ExtraBold Inter font size 16
@@ -155,7 +143,7 @@ public enum DS {
         }
         
         /// Inter font size 14
-        public struct Inter14 {
+        public enum Inter14 {
             /// Bold Inter font size 14
             public static let bold700 = Font.custom("Inter-Bold", size: 14)
             /// ExtraBold Inter font size 14
@@ -177,7 +165,7 @@ public enum DS {
         }
         
         /// Inter font size 12
-        public struct Inter12 {
+        public enum Inter12 {
             /// Bold Inter font size 12
             public static let bold700 = Font.custom("Inter-Bold", size: 12)
             /// ExtraBold Inter font size 12
@@ -197,5 +185,7 @@ public enum DS {
             /// Thin Inter font size 12
             public static let thin = Font.custom("Inter-Thin", size: 12)
         }
+        
+        public static let largeTitle = UIFont(name: "Inter-SemiBold", size: 24)
     }
 }
