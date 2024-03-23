@@ -28,13 +28,12 @@ struct CustomTabBar: View {
             RoundedRectangle(cornerRadius: tabBarCorner)
                 .frame(height: tabBarHeight)
                 .foregroundColor(Color.white)
-//                .opacity(0.5)
                 .overlay(
                     RoundedRectangle(cornerRadius: tabBarCorner)
-                        .stroke(Color.gray, lineWidth: 1)
+                        .stroke(Color(hex: "#ACAFC3"), lineWidth: 1)
                         .mask(
                             RoundedRectangle(cornerRadius: tabBarCorner)
-//                                .frame(height: tabBarHeight)
+                                .frame(height: tabBarHeight)
                                 .offset(y: -1)
                         )
                 )
@@ -57,7 +56,6 @@ struct CustomTabBar: View {
             tabSelection = index + 1 
         } label: {
             VStack() {
-//                Spacer()
                 
                 Image(systemName: imageName)
                     .resizable()
@@ -66,7 +64,7 @@ struct CustomTabBar: View {
                     .padding(tabBarTitlePadding)
                     .offset(y: -tabBarTitleOffset)
             }
-            .foregroundColor(isSelected ? .blue : .gray)
+            .foregroundColor(isSelected ? Color(hex: "#475AD7") : Color(hex: "#ACAFC3"))
         }
     }
 }
@@ -74,5 +72,5 @@ struct CustomTabBar: View {
 #Preview {
     CustomTabBar(tabSelection: .constant(1))
         .previewLayout(.sizeThatFits)
-//        .padding(.vertical)
+        .padding(.vertical)
 }

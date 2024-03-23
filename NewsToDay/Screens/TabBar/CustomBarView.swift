@@ -13,7 +13,6 @@ struct CustomBarView: View {
     
     var body: some View {
         VStack {
-            // Основное содержимое ваших вкладок
             switch tabSelection {
             case 1:
                 NavigationView {
@@ -36,14 +35,12 @@ struct CustomBarView: View {
                     MainContentScreen()
                 }
             }
-            // Кастомный таббар
             CustomTabBar(tabSelection: $tabSelection)
                 .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom) // Игнорировать SafeArea внизу
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
-
 
 #Preview {
     CustomBarView()
