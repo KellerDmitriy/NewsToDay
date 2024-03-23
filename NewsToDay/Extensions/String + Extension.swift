@@ -8,10 +8,12 @@
 import Foundation
 
 extension String {
-    var localized: String {
-        let lang = LocalizationManager.shared.language.rawValue
-        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
-        let bundle = Bundle(path: path!)
-        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    func localized(_ language: SelectedLanguage) -> String {
+        guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            print("Failed to find path for language: \(language.rawValue)")
+            return self
+        }
+        return NSLocalizedString(self, bundle: bundle, comment: "")
     }
 }

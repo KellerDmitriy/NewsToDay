@@ -12,22 +12,31 @@ struct OnboardingPage {
     var description: String
     var image: String
     
-    static let pages: [OnboardingPage] = [
-        OnboardingPage(title: "Будьте в курсе",
-                       description: "Получайте последние новости и обновления со всего мира. ",
-                       image: "onboarding1"),
-        OnboardingPage(title: "Лента по вашим интересам",
-                       description: "Выберите темы, которые вас интересуют, и мы создадим персонализированную ленту новостей только для вас. ",
-                       image: "onboarding2"),
-        OnboardingPage(title: "Сохраняйте и делитесь",
-                       description: "Сохраняйте статьи для чтения позже и делитесь любимыми историями с друзьями. ",
-                       image: "onboarding3"),
-    ]
+    static let pages: [OnboardingPage] = {
+        @AppStorage("selectedLanguage") var language = LocalizationManager.shared.language
+        return [
+            OnboardingPage(
+                title: "Stay informed".localized(language),
+                description: "Get the latest news and updates from around the world.",
+                image: "onboarding1"
+            ),
+            OnboardingPage(
+                title: "Feed based on your interests".localized(language),
+                description: "Choose topics that interest you, and we'll create a personalized news feed just for you.",
+                image: "onboarding2"
+            ),
+            OnboardingPage(
+                title: "Save and share".localized(language),
+                description: "Save articles for later reading and share your favorite stories with friends.",
+                image: "onboarding3"
+            )
+        ]
+    }()
 }
 
 
 struct OnboardingView: View {
-    
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     enum Drawing {
         static let imageWidth: CGFloat = 0.7
         static let imageHeight: CGFloat = 0.4
@@ -55,7 +64,7 @@ struct OnboardingView: View {
                 Button {
                     self.currentPage = lastPage
                 } label: {
-                    Text("Пропустить")
+                    Text("Skip".localized(language))
                         .foregroundColor(Drawing.grayColor)
                 }
                 .padding()
@@ -107,7 +116,9 @@ struct OnboardingView: View {
                     isOnboarding.toggle()
                 }
             }, label: {
-                Text(currentPage < lastPage ? "Далее" : "Открыть")
+                Text(currentPage < lastPage
+                     ? "Next".localized(language)
+                     : "Open".localized(language))
                     .foregroundStyle(.white)
                     .padding()
                     .frame(maxWidth: .infinity)

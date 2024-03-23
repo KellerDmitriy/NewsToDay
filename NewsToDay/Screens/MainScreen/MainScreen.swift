@@ -11,6 +11,7 @@ import NetworkManager
 
 struct MainScreen: View {
     @EnvironmentObject var vm: MainScreenVM
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     @Binding var query: String
     @Binding var selectedCategory: Categories
@@ -41,8 +42,8 @@ struct MainScreen: View {
                         }
                     }
                     SectionTitle(
-                        sectionTitle: "Recomended for you".localized,
-                        buttonTitle: "See all".localized,
+                        sectionTitle: "Recomended for you".localized(language),
+                        buttonTitle: "See all".localized(language),
                         item: EmptyView()
                     )
                     VerticalRecomendedSection(item: articles)

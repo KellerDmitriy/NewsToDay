@@ -6,10 +6,13 @@
   
 */
 "Language" = "Язык";
+"Russian" = "Русский";
+"English" = "Английский";
 "Terms & Conditions" = "Правила и условия";
 "Profile" = "Профиль";
 
 "Categories" = "Категории";
+"Choose" = "Выбрать";
 "Thousands of articles in each category" = "Тысячи статей в каждой категории";
 "Select some of your favorite topics to let us suggest better news for you." = "Выберите некоторые из ваших любимых тем, чтобы мы могли предложить вам лучшие новости.";
 
@@ -21,8 +24,20 @@
 "Saved articles to the library" = "Сохраненные статьи в библиотеке";
 "You haven't saved" = "Вы еще не сохранили ни одной статьи. Начните читать и добавляйте их в закладки прямо сейчас";
 
+"Next" = "Далее";
+"Open" = "Открыть";
+"Skip" = "Пропустить";
+"Stay informed" = "Будьте в курсе";
+"Get the latest news and updates from around the world." = "Получайте последние новости и обновления со всего мира.";
+"Feed based on your interests" = "Лента по вашим интересам";
+"Choose topics that interest you, and we'll create a personalized news feed just for you." = "Выберите темы, которые вас интересуют, и мы создадим персонализированную ленту новостей только для вас.";
+"Save and share" = "Сохраняйте и делитесь";
+"Save articles for later reading and share your favorite stories with friends." = "Сохраняйте статьи для чтения позже и делитесь любимыми историями с друзьями.";
+
 "Browse" = "Браузер";
 "Discover things of this world" = "Открывайте для себя вещи этого мира";
+"Empty" = "Пустой";
+"Search" = "Поиск";
 
 "Recommended for you" = "Рекомендации для вас";
 "See All" = "Показать все";

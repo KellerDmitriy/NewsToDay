@@ -11,6 +11,7 @@ struct ProfileScreen: View {
     @State private var isShowingLanguageScreen = false
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +25,8 @@ struct ProfileScreen: View {
             }
             .hidden()
             
-            CustomButton(title: "Language".localized, imageName: "chevron.right", action: {
+            CustomButton(title: "Language".localized(language),
+                         imageName: "chevron.right", action: {
                 isShowingLanguageScreen = true
             }, buttonType: .profile, isSelected: false)
             .padding()
@@ -35,20 +37,21 @@ struct ProfileScreen: View {
             }
             .hidden()
             
-            CustomButton(title: "Terms & Conditions".localized, action: {
+            CustomButton(title: "Terms & Conditions".localized(language), action: {
                 isShowingTermsConditionsScreen = true
             }, buttonType: .profile, isSelected: false)
             .padding()
             
             
-            CustomButton(title: "Sign Out".localized, imageName: "arrow.right.circle", action: {
+            CustomButton(title: "Sign Out".localized(language),
+                         imageName: "arrow.right.circle", action: {
                 // action
             }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()
             
         }
-        .navigationTitle("Profile".localized)
+        .navigationTitle("Profile".localized(language))
     }
 }
 

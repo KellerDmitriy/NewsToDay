@@ -10,6 +10,8 @@ import SwiftUI
 struct CategoriesView: View {
     
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
     @EnvironmentObject var viewModel: MainScreenVM
     @State var mode: Mode = .onboarding
     
@@ -36,7 +38,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Select some of your favorite topics to let us suggest better news for you.".localized)
+                        Text("Select some of your favorite topics to let us suggest better news for you.".localized(language))
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -56,7 +58,7 @@ struct CategoriesView: View {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Text(category.image)
-                                    Text(category.rawValue.localized)
+                                    Text(category.rawValue.localized(language))
                                     Spacer()
                                 }
                                 .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
@@ -75,7 +77,7 @@ struct CategoriesView: View {
                 Button(action: {
                     isSelectedCategory.toggle()
                 }, label: {
-                    Text("Выбрать")
+                    Text("Choose".localized(language))
                         .foregroundStyle(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -88,7 +90,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Thousands of articles in each category".localized)
+                        Text("Thousands of articles in each category".localized(language))
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -108,7 +110,7 @@ struct CategoriesView: View {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Text(category.image)
-                                    Text(category.rawValue)
+                                    Text(category.rawValue.localized(language))
                                     Spacer()
                                 }
                                 .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
@@ -123,7 +125,7 @@ struct CategoriesView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Categories".localized)
+            .navigationTitle("Categories".localized(language))
         }
     }
 }
