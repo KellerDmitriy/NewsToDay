@@ -10,6 +10,8 @@
 "Profile" = "Профиль";
 
 "Categories" = "Категории";
+"Thousands of articles in each category" = "Тысячи статей в каждой категории";
+"Select some of your favorite topics to let us suggest better news for you." = "Выберите некоторые из ваших любимых тем, чтобы мы могли предложить вам лучшие новости.";
 
 "Select your favorite topics" = "Выберите ваши любимые темы";
 "First to know" = "Первый, кто узнает";
@@ -21,11 +23,25 @@
 
 "Browse" = "Браузер";
 "Discover things of this world" = "Открывайте для себя вещи этого мира";
-"Search" = "Поиск";
-"Random" = "Случайные";
-"Sports" = "Спорт";
-"Gaming" = "Игры";
-"Politics" = "Политика";
-"Life" = "Жизнь";
+
 "Recommended for you" = "Рекомендации для вас";
 "See All" = "Показать все";
+
+"business" = "Бизнес";
+"entertainment" = "Развлечения";
+"general" = "Общее";
+"health" = "Здоровье";
+"science" = "Наука";
+"sports" = "Спорт";
+"technology" = "Технологии";
+"politics" = "Политика";
+"life" = "Жизнь";
+"gaming" = "Игры";
+"animals" = "Животные";
+"nature" = "Природа";
+"food" = "Еда";
+"art" = "Искусство";
+"history" = "История";
+"fashion" = "Мода";
+"covid19" = "Ковид-19";
+"middleeast" = "Ближний Восток";

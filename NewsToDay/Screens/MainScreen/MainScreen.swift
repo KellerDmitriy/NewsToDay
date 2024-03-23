@@ -9,32 +9,45 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    @StateObject var vm = MainScreenVM()
-        
+    @Binding var query: String
+    @Binding var selectedSection: Categories
+    
+    let sections: [Categories]
+            
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
-                Text("Discover things of this world")
+                Text("Discover things of this world".localized)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
-                SearchBar(text: $vm.searchText)
+                SearchBar(text: $query)
                 
-                HorizontalCategorySelectorSection(vm: vm)
+                HorizontalCategorySelectorSection(
+                    sections: sections,
+                    selected: $selectedSection
+                )
                 
-                HorizontalCategoryCardSection(vm: vm)
+                HorizontalCategoryCardSection(sections: sections)
                 
-                SectionTitle(sectionTitle: "Recomended for you", buttonTitle: "See all", item: EmptyView())
+                SectionTitle(
+                    sectionTitle: "Recomended for you".localized,
+                    buttonTitle: "See all".localized,
+                    item: EmptyView()
+                )
                 
                 VerticalRecomendedSection()
             }
         }
-        .navigationTitle("Browse")
     }
 }
 
 #Preview {
     NavigationView {
-        MainScreen()
+        MainScreen(
+            query: .constant("query"),
+            selectedSection: .constant(.business),
+            sections: Categories.allCases
+        )
     }
 }

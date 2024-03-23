@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HorizontalCategorySelectorSection: View {
-    
-    @ObservedObject var vm: MainScreenVM
+    let sections: [Categories]
+    @Binding var selected: Categories
+//    @ObservedObject var vm: MainScreenVM
     @Namespace private var namespace
 
     private struct Drawing {
@@ -24,23 +25,25 @@ struct HorizontalCategorySelectorSection: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Drawing.spacing) {
-                ForEach(vm.sections, id: \.self) { section in
+                ForEach(sections, id: \.self) { section in
 
-                    Text(section)
-                        .foregroundStyle(vm.selectedSection == section ? Color.white : Color.gray)
+                    Text(section.rawValue.localized)
+                        .foregroundStyle(selected == section ? Color.white : Color.gray)
                         .padding(.vertical, Drawing.verticalPadding)
                         .padding(.horizontal, Drawing.horizontalPadding)
                         .cornerRadius(Drawing.cornerRadius)
                         .background(content: {
-                            if vm.selectedSection == section  {
+                            if selected == section {
                                 RoundedRectangle(cornerRadius: Drawing.selectedCornerRadius)
-                                    .fill(vm.selectedSection == section ? Color.indigo : Color.indigo.opacity(Drawing.selectedBackgroundColorOpacity))
+                                    .fill(selected == section
+                                          ? Color.indigo
+                                          : Color.indigo.opacity(Drawing.selectedBackgroundColorOpacity))
                                     .matchedGeometryEffect(id: "section", in: namespace)
                             }
                         })
                         .onTapGesture {
                             withAnimation(.easeInOut) {
-                                self.vm.selectedSection = section
+                                selected = section
                             }
                         }
                 }
@@ -51,5 +54,8 @@ struct HorizontalCategorySelectorSection: View {
 }
 
 #Preview {
-    HorizontalCategorySelectorSection(vm: MainScreenVM())
+    HorizontalCategorySelectorSection(
+        sections: Categories.allCases,
+        selected: .constant(.business)
+    )
 }

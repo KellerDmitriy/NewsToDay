@@ -37,7 +37,7 @@ struct OnboardingView: View {
         static let dotSpacing: CGFloat = 10
         static let buttonCornerRadius: CGFloat = 15
         static let buttonPadding: CGFloat = 16
-        static let purpleAccentColor = Color.purpleAccent
+        static let indigoAccentColor = Color.indigo
         static let grayColor = Color.gray
     }
     
@@ -89,7 +89,7 @@ struct OnboardingView: View {
                         Rectangle()
                             .frame(width: Drawing.rectSize, height: Drawing.dotSize)
                             .cornerRadius(Drawing.dotSize / 2)
-                            .foregroundColor(Drawing.purpleAccentColor)
+                            .foregroundColor(Drawing.indigoAccentColor)
                     } else {
                         Circle()
                             .frame(width: Drawing.dotSize, height: Drawing.dotSize)
@@ -111,7 +111,7 @@ struct OnboardingView: View {
                     .foregroundStyle(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Drawing.purpleAccentColor)
+                    .background(Drawing.indigoAccentColor)
                     .cornerRadius(Drawing.buttonCornerRadius)
                     .padding(Drawing.buttonPadding)
             })

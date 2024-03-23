@@ -10,6 +10,8 @@
 "Profile" = "Profile";
 
 "Categories" = "Categories";
+"Thousands of articles in each category" = "Thousands of articles in each category";
+"Select some of your favorite topics to let us suggest better news for you." = "Select some of your favorite topics to let us suggest better news for you.";
 
 "Select your favorite topics" = "Select your favorite topics";
 "First to know" = "First to know";
@@ -21,11 +23,25 @@
 
 "Browse" = "Browse";
 "Discover things of this world" = "Discover things of this world";
-"Search" = "Search";
-"Random" = "Random";
-"Sports" = "Sports";
-"Gaming" = "Gaming";
-"Politics" = "Politics";
-"Life" = "Life";
+
 "Recommended for you" = "Recommended for you";
 "See All" = "See All";
+
+"business" = "Business";
+"entertainment" = "Entertainment";
+"general" = "General";
+"health" = "Health";
+"science" = "Science";
+"sports" = "Sports";
+"technology" = "Technology";
+"politics" = "Politics";
+"life" = "Life";
+"gaming" = "Gaming";
+"animals" = "Animals";
+"nature" = "Nature";
+"food" = "Food";
+"art" = "Art";
+"history" = "History";
+"fashion" = "Fashion";
+"covid19" = "Covid19";
+"middleeast" = "Middleeast";

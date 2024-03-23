@@ -136,3 +136,5 @@ xcuserdata
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager,swiftpm,cocoapods,carthage,git
 .DS_Store
 *.xcuserstate
+NewsToDay.xcodeproj/project.xcworkspace/xcuserdata/kellerdm.xcuserdatad/UserInterfaceState.xcuserstate
+NewsToDay.xcodeproj/project.xcworkspace/xcuserdata/kellerdm.xcuserdatad/UserInterfaceState.xcuserstate
