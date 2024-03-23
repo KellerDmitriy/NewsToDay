@@ -10,8 +10,8 @@ import DS
 import NetworkManager
 
 struct MainScreen: View {
-    
     @EnvironmentObject var vm: MainScreenVM
+    
     @Binding var query: String
     @Binding var selectedCategory: Categories
     @Binding var categories: Set<Categories>
@@ -23,27 +23,28 @@ struct MainScreen: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
                 ScreenHeader(title: "Discover things of this world")
-                
                 SearchBar(text: $query)
                 
                 if !isSearching {
-                    HorizontalCategorySelectorSection(
-                        categories: categories,
-                        selected: $selectedCategory
-                    )
-                    
-                    HorizontalCategoryCardSection(
-                        articles: articles,
-                        category: selectedCategory
-                    )
-                    .environmentObject(vm)
-                    
+                    HorizontalSelector(Array(categories), spacing: 0) { category in
+                        CategoryCell(category: category, selected: $selectedCategory)
+                    }
+                    HorizontalSelector(articles) { news in
+                        NavigationLink(destination: MainScreenDetailView(item: news)) {
+                            ArticleCell(
+                                nil,
+                                title: selectedCategory.rawValue.uppercased(),
+                                description: news.title ?? "No title",
+                                isBookmark: vm.bookmarks.contains(news),
+                                action: { vm.manage(bookmark: news) }
+                            )
+                        }
+                    }
                     SectionTitle(
                         sectionTitle: "Recomended for you".localized,
                         buttonTitle: "See all".localized,
                         item: EmptyView()
                     )
-                    
                     VerticalRecomendedSection(item: articles)
                 } else {
                     VerticalRecomendedSection(item: articles)

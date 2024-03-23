@@ -10,7 +10,6 @@ import DS
 import NetworkManager
 
 struct ArticleCell: View {
-    
     private struct Drawing {
         static let cardWidth: CGFloat = 256
         static let cardHeight: CGFloat = 256
@@ -21,13 +20,13 @@ struct ArticleCell: View {
         static let bookmarkImagePadding: CGFloat = 30
     }
     
-    let rawImage: CGImage?
-    let news: NewsResults
-    let category: Categories
+    @Environment(\.displayScale) private var scale
     
-    @EnvironmentObject var vm: MainScreenVM
-    @Environment(\.displayScale) var scale
-    @State private var isBookmark = false
+    let rawImage: CGImage?
+    let title: String
+    let description: String
+    let isBookmark: Bool
+    let action: () -> Void
     
     var body: some View {
         ZStack {
@@ -44,32 +43,45 @@ struct ArticleCell: View {
             .foregroundStyle(DS.Colors.Theme.indigoAccent)
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: Drawing.bottomLeadingPadding) {
-                    Text(category.rawValue.uppercased())
+                    Text(title)
                         .font(DS.Fonts.Inter12.regular400)
                     
-                    Text(news.title ?? "Some title")
+                    Text(description)
                         .font(DS.Fonts.Inter16.bold700)
                         .multilineTextAlignment(.leading)
                 }
                 .padding()
             }
             .overlay(alignment: .topTrailing) {
-                Button(action: {
-                    isBookmark.toggle()
-                    vm.addToBookmarks(bookmark: news)
-                }, label: {
+                Button(action: action) {
                     Image(systemName: isBookmark ? "bookmark.fill" : "bookmark")
                         .font(.title)
                         .foregroundColor(isBookmark ? .red : DS.Colors.Theme.whiteAccent)
-                })
+                }
                 .padding(Drawing.bookmarkImagePadding)
             }
         }
         .foregroundColor(.white)
     }
+    
+    init(
+        _ rawImage: CGImage?,
+        title: String,
+        description: String,
+        isBookmark: Bool,
+        action: @escaping () -> Void
+    ) {
+        self.rawImage = rawImage
+        self.title = title
+        self.description = description
+        self.isBookmark = isBookmark
+        self.action = action
+    }
 }
 
 #Preview {
-    ArticleCell(rawImage: nil, news: NewsResults.preview, category: .business)
-        .environmentObject(MainScreenVM())
+    VStack {
+        ArticleCell(nil, title: "Title1", description: "Description1", isBookmark: true, action: {})
+        ArticleCell(nil, title: "Title2", description: "Description2", isBookmark: false, action: {})
+    }
 }

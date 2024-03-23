@@ -63,8 +63,11 @@ final class MainScreenVM: ObservableObject {
         }
     }
     
-    func addToBookmarks(bookmark: NewsResults) {
-        self.bookmarks.insert(bookmark)
+    func manage(bookmark: NewsResults) {
+        switch bookmarks.contains(bookmark) {
+        case true: bookmarks.remove(bookmark)
+        case false: bookmarks.insert(bookmark)
+        }
     }
     
     enum State: Error {
