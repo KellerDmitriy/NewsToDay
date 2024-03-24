@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import DS
+import NetworkManager
 
 struct News {
     let categories: String
@@ -19,12 +21,12 @@ struct MainScreenDetailView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let item: News = News(categories: "Politics", title: "The latest situation in the presidential election", author: "John Doe", description: "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.", image: "image")
+    let item: NewsResults
     
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
-                Image(item.image)
+                Image(.image)
                     .resizable()
                     .ignoresSafeArea()
                     .frame(height: UIScreen.main.bounds.height / 2.8)
@@ -36,38 +38,40 @@ struct MainScreenDetailView: View {
                             
                         }, label: {
                             Image(systemName: "arrowshape.turn.up.forward.fill")
-                                .foregroundColor(.white)
+                                .foregroundColor(DS.Colors.Theme.whiteAccent)
                         })
                     }
                     .padding()
                     
                     HStack {
-                        Text(item.categories.localized)
-                            .foregroundStyle(Color.white)
+                        Text("Default")
+                            .font(DS.Fonts.Inter16.semiBold600)
+                            .foregroundStyle(DS.Colors.Theme.whiteAccent)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            .background(Color.indigo)
+                            .background(DS.Colors.Theme.indigoAccent)
                             .cornerRadius(16)
                         Spacer()
                     }
                     .padding()
                     
                     HStack {
-                        Text(item.title.localized)
-                            .font(.title)
-                            .foregroundStyle(.white)
+                        Text(item.title ?? "")
+                            .font(DS.Fonts.Inter20.bold700)
+                            .foregroundStyle(DS.Colors.Theme.whiteAccent)
                         Spacer()
                     }
                     .padding(.horizontal)
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(item.author.localized)
-                                .foregroundStyle(.white)
+                            Text(item.author ?? "")
+                                .font(DS.Fonts.Inter16.semiBold600)
+                                .foregroundStyle(DS.Colors.Theme.whiteAccent)
                             
-                            Text("Author".localized)
-                                .font(.subheadline)
-                                .foregroundStyle(.gray)
+                            Text("Author")
+                                .font(DS.Fonts.Inter14.regular400)
+                                .foregroundStyle(DS.Colors.Theme.grayLight)
                         }
                         Spacer()
                     }
@@ -77,13 +81,15 @@ struct MainScreenDetailView: View {
             
             ScrollView {
                 HStack {
-                    Text("Results".localized)
-                        .bold()
+                    Text("Results")
+                        .font(DS.Fonts.Inter16.semiBold600)
                     Spacer()
                 }
                 .padding()
 
-                Text(item.description)
+                Text(item.description ?? "")
+                    .foregroundStyle(DS.Colors.Theme.secondaryText)
+                    .font(DS.Fonts.Inter16.regular400)
                     .padding(.horizontal)
             }
             
@@ -114,6 +120,6 @@ struct MainScreenDetailView: View {
 
 #Preview {
     NavigationView {
-        MainScreenDetailView()
+        MainScreenDetailView(item: NewsResults.preview)
     }
 }

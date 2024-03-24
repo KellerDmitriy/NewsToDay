@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import DS
 
 struct SearchBar: View {
     
     @Binding var text: String
-
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
     private struct Drawing {
-        static let iconPadding: CGFloat = 8
+        static let iconPadding: CGFloat = 12
         static let iconName: String = "magnifyingglass"
-        static let iconColorOpacity: Double = 0.6
         static let textFieldHeight: CGFloat = 55
         static let backgroundColorOpacity: Double = 0.2
         static let cornerRadius: CGFloat = 12
@@ -24,18 +25,18 @@ struct SearchBar: View {
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: Drawing.iconName)
-                .foregroundColor(Color.gray.opacity(Drawing.iconColorOpacity))
+                .foregroundColor(DS.Colors.Theme.secondaryText)
                 .padding(Drawing.iconPadding)
-            TextField("Search".localized, text: $text)
+            TextField("Search".localized(language), text: $text)
         }
         .frame(height: Drawing.textFieldHeight)
         .frame(maxWidth: .infinity)
-        .background(Color.gray.opacity(Drawing.backgroundColorOpacity))
+        .background(DS.Colors.Theme.buttonBackground)
         .cornerRadius(Drawing.cornerRadius)
         .padding(.horizontal, Drawing.horizontalPadding)
     }
 }
 
 #Preview {
-    SearchBar(text: .constant("asdda"))
+    SearchBar(text: .constant("safasf"))
 }

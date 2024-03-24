@@ -13,7 +13,7 @@ struct LanguageScreen: View {
     var body: some View {
         VStack {
             CustomButton(
-                title: "English".localized,
+                title: "English".localized(language),
                 imageName: "checkmark",
                 action: {
                 language = .english
@@ -22,7 +22,7 @@ struct LanguageScreen: View {
             .padding([.horizontal, .top])
             
             CustomButton(
-                title: "Russian".localized,
+                title: "Russian".localized(language),
                 imageName: "checkmark",
                 action: {
                 language = .russian
@@ -33,13 +33,12 @@ struct LanguageScreen: View {
             
             Spacer()
         }
-        .navigationTitle("Language".localized)
+        .navigationTitle("Language".localized(language))
     }
 }
 
 #Preview {
     NavigationView {
         LanguageScreen()
-        //           .environmentObject(LanguageManager())
     }
 }

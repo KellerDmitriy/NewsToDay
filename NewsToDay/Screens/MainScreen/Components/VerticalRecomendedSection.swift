@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import NetworkManager
+import DS
 
 struct VerticalRecomendedSection: View {
+    
     private struct Drawing {
         static let spacing: CGFloat = 16
         static let cornerRadius: CGFloat = 12
@@ -17,54 +20,25 @@ struct VerticalRecomendedSection: View {
         static let headlineFontWeight: Font.Weight = .light
         static let padding: CGFloat = 16
     }
-
+    
+    let item: [NewsResults]
+    
     var body: some View {
         ScrollView {
-            HStack(spacing: Drawing.spacing) {
-                RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                    .frame(width: Drawing.imageWidth, height: Drawing.imageHeight)
-                VStack(alignment: .leading, spacing: Drawing.spacing) {
-                    Text("UI/UX Design")
-                        .font(.headline.weight(Drawing.headlineFontWeight))
-
-                    Text("A Simple Trick For Creating Color Palettes Quickly".localized)
-                        .font(.headline)
+            ForEach(item.prefix(5), id: \.self) { item in
+                NavigationLink {
+                    MainScreenDetailView(item: item)
+                } label: {
+                    RecomendedCell(item: item)
                 }
-                Spacer()
             }
-            .padding(.horizontal, Drawing.padding)
-
-            HStack(spacing: Drawing.spacing) {
-                RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                    .frame(width: Drawing.imageWidth, height: Drawing.imageHeight)
-                VStack(alignment: .leading, spacing: Drawing.spacing) {
-                    Text("UI/UX Design")
-                        .font(.headline.weight(Drawing.headlineFontWeight))
-
-                    Text("A Simple Trick For Creating Color Palettes Quickly")
-                        .font(.headline)
-                }
-                Spacer()
-            }
-            .padding(.horizontal, Drawing.padding)
-
-            HStack(spacing: Drawing.spacing) {
-                RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                    .frame(width: Drawing.imageWidth, height: Drawing.imageHeight)
-                VStack(alignment: .leading, spacing: Drawing.spacing) {
-                    Text("UI/UX Design")
-                        .font(.headline.weight(Drawing.headlineFontWeight))
-
-                    Text("A Simple Trick For Creating Color Palettes Quickly")
-                        .font(.headline)
-                }
-                Spacer()
-            }
-            .padding(.horizontal, Drawing.padding)
         }
     }
 }
 
 #Preview {
-    VerticalRecomendedSection()
+    NavigationView {
+        VerticalRecomendedSection(item: [NewsResults.preview, NewsResults.preview])
+    }
 }
+

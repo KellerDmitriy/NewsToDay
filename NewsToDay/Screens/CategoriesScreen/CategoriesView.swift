@@ -10,7 +10,9 @@ import SwiftUI
 struct CategoriesView: View {
     
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
-    @State private var selectedCategories: Set<Categories> = []
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
+    @EnvironmentObject var viewModel: MainScreenVM
     @State var mode: Mode = .onboarding
     
     enum Drawing {
@@ -36,7 +38,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Select some of your favorite topics to let us suggest better news for you.".localized)
+                        Text("Select some of your favorite topics to let us suggest better news for you.".localized(language))
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -47,22 +49,22 @@ struct CategoriesView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2)) {
                         ForEach(Categories.allCases) { category in
                             Button(action: {
-                                if selectedCategories.contains(category) {
-                                    selectedCategories.remove(category)
+                                if viewModel.categories.contains(category) {
+                                    viewModel.categories.remove(category)
                                 } else {
-                                    selectedCategories.insert(category)
+                                    viewModel.categories.insert(category)
                                 }
                             }) {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Text(category.image)
-                                    Text(category.rawValue.localized)
+                                    Text(category.rawValue.localized(language))
                                     Spacer()
                                 }
-                                .foregroundStyle(selectedCategories.contains(category) ? Color.white : Color.black.opacity(0.6))
+                                .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
                                 .font(.headline.bold())
                                 .padding(.vertical, 20)
-                                .background(selectedCategories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
+                                .background(viewModel.categories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
                                 .cornerRadius(8)
                             }
                         }
@@ -75,7 +77,7 @@ struct CategoriesView: View {
                 Button(action: {
                     isSelectedCategory.toggle()
                 }, label: {
-                    Text("Выбрать")
+                    Text("Choose".localized(language))
                         .foregroundStyle(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -88,7 +90,7 @@ struct CategoriesView: View {
             VStack {
                 ScrollView {
                     HStack {
-                        Text("Thousands of articles in each category".localized)
+                        Text("Thousands of articles in each category".localized(language))
                     }
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -99,22 +101,22 @@ struct CategoriesView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2)) {
                         ForEach(Categories.allCases) { category in
                             Button(action: {
-                                if selectedCategories.contains(category) {
-                                    selectedCategories.remove(category)
+                                if viewModel.categories.contains(category) {
+                                    viewModel.categories.remove(category)
                                 } else {
-                                    selectedCategories.insert(category)
+                                    viewModel.categories.insert(category)
                                 }
                             }) {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Text(category.image)
-                                    Text(category.rawValue)
+                                    Text(category.rawValue.localized(language))
                                     Spacer()
                                 }
-                                .foregroundStyle(selectedCategories.contains(category) ? Color.white : Color.black.opacity(0.6))
+                                .foregroundStyle(viewModel.categories.contains(category) ? Color.white : Color.black.opacity(0.6))
                                 .font(.headline.bold())
                                 .padding(.vertical, 20)
-                                .background(selectedCategories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
+                                .background(viewModel.categories.contains(category) ? Color.indigo : Color.gray.opacity(0.1))
                                 .cornerRadius(8)
                             }
                         }
@@ -123,7 +125,7 @@ struct CategoriesView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Categories".localized)
+            .navigationTitle("Categories".localized(language))
         }
     }
 }
@@ -131,5 +133,6 @@ struct CategoriesView: View {
 #Preview {
     NavigationView {
         CategoriesView(mode: .onboarding)
+            .environmentObject(MainScreenVM())
     }
 }

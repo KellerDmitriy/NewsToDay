@@ -7,18 +7,20 @@
 
 import Firebase
 import SwiftUI
+import DS
+import FirebaseCore
 
 @main
-struct NewsToDayApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+struct NewsToDayApp: App {    
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
     
-    @StateObject var viewModel = AuthViewModel() // мои правки для firebase
-    
-    init() { // мои правки для firebase
+    @StateObject var mainViewModel = MainScreenVM()
+        
+    init() {
+        FontsProvider.registerFonts()
         FirebaseApp.configure()
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : DS.Fonts.largeTitle]
     }
 
     var body: some Scene {
@@ -27,11 +29,13 @@ struct NewsToDayApp: App {
                 OnboardingView(isOnboarding: $isOnboarding)
             } else if isOnboarding && !isSelectedCategory {
                 CategoriesView()
+                    .environmentObject(mainViewModel)
             } else {
                 CustomBarView()
-                .environmentObject(viewModel) // мои правки для firebase
+                    .environmentObject(mainViewModel)
             }
         }
     }
+    
 }
 
