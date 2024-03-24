@@ -7,48 +7,51 @@
 
 import Foundation
 
+enum Language: String, CaseIterable {
+    case ru
+    case en
+}
 
 enum Categories: String, CaseIterable, Hashable, Identifiable {
     var id: String { rawValue }
     case business
+    case crime
+    case domestic
+    case education
     case entertainment
-    case general
+    case environment
+    case food
     case health
+    case lifestyle
+    case other
+    case politics
     case science
     case sports
     case technology
-    case politics
-    case life
-    case gaming
-    case animals
-    case nature
-    case food
-    case art
-    case history
-    case fashion
-    case covid19
-    case middleeast
+    case top
+    case tourism
+    case world
+
     
     var image: String {
         switch self {
-        case .sports: "🏈"
-        case .politics: "⚖️"
-        case .life: "🌞"
-        case .gaming: "🎮"
-        case .animals: "🐻"
-        case .nature: "🌴"
-        case .food: "🍔"
-        case .art: "🎨"
-        case .history: "📜"
-        case .fashion: "👗"
-        case .covid19: "😷"
-        case .middleeast: "⚔️"
-        case .business: "💲"
-        case .entertainment: "🗾"
-        case .general: "🪖"
-        case .health: "🚑"
-        case .science: "🧬"
-        case .technology: "👩🏾‍💻"
+            case .sports: return "🏈"
+            case .politics: return "⚖️"
+            case .food: return "🍔"
+            case .business: return "💲"
+            case .entertainment: return "🗾"
+            case .health: return "🚑"
+            case .science: return "🧬"
+            case .technology: return "👩🏾‍💻"
+            case .crime: return "🔫"
+            case .domestic: return "🏠"
+            case .education: return "🎓"
+            case .environment: return "🌳"
+            case .lifestyle: return "🎉"
+            case .other: return "❓"
+            case .top: return "🔝"
+            case .tourism: return "🏖️"
+            case .world: return "🌍"
         }
     }
     

@@ -14,10 +14,10 @@ final class MainScreenVM: ObservableObject {
     @Published var searchText: String = ""
     @Published var categories: Set<Categories> = []
     @Published var bookmarks: Set<NewsResults> = []
-    @Published var selectedCategory: Categories = .general
+    @Published var selectedCategory: Categories = .other
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
-    @Published var lang: Language = .en
+    @Published var lang: Language.AllCases = .init(arrayLiteral: .en)
     
     var isSearching: Bool {
         !searchText.isEmpty
@@ -45,10 +45,12 @@ final class MainScreenVM: ObservableObject {
         if let firstCategory = categories.first {
             selectedCategory = firstCategory
         }
+        let categoriesString = categories.prefix(5).map { $0.rawValue }.joined(separator: ",")
+        let langString = lang.map {$0.rawValue}.joined(separator: ",")
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .getNewsFor(category: selectedCategory.rawValue, lang: lang.rawValue)
+                .getLatestNews(lang: langString, categories: categoriesString)
                 .map(\.articles)
                 .map { $0.map(State.ready) }
                 .mapError(State.error)

@@ -38,15 +38,15 @@ public final class NetworkManager {
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
-    private let apiKey2 = "2b9cf27ea13e45eb89926c533fb14c6b"
-    private let apiKey = "63d415cde5ad4051ae34e09b85a9f4c7"
+ 
+    private let apiKey = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
     
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    public func getCategories(lang: String) async -> Result<NewsModel, NetworkError> {
-        await request(from: .categoriesWith(lang: lang))
+    public func getLatestNews(lang: String, categories: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .latestNews(lang: lang, categories: categories))
     }
     
     public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
@@ -85,7 +85,6 @@ private extension NetworkManager {
         await Result
             .success(url)
             .map { URLRequest(url: $0) }
-            .map(addApiKey(apiKey))
             .asyncMap(session.data)
             .map(\.0)
             .decode(T.self, decoder: decoder)

@@ -55,7 +55,7 @@ struct CategoryCell: View {
 
 #Preview {
     VStack {
-        CategoryCell(category: .animals, selected: .constant(.animals))
-        CategoryCell(category: .animals, selected: .constant(.health))
+        CategoryCell(category: .food, selected: .constant(.food))
+        CategoryCell(category: .food, selected: .constant(.health))
     }
 }

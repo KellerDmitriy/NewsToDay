@@ -38,8 +38,8 @@ struct Endpoint {
     var urlRequest: URLRequest {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "newsapi.org"
-        components.path = "/v2/".appending(path)
+        components.host = "newsdata.io"
+        components.path = "/api/1/".appending(path)
         components.queryItems = queryItems
         
         guard let url = components.url else {
@@ -47,6 +47,7 @@ struct Endpoint {
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
+        print(request)
         return request
     }
 }

@@ -7,18 +7,17 @@
 
 import Foundation
 
-//для категорий https://newsapi.org/v2/top-headlines?category=business &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
-//для поиска https://newsapi.org/v2/everything?q=Apple &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
-// https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
-//https://newsdata.io/api/1/news?apikey=pub_22335fe9f48dde5a318bfac99b00eb0a72cf8&category=world
+//https://newsdata.io/api/1/news?language=en&category=domestic,lifestyle&apikey=pub_40669167f5b9c344181f2c7e28f917505ffd7
+
 extension Endpoint {
     static func get() -> Endpoint { Endpoint(method: .GET) }
     
-    static func categoriesWith(lang: String) -> Self {
-        Endpoint.get()
-            .path("top-headlines/sources")
+    static func latestNews(lang: String, categories: String) -> Self {
+         Endpoint.get()
+            .path("news")
             .queryItems {
                 URLQueryItem(name: "language", value: lang)
+                URLQueryItem(name: "category", value: categories)
             }
     }
     
