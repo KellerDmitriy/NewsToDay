@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
+import DS
 
 struct TermsConditionsScreen: View {
     @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
-    
-    private enum Drawing {
-        static let foreground = "7C82A1"
-    }
     
     var title: String
     
@@ -20,7 +17,7 @@ struct TermsConditionsScreen: View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 Text(title)
-                    .foregroundStyle(Color(hex: Drawing.foreground))
+                    .foregroundStyle(DS.Colors.Theme.secondaryText)
             }
         }
         .padding()

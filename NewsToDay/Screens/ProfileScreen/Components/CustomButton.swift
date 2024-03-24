@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct CustomButton: View {
     
@@ -14,10 +15,6 @@ struct CustomButton: View {
     }
     
     private enum Drawing {
-        static let defaultForegroundColor = "666C8E"
-        static let defaultBackground = "F3F4F6"
-        static let selectedForegroundColor = "FFFFFF"
-        static let selectedBackground = "475AD7"
         static let cornerRadius: CGFloat = 12
     }
     
@@ -43,8 +40,14 @@ struct CustomButton: View {
                 }
             }
             .padding()
-            .foregroundStyle(Color(hex: isSelected ? Drawing.selectedForegroundColor : Drawing.defaultForegroundColor))
-            .background(Color(hex: isSelected ? Drawing.selectedBackground : Drawing.defaultBackground))
+            .foregroundStyle(isSelected
+                             ? DS.Colors.Theme.whiteAccent
+                             : DS.Colors.Theme.buttonText
+            )
+            .background(isSelected
+                        ? DS.Colors.Theme.indigoAccent
+                        : DS.Colors.Theme.buttonBackground
+                        )
             .clipShape(RoundedRectangle(cornerRadius: Drawing.cornerRadius))
         }
     }

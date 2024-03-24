@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func localized(_ language: SelectedLanguage) -> String {
+    func localized(_ language: Language) -> String {
         guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
               let bundle = Bundle(path: path) else {
             print("Failed to find path for language: \(language.rawValue)")

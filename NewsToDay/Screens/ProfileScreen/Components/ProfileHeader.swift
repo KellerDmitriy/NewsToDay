@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import DS
 
 struct ProfileHeader: View {
     
     private enum Drawing {
-        static let foregraundColor = "7C82A1"
         static let frameImage: CGFloat = 72
         static let spacing: CGFloat = 5
     }
@@ -33,7 +33,7 @@ struct ProfileHeader: View {
                         
                         Text(email)
                             .font(.subheadline)
-                            .foregroundColor(Color(hex: Drawing.foregraundColor))
+                            .foregroundColor(DS.Colors.Theme.secondaryText)
                     }
                     .padding()
                 }

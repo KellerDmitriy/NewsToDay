@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DS
 
 struct CustomTabBar: View {
     
@@ -30,7 +31,7 @@ struct CustomTabBar: View {
                 .foregroundColor(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: tabBarCorner)
-                        .stroke(Color(hex: "#ACAFC3"), lineWidth: 1)
+                        .stroke(DS.Colors.Theme.grayLight, lineWidth: 1)
                         .mask(
                             RoundedRectangle(cornerRadius: tabBarCorner)
                                 .frame(height: tabBarHeight)
@@ -64,7 +65,9 @@ struct CustomTabBar: View {
                     .padding(tabBarTitlePadding)
                     .offset(y: -tabBarTitleOffset)
             }
-            .foregroundColor(isSelected ? Color(hex: "#475AD7") : Color(hex: "#ACAFC3"))
+            .foregroundColor(isSelected
+                             ? DS.Colors.Theme.indigoAccent
+                             : DS.Colors.Theme.grayLight)
         }
     }
 }
