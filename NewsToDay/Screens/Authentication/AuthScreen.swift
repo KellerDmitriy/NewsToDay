@@ -11,6 +11,7 @@ struct AuthScreen: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isSignUpActive = false
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
             VStack {
@@ -24,16 +25,35 @@ struct AuthScreen: View {
                 }
                 .padding()
                 Spacer()
-                AuthButton(title: "Sign In", action: {})
+                AuthButton(title: "Sign In") {
+                    Task {
+                        try await viewModel.signIn(withEmail: email, password: password)
+                    }
+                }
+                .disabled(!formIsValid) // validation
+                .opacity(formIsValid ? 1.0 : 0.5) // validation
                     .padding()
                 Spacer()
                 NavigationLink(destination: RegistrationScreen().navigationBarBackButtonHidden(), isActive: $isSignUpActive) {
                     AuthTextButton(title: "Don't have an account? Sign Up") {
-                        isSignUpActive = true
+                        Task {
+                            try await viewModel.createUsers(withEmail: email, userName: "", password: password)
+                        }
                     }
                 }
             }
             .navigationTitle("Welcome Back ")
+    }
+}
+
+// MARK: - AuthenticationFormProtocol 
+
+extension AuthScreen: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
     }
 }
 

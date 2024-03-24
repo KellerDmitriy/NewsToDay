@@ -12,6 +12,8 @@ struct ProfileScreen: View {
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -39,10 +41,9 @@ struct ProfileScreen: View {
                 isShowingTermsConditionsScreen = true
             }, buttonType: .profile, isSelected: false)
             .padding()
-            
-            
+    
             CustomButton(title: "Sign Out".localized, imageName: "arrow.right.circle", action: {
-                // action
+                viewModel.singOut() // exit from account
             }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()

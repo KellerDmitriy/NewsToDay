@@ -5,6 +5,7 @@
 //  Created by Келлер Дмитрий on 17.03.2024.
 //
 
+import Firebase
 import SwiftUI
 
 @main
@@ -13,6 +14,12 @@ struct NewsToDayApp: App {
     
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
+    
+    @StateObject var viewModel = AuthViewModel() // мои правки для firebase
+    
+    init() { // мои правки для firebase
+        FirebaseApp.configure()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -22,6 +29,7 @@ struct NewsToDayApp: App {
                 CategoriesView()
             } else {
                 CustomBarView()
+                .environmentObject(viewModel) // мои правки для firebase
             }
         }
     }
