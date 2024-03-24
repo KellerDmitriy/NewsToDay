@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserVM.swift
 //  NewsToDay
 //
 //  Created by Максим Самороковский on 23.03.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable, Codable {
+struct UserVM: Identifiable, Codable {
     let id: String
     let userName: String
     let email: String
@@ -22,8 +22,8 @@ struct User: Identifiable, Codable {
     }
 }
 
-extension User {
-    static var MOCK_USER = User(id: NSUUID().uuidString, userName: "Dev P", email: "dev@gmail.com")
+extension UserVM {
+    static var MOCK_USER = UserVM(id: NSUUID().uuidString, userName: "Dev P", email: "dev@gmail.com")
 }
 
 

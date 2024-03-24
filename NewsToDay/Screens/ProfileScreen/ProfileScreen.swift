@@ -46,8 +46,8 @@ struct ProfileScreen: View {
             
             
             CustomButton(title: "Sign Out".localized(language),
-                         imageName: "arrow.right.circle", action: {
-                // action
+                         imageName: "rectangle.portrait.and.arrow.right", action: {
+                viewModel.signOut()
             }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()

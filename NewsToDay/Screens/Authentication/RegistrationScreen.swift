@@ -53,7 +53,7 @@ struct RegistrationScreen: View {
             }
         }
         .padding()
-        .navigationTitle("Welcome to News")
+        .navigationTitle("Welcome to NewsToDay")
     }
 }
 

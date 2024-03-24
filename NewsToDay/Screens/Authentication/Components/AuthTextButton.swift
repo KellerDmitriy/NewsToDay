@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthTextButton: View {
     private enum Drawing {
         static let fontSize: CGFloat = 16
-        static let foregroundColor = "7C82A1"
+        static let foregroundColor = "333647"
     }
     
     let title: String
