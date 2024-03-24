@@ -10,7 +10,7 @@ import Foundation
 //для категорий https://newsapi.org/v2/top-headlines?category=business &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
 //для поиска https://newsapi.org/v2/everything?q=Apple &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
 // https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
-
+//https://newsdata.io/api/1/news?apikey=pub_22335fe9f48dde5a318bfac99b00eb0a72cf8&category=world
 extension Endpoint {
     static func get() -> Endpoint { Endpoint(method: .GET) }
     
