@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct ProfileScreen: View {
+    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
     @State private var isShowingLanguageScreen = false
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
-    @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
+    
+    @State var image: Image?
+    @State private var inputImage = UIImage(named: "avatar")
+    
+    @State private var showingImagePicker = false
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                ProfileHeader(userName: "Dev P", email: "dev@gmail.com", imageName: "avatar")
+                ProfileHeader(
+                    userName: "Dev P",
+                    email: "dev@gmail.com", 
+                    avatar: inputImage ?? UIImage(systemName: "person.fill")!
+                    )
+                .onTapGesture {
+                    showingImagePicker = true
+                }
             }
             .padding()
-            
+           
             NavigationLink(destination: LanguageScreen(), isActive: $isShowingLanguageScreen) {
                 EmptyView()
             }
@@ -52,6 +65,17 @@ struct ProfileScreen: View {
             
         }
         .navigationTitle("Profile".localized(language))
+        .onChange(of: inputImage) { _ in
+            loadImage()
+        }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
+    }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
     }
 }
 

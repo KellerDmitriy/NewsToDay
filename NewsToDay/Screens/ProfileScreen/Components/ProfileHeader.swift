@@ -17,11 +17,11 @@ struct ProfileHeader: View {
     
     var userName: String
     var email: String
-    var imageName: String = "avatar"
+    var avatar: UIImage
     
         var body: some View {
                 HStack {
-                    Image(imageName)
+                    Image(uiImage: avatar)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: Drawing.frameImage)
@@ -41,5 +41,5 @@ struct ProfileHeader: View {
     }
 
 #Preview {
-    ProfileHeader(userName: "Dev P", email: "dev@gmail.com")
+    ProfileHeader(userName: "Dev P", email: "dev@gmail.com", avatar: UIImage(named: "avatar")!)
 }
