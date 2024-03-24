@@ -5,6 +5,7 @@
 //  Created by Максим Самороковский on 20.03.2024.
 //
 
+import DS
 import SwiftUI
 
 struct CustomButton: View {

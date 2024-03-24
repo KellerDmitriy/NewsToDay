@@ -13,12 +13,12 @@ struct ProfileScreen: View {
     @State private var isShowingSignOut = false
     @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                ProfileHeader(userName: "Dev P", email: "dev@gmail.com", imageName: "avatar")
+                ProfileHeader()
             }
             .padding()
             
@@ -47,7 +47,7 @@ struct ProfileScreen: View {
             
             CustomButton(title: "Sign Out".localized(language),
                          imageName: "rectangle.portrait.and.arrow.right", action: {
-                viewModel.signOut()
+                authViewModel.signOut()
             }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()

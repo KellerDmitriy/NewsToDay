@@ -13,7 +13,7 @@ struct RegistrationScreen: View {
     @State private var password = ""
     @State private var repeatPassword = ""
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 20) {
@@ -41,7 +41,9 @@ struct RegistrationScreen: View {
             
             AuthButton(title: "Sign Up") {
                 Task {
-                    try await viewModel.createUsers(withEmail: email, userName: userName, password: password)
+                    try await authViewModel.createUsers(withEmail: email, 
+                                                    userName: userName, 
+                                                    password: password)
                 }
             }
             .disabled(!formIsValid) // validation

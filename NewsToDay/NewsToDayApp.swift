@@ -16,7 +16,7 @@ struct NewsToDayApp: App {
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
     
     @StateObject var mainViewModel = MainScreenVM()
-    @StateObject var viewModel = AuthViewModel() // мои правки для firebase
+    @StateObject var authViewModel = AuthViewModel() // мои правки для firebase
         
     init() {
         FirebaseApp.configure()
@@ -33,8 +33,9 @@ struct NewsToDayApp: App {
                     .environmentObject(mainViewModel)
             } else {
                 CustomBarView()
+                
                     .environmentObject(mainViewModel)
-                    .environmentObject(viewModel) // мои правки для firebase
+                    .environmentObject(authViewModel) // мои правки для firebase
             }
         }
     }

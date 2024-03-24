@@ -11,7 +11,7 @@ struct AuthScreen: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isSignUpActive = false
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
             VStack {
@@ -27,7 +27,7 @@ struct AuthScreen: View {
                 Spacer()
                 AuthButton(title: "Sign In") {
                     Task {
-                        try await viewModel.signIn(withEmail: email, password: password)
+                        try await authViewModel.signIn(withEmail: email, password: password)
                     }
                 }
                 .disabled(!formIsValid) // validation
@@ -36,9 +36,7 @@ struct AuthScreen: View {
                 Spacer()
                 NavigationLink(destination: RegistrationScreen().navigationBarBackButtonHidden(), isActive: $isSignUpActive) {
                     AuthTextButton(title: "Don't have an account? Sign Up") {
-                        Task {
-                            try await viewModel.createUsers(withEmail: email, userName: "", password: password)
-                        }
+                        isSignUpActive = true
                     }
                 }
             }
