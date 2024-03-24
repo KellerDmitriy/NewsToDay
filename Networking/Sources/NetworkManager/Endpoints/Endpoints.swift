@@ -9,9 +9,18 @@ import Foundation
 
 //для категорий https://newsapi.org/v2/top-headlines?category=business &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
 //для поиска https://newsapi.org/v2/everything?q=Apple &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
+// https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
 
 extension Endpoint {
     static func get() -> Endpoint { Endpoint(method: .GET) }
+    
+    static func categoriesWith(lang: String) -> Self {
+        Endpoint.get()
+            .path("top-headlines/sources")
+            .queryItems {
+                URLQueryItem(name: "language", value: lang)
+            }
+    }
     
     static func everything(about: String) -> Self {
         Endpoint.get()

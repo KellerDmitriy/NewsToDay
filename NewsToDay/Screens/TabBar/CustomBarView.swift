@@ -11,8 +11,8 @@ struct CustomBarView: View {
     
     @EnvironmentObject var mainViewModel: MainScreenVM
     
-    @State private var tabSelection = 0
-    
+    @State private var tabSelection = 1
+
     var body: some View {
         VStack {
             switch tabSelection {

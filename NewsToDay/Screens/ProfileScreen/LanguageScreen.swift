@@ -16,19 +16,19 @@ struct LanguageScreen: View {
                 title: "English".localized(language),
                 imageName: "checkmark",
                 action: {
-                language = .english
+                language = .en
             }, buttonType: .language, 
-                isSelected: language == .english)
+                isSelected: language == .en)
             .padding([.horizontal, .top])
             
             CustomButton(
                 title: "Russian".localized(language),
                 imageName: "checkmark",
                 action: {
-                language = .russian
+                language = .ru
             }, buttonType: .language, 
                          isSelected:
-                            language == .russian)
+                            language == .ru)
             .padding([.horizontal, .top])
             
             Spacer()

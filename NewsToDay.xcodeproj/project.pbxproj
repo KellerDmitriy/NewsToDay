@@ -51,7 +51,6 @@
 		F97BB4542BAC7CD7008327E6 /* LanguageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BB44B2BAC7CD7008327E6 /* LanguageScreen.swift */; };
 		F97BB4552BAC7CD7008327E6 /* TermsConditionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BB44C2BAC7CD7008327E6 /* TermsConditionsScreen.swift */; };
 		F97BB4572BAC7CD7008327E6 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BB44F2BAC7CD7008327E6 /* ProfileHeader.swift */; };
-		F97BB45A2BAC7CD7008327E6 /* ColorHex + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BB4522BAC7CD7008327E6 /* ColorHex + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +94,6 @@
 		F97BB44C2BAC7CD7008327E6 /* TermsConditionsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsConditionsScreen.swift; sourceTree = "<group>"; };
 		F97BB44F2BAC7CD7008327E6 /* ProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		F97BB4512BAC7CD7008327E6 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		F97BB4522BAC7CD7008327E6 /* ColorHex + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorHex + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +293,6 @@
 		E1D155232BACB3EA00D2C690 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F97BB4522BAC7CD7008327E6 /* ColorHex + Extension.swift */,
 				E1D155242BACB43100D2C690 /* String + Extension.swift */,
 			);
 			path = Extensions;
@@ -424,7 +421,6 @@
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				3C99FD142BAB71250015C13B /* CategoriesView.swift in Sources */,
 				3CEEDB8A2BAEE0E700A4D632 /* Shimmering.swift in Sources */,
-				F97BB45A2BAC7CD7008327E6 /* ColorHex + Extension.swift in Sources */,
 				E182C6AC2BA74C7900C66D3F /* StorageManager.swift in Sources */,
 				E11FACD42BAA377D005B06E2 /* ArticleCell.swift in Sources */,
 				3C354B962BA766BD005EB350 /* MainScreenVM.swift in Sources */,

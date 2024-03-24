@@ -9,23 +9,23 @@ import Foundation
 import SwiftUI
 
 // MARK: - Selected Language
-enum SelectedLanguage: String {
-    case russian = "ru"
-    case english = "en"
+enum Language: String {
+    case ru
+    case en
 }
 
 final class LocalizationManager {
     // MARK: - Properties
     public static let shared = LocalizationManager()
     
-    var language: SelectedLanguage {
+    var language: Language {
         get {
             guard let languageString = UserDefaults.standard.string(forKey: "selectedLanguage") else {
-                saveLanguage(.english)
-                return .english
+                saveLanguage(.en)
+                return .en
             }
             
-            return SelectedLanguage(rawValue: languageString) ?? .english
+            return Language(rawValue: languageString) ?? .en
         } set {
             if newValue != language {
                 saveLanguage(newValue)
@@ -37,7 +37,7 @@ final class LocalizationManager {
     public init() { }
     
     // MARK: - Methods
-    private func saveLanguage(_ language: SelectedLanguage) {
+    private func saveLanguage(_ language: Language) {
         UserDefaults.standard.setValue(language.rawValue, forKey: "selectedLanguage")
         UserDefaults.standard.set([language.rawValue], forKey: "AppleLanguages")
     }

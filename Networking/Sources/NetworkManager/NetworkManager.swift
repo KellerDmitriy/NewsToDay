@@ -45,13 +45,18 @@ public final class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
+    public func getCategories(lang: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .categoriesWith(lang: lang))
+    }
+    
     public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .everything(about: searchText))
     }
     
-    public func getNewsFor(category: String) async -> Result<NewsModel, NetworkError> {
-        await request(from: .headlines(category: category))
+    public func getNewsFor(category: String, lang: String) async -> Result<NewsModel, NetworkError> {
+        await request(from: .headlines(lang: lang, category: category))
     }
+    
     
 //    public func loadImages(for news: [NewsModel]) async -> Result<[CGImage], NetworkError> {
 //        Result.success(news)
