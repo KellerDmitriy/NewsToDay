@@ -28,6 +28,16 @@ struct SearchBar: View {
                 .foregroundColor(DS.Colors.Theme.secondaryText)
                 .padding(Drawing.iconPadding)
             TextField("Search".localized(language), text: $text)
+            
+            if !text.isEmpty {
+                Button(action: {
+                    text = ""
+                }, label: {
+                    Image(systemName: "xmark")
+                })
+                .foregroundColor(DS.Colors.Theme.secondaryText)
+                .padding(Drawing.iconPadding)
+            }
         }
         .frame(height: Drawing.textFieldHeight)
         .frame(maxWidth: .infinity)

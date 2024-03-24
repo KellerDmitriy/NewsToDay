@@ -38,8 +38,10 @@ public final class NetworkManager {
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
+    
+    private let apiKey = "32383730e52643c0b73e0e3fef448fc1"
     private let apiKey2 = "2b9cf27ea13e45eb89926c533fb14c6b"
-    private let apiKey = "63d415cde5ad4051ae34e09b85a9f4c7"
+    private let apiKey3 = "63d415cde5ad4051ae34e09b85a9f4c7"
     
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase

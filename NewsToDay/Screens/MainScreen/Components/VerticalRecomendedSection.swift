@@ -25,12 +25,20 @@ struct VerticalRecomendedSection: View {
     
     var body: some View {
         ScrollView {
-            ForEach(item.prefix(5), id: \.self) { item in
-                NavigationLink {
-                    MainScreenDetailView(item: item)
-                } label: {
-                    RecomendedCell(item: item)
+            if !item.isEmpty{
+                ForEach(item.prefix(5), id: \.self) { item in
+                    NavigationLink {
+                        MainScreenDetailView(item: item, isBookmark: false) {
+                            
+                        }
+                    } label: {
+                        RecomendedCell(item: item)
+                    }
                 }
+            } else {
+                Text("No results for this category")
+                    .font(DS.Fonts.Inter28.bold700)
+                    .foregroundStyle(DS.Colors.Theme.indigoAccent)
             }
         }
     }

@@ -34,7 +34,8 @@ struct MainContentScreen: View {
                     selectedCategory: $viewModel.selectedCategory,
                     categories: $viewModel.categories,
                     isSearching: viewModel.isSearching,
-                    articles: articles
+                    articles: articles,
+                    recomendedArticles: articles
                 )
                 .environmentObject(viewModel)
             }

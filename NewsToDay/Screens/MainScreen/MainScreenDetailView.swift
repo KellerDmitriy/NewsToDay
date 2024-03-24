@@ -9,20 +9,14 @@ import SwiftUI
 import DS
 import NetworkManager
 
-struct News {
-    let categories: String
-    let title: String
-    let author: String
-    let description: String
-    let image: String
-}
-
 struct MainScreenDetailView: View {
     
     @Environment(\.dismiss) var dismiss
     
     let item: NewsResults
-    
+    let isBookmark: Bool
+    let action: () -> Void
+
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
@@ -107,7 +101,7 @@ struct MainScreenDetailView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    
+                    action()
                 }, label: {
                     Image(systemName: "bookmark")
                         .foregroundColor(.white)
@@ -120,6 +114,6 @@ struct MainScreenDetailView: View {
 
 #Preview {
     NavigationView {
-        MainScreenDetailView(item: NewsResults.preview)
+        MainScreenDetailView(item: NewsResults.preview, isBookmark: true, action: {})
     }
 }

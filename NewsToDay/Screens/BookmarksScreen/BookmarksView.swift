@@ -39,7 +39,9 @@ struct BookmarksView: View {
                 ScrollView {
                     ForEach(Array(viewModel.bookmarks)) { bookmark in
                         NavigationLink {
-                            MainScreenDetailView(item: bookmark)
+                            MainScreenDetailView(item: bookmark, isBookmark: viewModel.bookmarks.contains(bookmark)) {
+                                viewModel.manage(bookmark: bookmark)
+                            }
                         } label: {
                             RecomendedCell(item: bookmark)
                         }

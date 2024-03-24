@@ -19,6 +19,7 @@ struct MainScreen: View {
     var isSearching: Bool
     
     let articles: [NewsResults]
+    let recomendedArticles: [NewsResults]
             
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -27,26 +28,46 @@ struct MainScreen: View {
                 SearchBar(text: $query)
                 
                 if !isSearching {
-                    HorizontalSelector(Array(categories), spacing: 0) { category in
-                        CategoryCell(category: category, selected: $selectedCategory)
-                    }
-                    HorizontalSelector(articles) { news in
-                        NavigationLink(destination: MainScreenDetailView(item: news)) {
-                            ArticleCell(
-                                nil,
-                                title: selectedCategory.rawValue.uppercased(),
-                                description: news.title ?? "No title",
-                                isBookmark: vm.bookmarks.contains(news),
-                                action: { vm.manage(bookmark: news) }
-                            )
+                    
+                    if categories.isEmpty {
+                        Text("Выберите категорию в настройках")
+                            .font(DS.Fonts.Inter18.bold700)
+                            .foregroundStyle(DS.Colors.Theme.indigoAccent)
+                    } else {
+                        HorizontalSelector(Array(categories), spacing: 0) { category in
+                            CategoryCell(category: category, selected: $selectedCategory)
                         }
                     }
+                    
+                    if articles.isEmpty {
+                        Text("No results for this category")
+                            .font(DS.Fonts.Inter18.bold700)
+                            .foregroundStyle(DS.Colors.Theme.indigoAccent)
+                    } else {
+                        HorizontalSelector(articles) { news in
+                            NavigationLink(destination: 
+                                            MainScreenDetailView(
+                                                item: news,
+                                                isBookmark: vm.bookmarks.contains(news),
+                                                action: { vm.manage(bookmark: news)}))
+                            {
+                                ArticleCell(
+                                    nil,
+                                    title: selectedCategory.rawValue.uppercased(),
+                                    description: news.title ?? "No title",
+                                    isBookmark: vm.bookmarks.contains(news),
+                                    action: { vm.manage(bookmark: news) }
+                                )
+                            }
+                        }
+                    }
+                    
                     SectionTitle(
                         sectionTitle: "Recomended for you".localized(language),
                         buttonTitle: "See all".localized(language),
                         item: EmptyView()
                     )
-                    VerticalRecomendedSection(item: articles)
+                    VerticalRecomendedSection(item: recomendedArticles)
                 } else {
                     VerticalRecomendedSection(item: articles)
                 }
@@ -59,11 +80,12 @@ struct MainScreen: View {
 #Preview {
     NavigationView {
         MainScreen(
-            query: .constant("query"),
+            query: .constant(""),
             selectedCategory: .constant(.business),
             categories: .constant(Set(Categories.allCases)),
             isSearching: false,
-            articles: [NewsResults.preview, NewsResults.preview]
+            articles: [NewsResults.preview, NewsResults.preview],
+            recomendedArticles: [NewsResults.preview, NewsResults.preview]
         )
         .environmentObject(MainScreenVM())
     }
