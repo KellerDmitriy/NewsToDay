@@ -8,8 +8,8 @@
 import Foundation
 
 public struct NewsModel: Codable {
-    public let status: String?
-    public let totalResults: Int?
+    public let status: String
+    public let totalResults: Int
     public let results: [NewsResults]
 }
 
@@ -21,10 +21,10 @@ public struct NewsResults: Codable, Hashable, Identifiable {
     public let link: String
     public let creator: [String]?
     public let description: String
-    public let content: String
+    public let content: String?
     public let imageUrl: String?
     public let category: [String]?
-    public let country: [String]
+    public let country: [String]?
         
     public static let preview = NewsResults(
         title: "Call-out for people with psoriasis to take part in new study - EchoLive.ie",
