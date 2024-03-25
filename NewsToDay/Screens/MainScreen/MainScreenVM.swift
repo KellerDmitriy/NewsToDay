@@ -17,7 +17,7 @@ final class MainScreenVM: ObservableObject {
     @Published var selectedCategory: Categories = .other
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
-    @Published var lang: Language.AllCases = .init(arrayLiteral: .en)
+    @Published var lang: Language = .en
     
     var isSearching: Bool {
         !searchText.isEmpty
@@ -45,8 +45,6 @@ final class MainScreenVM: ObservableObject {
         if let firstCategory = categories.first {
             selectedCategory = firstCategory
         }
-//        let categoriesString = categories.prefix(5).map { $0.rawValue }.joined(separator: ",")
-//        let langString = lang.map {$0.rawValue}.joined(separator: ",")
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager

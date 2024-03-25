@@ -26,12 +26,11 @@ extension Endpoint {
             .path("news")
     }
     
-    
-    static func everything(about: String) -> Self {
+    static func newsWith(searchText: String) -> Self {
         Endpoint.get()
-            .path("everything")
+            .path("news")
             .queryItems {
-                URLQueryItem(name: "q", value: about)
+                URLQueryItem(name: "q", value: searchText)
             }
     }
 }

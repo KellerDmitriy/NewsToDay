@@ -44,7 +44,8 @@ public final class NetworkManager {
     let session = URLSession.shared
     let decoder = JSONDecoder()
  
-    private let apiKey = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
+    private let apiKey1 = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
+    private let apiKey = "pub_40710f81e68e7061f7ed766760a42acbb6b47"
     
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -55,7 +56,7 @@ public final class NetworkManager {
     }
     
     public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
-        await request(from: .everything(about: searchText))
+        await request(from: .newsWith(searchText: searchText))
     }
     
     public func getLatestNews() async -> Result<NewsModel, NetworkError> {
