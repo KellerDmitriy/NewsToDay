@@ -81,16 +81,6 @@ private extension NetworkManager {
             .map(\.urlRequest)
             .map(addApiKey(apiKey))
             .asyncMap(session.data)
-            .map(\.0)
-            .decode(T.self, decoder: decoder)
-            .mapError(NetworkError.init)
-    }
-    
-    func request<T: Decodable>(for url: URL) async -> Result<T, NetworkError> {
-        await Result
-            .success(url)
-            .map { URLRequest(url: $0) }
-            .asyncMap(session.data)
             .flatMap(unwrapResponse)
             .decode(T.self, decoder: decoder)
             .mapError(NetworkError.init)
