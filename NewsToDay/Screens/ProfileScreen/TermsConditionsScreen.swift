@@ -5,13 +5,14 @@
 //  Created by Максим Самороковский on 20.03.2024.
 //
 
+import DS
 import SwiftUI
 
 struct TermsConditionsScreen: View {
     @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     private enum Drawing {
-        static let foreground = "7C82A1"
+        static let foreground = DS.Colors.Theme.secondaryText
     }
     
     var title: String
@@ -20,7 +21,7 @@ struct TermsConditionsScreen: View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 Text(title)
-                    .foregroundStyle(Color(hex: Drawing.foreground))
+                    .foregroundStyle(Drawing.foreground)
             }
         }
         .padding()

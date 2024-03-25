@@ -5,12 +5,13 @@
 //  Created by Максим Самороковский on 23.03.2024.
 //
 
+import DS
 import SwiftUI
 
 struct AuthTitle: View {
     private enum Drawing {
         static let fontSize: CGFloat = 16
-        static let titleColor = "7C82A1"
+        static let titleColor = DS.Colors.Theme.secondaryText
     }
 
     let title: String
@@ -19,7 +20,7 @@ struct AuthTitle: View {
         VStack {
             Text(title)
                 .font(.system(size: Drawing.fontSize))
-                .foregroundStyle(Color(hex: Drawing.titleColor))
+                .foregroundStyle(Drawing.titleColor)
         }
     }
 }

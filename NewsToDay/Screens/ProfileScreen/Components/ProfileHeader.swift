@@ -51,7 +51,7 @@ struct ProfileHeader: View {
     
     private enum Drawing {
         static let backgroundColor = DS.Colors.Theme.buttonBackground
-        static let foregraundColor = DS.Colors.Theme.secondaryText
+        static let foregraundColor = DS.Colors.Theme.buttonText
         static let frameImage: CGFloat = 72
         static let spacing: CGFloat = 5
     }

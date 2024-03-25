@@ -5,12 +5,13 @@
 //  Created by Максим Самороковский on 23.03.2024.
 //
 
+import DS
 import SwiftUI
 
 struct AuthButton: View {
     private enum Drawing {
-        static let background = "475AD7"
-        static let foreground = "FFFFFF"
+        static let background = DS.Colors.Theme.indigoAccent
+        static let foreground = DS.Colors.Theme.whiteAccent
         static let cornerRadius: CGFloat = 12
     }
     
@@ -25,8 +26,8 @@ struct AuthButton: View {
                 Spacer()
             }
             .padding()
-            .foregroundStyle(Color(hex: Drawing.foreground))
-            .background(Color(hex: Drawing.background))
+            .foregroundStyle(Drawing.foreground)
+            .background(Drawing.background)
             .clipShape(RoundedRectangle(cornerRadius: Drawing.cornerRadius))
         }
     }

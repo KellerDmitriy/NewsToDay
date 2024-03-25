@@ -5,12 +5,13 @@
 //  Created by Максим Самороковский on 23.03.2024.
 //
 
+import DS
 import SwiftUI
 
 struct AuthTextButton: View {
     private enum Drawing {
         static let fontSize: CGFloat = 16
-        static let foregroundColor = "333647"
+        static let foregroundColor = DS.Colors.Theme.primaryText
     }
     
     let title: String
@@ -21,7 +22,7 @@ struct AuthTextButton: View {
             HStack(alignment: .center) {
                     Text(title)
                         .font(.system(size: Drawing.fontSize))
-                        .foregroundStyle(Color(hex: Drawing.foregroundColor))
+                        .foregroundStyle(Drawing.foregroundColor)
             }
         }
     }

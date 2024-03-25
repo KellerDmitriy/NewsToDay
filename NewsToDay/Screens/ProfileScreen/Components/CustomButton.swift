@@ -15,10 +15,10 @@ struct CustomButton: View {
     }
     
     private enum Drawing {
-        static let defaultForegroundColor = "666C8E"
-        static let defaultBackground = "F3F4F6"
-        static let selectedForegroundColor = "FFFFFF"
-        static let selectedBackground = "475AD7"
+        static let defaultForegroundColor = DS.Colors.Theme.buttonText
+        static let defaultBackground = DS.Colors.Theme.buttonBackground
+        static let selectedForegroundColor = DS.Colors.Theme.whiteAccent
+        static let selectedBackground = DS.Colors.Theme.indigoAccent
         static let cornerRadius: CGFloat = 12
     }
     
@@ -44,8 +44,8 @@ struct CustomButton: View {
                 }
             }
             .padding()
-            .foregroundStyle(Color(hex: isSelected ? Drawing.selectedForegroundColor : Drawing.defaultForegroundColor))
-            .background(Color(hex: isSelected ? Drawing.selectedBackground : Drawing.defaultBackground))
+            .foregroundStyle(isSelected ? Drawing.selectedForegroundColor : Drawing.defaultForegroundColor)
+            .background(isSelected ? Drawing.selectedBackground : Drawing.defaultBackground)
             .clipShape(RoundedRectangle(cornerRadius: Drawing.cornerRadius))
         }
     }

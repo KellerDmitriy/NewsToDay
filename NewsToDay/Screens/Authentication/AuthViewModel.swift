@@ -51,9 +51,9 @@ class AuthViewModel: ObservableObject {
     
     func signOut() {
         do {
-            try Auth.auth().signOut() // sings out user on backend
-            self.userSession = nil // wipes out user session and takes us back to login screen
-            self.currentUser = nil // wipes out current user data model
+            try Auth.auth().signOut()
+            self.userSession = nil
+            self.currentUser = nil
         } catch {
             print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
         }
