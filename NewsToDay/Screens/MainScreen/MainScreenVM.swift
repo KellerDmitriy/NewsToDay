@@ -17,7 +17,7 @@ final class MainScreenVM: ObservableObject {
     @Published var selectedCategory: Categories = .other
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
-    @Published var lang: Language = .en
+    @Published var lang: [Language] = [.en]
     
     var isSearching: Bool {
         !searchText.isEmpty
@@ -42,13 +42,12 @@ final class MainScreenVM: ObservableObject {
     
     func onAppear() {
         state = .loading
-        if let firstCategory = categories.first {
-            selectedCategory = firstCategory
-        }
+         let langString = lang.map {$0.rawValue}.joined(separator: ",")
+        
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .getLatestNews()
+                .getLatestNews(lang: langString, categories: selectedCategory.rawValue)
                 .map(\.results)
                 .map(State.ready)
                 .mapError(State.error)

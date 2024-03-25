@@ -39,7 +39,7 @@ struct Endpoint {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "newsdata.io"
-        components.path = "/api/1/".appending(path)
+        components.path = "/api/1/news".appending(path)
         components.queryItems = queryItems
         
         guard let url = components.url else {

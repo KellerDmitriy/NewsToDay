@@ -18,9 +18,9 @@ public struct NewsResults: Codable, Hashable, Identifiable {
         return UUID().uuidString
     }
     public let title: String?
-    public let link: String
+    public let link: String?
     public let creator: [String]?
-    public let description: String
+    public let description: String?
     public let content: String?
     public let imageUrl: String?
     public let category: [String]?

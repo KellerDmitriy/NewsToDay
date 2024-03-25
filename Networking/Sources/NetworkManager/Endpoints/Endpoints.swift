@@ -14,8 +14,8 @@ extension Endpoint {
     
     static func latestNews(lang: String, categories: String) -> Self {
         Endpoint.get()
-            .path("news")
             .queryItems {
+                URLQueryItem(name: "apikey", value: "pub_40669167f5b9c344181f2c7e28f917505ffd7")
                 URLQueryItem(name: "language", value: lang)
                 URLQueryItem(name: "category", value: categories)
             }
@@ -23,12 +23,10 @@ extension Endpoint {
     
     static func latestAllNews() -> Self {
         Endpoint.get()
-            .path("news")
     }
     
     static func newsWith(searchText: String) -> Self {
         Endpoint.get()
-            .path("news")
             .queryItems {
                 URLQueryItem(name: "q", value: searchText)
             }
