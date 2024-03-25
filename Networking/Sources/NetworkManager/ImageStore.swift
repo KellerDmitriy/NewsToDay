@@ -9,7 +9,7 @@ import Foundation
 import CoreImage
 
 final class ImageStore {
-    public let shared = ImageStore()
+    public static let shared = ImageStore()
     
     private let cache = NSCache<NSURL, CGImage>()
     
@@ -24,6 +24,6 @@ final class ImageStore {
             .flatMap(cache.object)
     }
     
-    public init() {}
+    private init() {}
 
 }

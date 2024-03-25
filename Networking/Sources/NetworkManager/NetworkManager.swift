@@ -43,13 +43,12 @@ public final class NetworkManager {
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
-    let cache: ImageStore = .init()
+    let cache = ImageStore.shared
  
     private let apiKey1 = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
     private let apiKey = "pub_40710f81e68e7061f7ed766760a42acbb6b47"
     
     private init() {
-//        self.cache = cache
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
