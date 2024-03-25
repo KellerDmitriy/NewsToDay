@@ -37,6 +37,7 @@
 		E13C6BE82BAD5CCA007FCE74 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = E13C6BE72BAD5CCA007FCE74 /* Networking */; };
 		E13C6BEB2BAE20F1007FCE74 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C6BEA2BAE20F1007FCE74 /* LocalizationManager.swift */; };
 		E13C6BF42BAE2271007FCE74 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BB4512BAC7CD7008327E6 /* CustomButton.swift */; };
+		E152361D2BB2101E00615080 /* AuthManagerWithFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152361C2BB2101E00615080 /* AuthManagerWithFirebase.swift */; };
 		E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */; };
 		E182C69D2BA74B3600C66D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E182C69C2BA74B3600C66D3F /* Assets.xcassets */; };
 		E182C6A02BA74B3600C66D3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E182C69F2BA74B3600C66D3F /* Preview Assets.xcassets */; };
@@ -49,7 +50,7 @@
 		E1CAEA442BB1D6AA0031E3CE /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAEA402BB1D6AA0031E3CE /* AuthButton.swift */; };
 		E1CAEA452BB1D6AA0031E3CE /* AuthTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAEA412BB1D6AA0031E3CE /* AuthTitle.swift */; };
 		E1CAEA462BB1D6AA0031E3CE /* AuthTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAEA422BB1D6AA0031E3CE /* AuthTextButton.swift */; };
-		E1CAEA482BB1D6BC0031E3CE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAEA472BB1D6BC0031E3CE /* UserModel.swift */; };
+		E1CAEA482BB1D6BC0031E3CE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAEA472BB1D6BC0031E3CE /* User.swift */; };
 		E1CAEA4B2BB1D8800031E3CE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E1CAEA4A2BB1D8800031E3CE /* FirebaseAuth */; };
 		E1CAEA4D2BB1D8800031E3CE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E1CAEA4C2BB1D8800031E3CE /* FirebaseFirestore */; };
 		E1D155252BACB43100D2C690 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D155242BACB43100D2C690 /* String + Extension.swift */; };
@@ -88,6 +89,7 @@
 		E11FACD32BAA377D005B06E2 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		E11FACD52BAA378C005B06E2 /* MainContentScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentScreen.swift; sourceTree = "<group>"; };
 		E13C6BEA2BAE20F1007FCE74 /* LocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		E152361C2BB2101E00615080 /* AuthManagerWithFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerWithFirebase.swift; sourceTree = "<group>"; };
 		E182C6952BA74B3400C66D3F /* NewsToDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsToDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E182C6982BA74B3400C66D3F /* NewsToDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsToDayApp.swift; sourceTree = "<group>"; };
 		E182C69C2BA74B3600C66D3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		E1CAEA402BB1D6AA0031E3CE /* AuthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		E1CAEA412BB1D6AA0031E3CE /* AuthTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTitle.swift; sourceTree = "<group>"; };
 		E1CAEA422BB1D6AA0031E3CE /* AuthTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextButton.swift; sourceTree = "<group>"; };
-		E1CAEA472BB1D6BC0031E3CE /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E1CAEA472BB1D6BC0031E3CE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E1D155242BACB43100D2C690 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		E1ECA39A2BAC262A0072449D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F97BB44A2BAC7CD7008327E6 /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				E13C6BEA2BAE20F1007FCE74 /* LocalizationManager.swift */,
+				E152361C2BB2101E00615080 /* AuthManagerWithFirebase.swift */,
 				E182C6AA2BA74C5800C66D3F /* StorageManager */,
 			);
 			path = Services;
@@ -309,7 +312,7 @@
 		F97BB4492BAC7CD7008327E6 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
-				E1CAEA472BB1D6BC0031E3CE /* UserModel.swift */,
+				E1CAEA472BB1D6BC0031E3CE /* User.swift */,
 				F97BB44A2BAC7CD7008327E6 /* ProfileScreen.swift */,
 				F97BB44B2BAC7CD7008327E6 /* LanguageScreen.swift */,
 				F97BB44C2BAC7CD7008327E6 /* TermsConditionsScreen.swift */,
@@ -458,7 +461,7 @@
 				3C354B962BA766BD005EB350 /* MainScreenVM.swift in Sources */,
 				3CEEDB8E2BAF068600A4D632 /* RecomendedCell.swift in Sources */,
 				E13C6BEB2BAE20F1007FCE74 /* LocalizationManager.swift in Sources */,
-				E1CAEA482BB1D6BC0031E3CE /* UserModel.swift in Sources */,
+				E1CAEA482BB1D6BC0031E3CE /* User.swift in Sources */,
 				3C354B9B2BA78B0C005EB350 /* SearchBar.swift in Sources */,
 				3C12DDF42BAF42750094E743 /* ErrorScreen.swift in Sources */,
 				3C354B9D2BA78BE1005EB350 /* HorizontalSelector.swift in Sources */,
@@ -470,6 +473,7 @@
 				E1CAEA462BB1D6AA0031E3CE /* AuthTextButton.swift in Sources */,
 				E1CAEA3E2BB1D6A10031E3CE /* AuthScreen.swift in Sources */,
 				3C354B982BA782E5005EB350 /* MainScreenDetailView.swift in Sources */,
+				E152361D2BB2101E00615080 /* AuthManagerWithFirebase.swift in Sources */,
 				F97BB4532BAC7CD7008327E6 /* ProfileScreen.swift in Sources */,
 				E1CAEA3D2BB1D6A10031E3CE /* AuthViewModel.swift in Sources */,
 				E11FACD22BAA0437005B06E2 /* Constants.swift in Sources */,

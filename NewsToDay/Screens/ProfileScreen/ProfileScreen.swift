@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ProfileScreen: View {
+    private let authManager = AuthManagerWithFirebase.shared
+    
     @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
     
     @State private var isShowingLanguageScreen = false
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
-
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var signOutError: Error?
+    
+    //    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -47,14 +50,32 @@ struct ProfileScreen: View {
             
             
             CustomButton(title: "Sign Out".localized(language),
-                         imageName: "rectangle.portrait.and.arrow.right", action: {
-                authViewModel.signOut()
-            }, buttonType: .profile, isSelected: false)
-            .padding()
+                         imageName: "rectangle.portrait.and.arrow.right",
+                         action: {},
+                         buttonType: .profile,
+                         isSelected: false)
+                .padding()
+                .task {
+                    do {
+                        try await singOutButtonTap()
+                    } catch {
+                        signOutError = error
+                    }
+                }
+            
             Spacer()
             
         }
         .navigationTitle("Profile".localized(language))
+        .alert(isPresented: .init(
+            get: { signOutError != nil },
+            set: { _ in signOutError = nil })) {
+                Alert(title: Text("Error"), message: Text(signOutError?.localizedDescription ?? "Unknown error occurred"), dismissButton: .default(Text("OK")))
+            }
+    }
+    
+    private func singOutButtonTap() async throws {
+        try await authManager.signOut()
     }
 }
 

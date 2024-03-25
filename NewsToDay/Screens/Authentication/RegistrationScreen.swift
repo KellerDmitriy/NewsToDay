@@ -19,11 +19,27 @@ struct RegistrationScreen: View {
         VStack(spacing: 20) {
             AuthTitle(title: "Hello, I guess you are new around here. You can start using the application after sign up.")
             AuthInputView(text: $userName, isSecureField: false, imageName: "", placeholder: "Username")
-            AuthInputView(text: $email, isSecureField: false, imageName: "", placeholder: "Email")
-                .autocapitalization(.none)
-            AuthInputView(text: $password, isSecureField: true, imageName: "", placeholder: "Password")
+            AuthInputView(
+                text: $email,
+                isSecureField: false,
+                imageName: "",
+                
+                placeholder: "Email"
+            )
+            .autocapitalization(.none)
+            AuthInputView(
+                text: $password,
+                isSecureField: true,
+                imageName: "",
+                placeholder: "Password"
+            )
             ZStack(alignment: .trailing) {
-                AuthInputView(text: $repeatPassword, isSecureField: true, imageName: "", placeholder: "Repeat Password")
+                AuthInputView(
+                    text: $repeatPassword,
+                    isSecureField: true,
+                    imageName: "",
+                    placeholder: "Repeat Password"
+                )
                 if !password.isEmpty && !repeatPassword.isEmpty {
                     if password == repeatPassword {
                         Image(systemName: "checkmark.circle.fill")
@@ -40,13 +56,15 @@ struct RegistrationScreen: View {
             }
             AuthButton(title: "Sign Up") {
                 Task {
-                    try await authViewModel.createUsers(withEmail: email,
-                                                    userName: userName,
-                                                    password: password)
+                    try await authViewModel.createUsers(
+                        email: email,
+                        userName: userName,
+                        password: password
+                    )
                 }
             }
             .disabled(!formIsValid)
-            .opacity(formIsValid ? 1.0 : 0.5) 
+            .opacity(formIsValid ? 1.0 : 0.5)
             Spacer()
             AuthTextButton(title: "Already have an account? Sign In") {
                 dismiss()

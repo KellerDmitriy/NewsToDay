@@ -16,7 +16,7 @@ struct ProfileHeader: View {
     }
         var body: some View {
                 HStack {
-                    Text(UserModel.MOCK_USER.initials)
+                    Text(User.MOCK_USER.initials)
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundStyle(DS.Colors.Theme.buttonText)
@@ -25,10 +25,10 @@ struct ProfileHeader: View {
                         .clipShape(.circle)
                     
                     VStack(alignment: .leading, spacing: Drawing.spacing) {
-                        Text(UserModel.MOCK_USER.userName)
+                        Text(User.MOCK_USER.userName)
                             .font(.headline)
                         
-                        Text(UserModel.MOCK_USER.email)
+                        Text(User.MOCK_USER.email)
                             .font(.subheadline)
                             .foregroundColor(DS.Colors.Theme.buttonText)
                     }

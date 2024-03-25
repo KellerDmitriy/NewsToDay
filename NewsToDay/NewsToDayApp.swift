@@ -27,7 +27,7 @@ struct NewsToDayApp: App {
             if !isOnboarding {
                 OnboardingView(isOnboarding: $isOnboarding)
             } else if isOnboarding && !isSelectedCategory {
-                CategoriesView()
+                AuthScreen()
                     .environmentObject(mainViewModel)
             } else {
                 CustomBarView()

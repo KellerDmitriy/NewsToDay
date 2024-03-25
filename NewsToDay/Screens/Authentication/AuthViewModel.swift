@@ -9,17 +9,15 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-protocol AuthenticationFormProtocol {
-    var formIsValid: Bool { get }
-}
-
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
-    @Published var currentUser: UserModel?
+    @Published var currentUser: User?
+    
+    private let authManager = AuthManagerWithFirebase.shared
     
     init() {
-        self.userSession = Auth.auth().currentUser
+        self.userSession = authManager.userSession
         
         Task {
             await fetchUser()
@@ -28,30 +26,33 @@ class AuthViewModel: ObservableObject {
     
     func signIn(withEmail email: String, password: String) async throws {
         do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            self.userSession = result.user
+            let user = try await authManager.signIn(withEmail: email, password: password)
+            self.userSession = user
             await fetchUser()
         } catch {
             print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+            throw error
         }
     }
     
-    func createUsers(withEmail email: String, userName: String, password: String) async throws {
+    func createUsers(email: String, userName: String, password: String) async throws {
         do {
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
-            let user = UserModel(id: result.user.uid, userName: userName, email: email)
-            let encodedUser = try Firestore.Encoder().encode(user)
-            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            let user = try await authManager.createUser(
+                email: email,
+                password: password,
+                userName: userName
+            )
+            self.userSession = user
             await fetchUser()
         } catch {
             print("DEBUG: Failed to create user with error \(error.localizedDescription)")
+            throw error
         }
     }
     
-    func signOut() {
+    func signOut() async {
         do {
-            try Auth.auth().signOut()
+            try await authManager.signOut()
             self.userSession = nil
             self.currentUser = nil
         } catch {
@@ -64,9 +65,11 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser() async {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
-        self.currentUser = try? snapshot.data(as: UserModel.self)
+        do {
+            self.currentUser = try await authManager.fetchCurrentUser()
+        } catch {
+            print("DEBUG: Failed to fetch current user with error \(error.localizedDescription)")
+        }
     }
 }
 

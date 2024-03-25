@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  User.swift
 //  NewsToDay
 //
 //  Created by Максим Самороковский on 23.03.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Identifiable, Codable {
+struct User: Identifiable, Codable {
     let id: String
     let userName: String
     let email: String
@@ -22,8 +22,8 @@ struct UserModel: Identifiable, Codable {
     }
 }
 
-extension UserModel {
-    static var MOCK_USER = UserModel(
+extension User {
+    static var MOCK_USER = User(
         id: NSUUID().uuidString,
         userName: "Paul Hudson",
         email: "ph@gmail.com"
