@@ -23,7 +23,7 @@ struct UserVM: Identifiable, Codable {
 }
 
 extension UserVM {
-    static var MOCK_USER = UserVM(id: NSUUID().uuidString, userName: "Dev P", email: "dev@gmail.com")
+    static var MOCK_USER = UserVM(id: NSUUID().uuidString, userName: "Paul Hudson", email: "ph@gmail.com")
 }
 
 

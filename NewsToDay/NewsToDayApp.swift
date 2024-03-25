@@ -46,9 +46,8 @@ struct NewsToDayApp: App {
         WindowGroup {
             if !isOnboarding {
                 OnboardingView(isOnboarding: $isOnboarding)
-            } else {
-                if authViewModel.userSession != nil {
-                    CategoriesView()
+            } else if isOnboarding && authViewModel.userSession != nil {
+                    CustomBarView()
                         .environmentObject(authViewModel)
                         .environmentObject(mainViewModel)
                 } else {
@@ -59,6 +58,5 @@ struct NewsToDayApp: App {
             }
         }
     }
-}
 
 

@@ -12,7 +12,7 @@ struct ProfileScreen: View {
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
     @AppStorage("selectedLanguage") private var language = LocalizationManager.shared.language
-    
+
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
