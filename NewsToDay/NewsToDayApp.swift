@@ -24,19 +24,38 @@ struct NewsToDayApp: App {
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : DS.Fonts.largeTitle]
     }
     
+//        var body: some Scene {
+//            WindowGroup {
+//                if !isOnboarding {
+//                    OnboardingView(isOnboarding: $isOnboarding)
+//                } else if isOnboarding && !isSelectedCategory {
+//                    CategoriesView()
+//    
+//                        .environmentObject(mainViewModel)
+//                } else {
+//                    CustomBarView()
+//    
+//                        .environmentObject(mainViewModel)
+//                        .environmentObject(authViewModel)
+//                }
+//            }
+//        }
+//    }
+    
     var body: some Scene {
         WindowGroup {
             if !isOnboarding {
                 OnboardingView(isOnboarding: $isOnboarding)
-            } else if isOnboarding && !isSelectedCategory {
-                CategoriesView()
-                
-                    .environmentObject(mainViewModel)
             } else {
-                CustomBarView()
-                
-                    .environmentObject(mainViewModel)
-                    .environmentObject(authViewModel) 
+                if authViewModel.userSession != nil {
+                    CategoriesView()
+                        .environmentObject(authViewModel)
+                        .environmentObject(mainViewModel)
+                } else {
+                    AuthScreen()
+                        .environmentObject(mainViewModel)
+                        .environmentObject(authViewModel)
+                }
             }
         }
     }
