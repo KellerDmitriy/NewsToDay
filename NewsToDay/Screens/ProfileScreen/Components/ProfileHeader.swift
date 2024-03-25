@@ -14,26 +14,23 @@ struct ProfileHeader: View {
         static let frameImage: CGFloat = 72
         static let spacing: CGFloat = 5
     }
-    
-    var userName: String
-    var email: String
-    var avatar: UIImage
-    
         var body: some View {
                 HStack {
-                    Image(uiImage: avatar)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: Drawing.frameImage)
+                    Text(UserModel.MOCK_USER.initials)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(DS.Colors.Theme.buttonText)
+                        .frame(width: Drawing.frameImage, height: Drawing.frameImage)
+                        .background(DS.Colors.Theme.buttonBackground)
                         .clipShape(.circle)
                     
                     VStack(alignment: .leading, spacing: Drawing.spacing) {
-                        Text(userName)
+                        Text(UserModel.MOCK_USER.userName)
                             .font(.headline)
                         
-                        Text(email)
+                        Text(UserModel.MOCK_USER.email)
                             .font(.subheadline)
-                            .foregroundColor(DS.Colors.Theme.secondaryText)
+                            .foregroundColor(DS.Colors.Theme.buttonText)
                     }
                     .padding()
                 }
@@ -41,5 +38,5 @@ struct ProfileHeader: View {
     }
 
 #Preview {
-    ProfileHeader(userName: "Dev P", email: "dev@gmail.com", avatar: UIImage(named: "avatar")!)
+    ProfileHeader()
 }

@@ -10,7 +10,7 @@ import DS
 import FirebaseCore
 
 @main
-struct NewsToDayApp: App {    
+struct NewsToDayApp: App {
     @AppStorage("isOnboarding") var isOnboarding = false
     @AppStorage("isSelectedCategory") var isSelectedCategory = false
     
@@ -36,4 +36,3 @@ struct NewsToDayApp: App {
         }
     }
 }
-

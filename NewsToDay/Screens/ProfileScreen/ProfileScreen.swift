@@ -13,26 +13,16 @@ struct ProfileScreen: View {
     @State private var isShowingLanguageScreen = false
     @State private var isShowingTermsConditionsScreen = false
     @State private var isShowingSignOut = false
-    
-    @State var image: Image?
-    @State private var inputImage = UIImage(named: "avatar")
-    
-    @State private var showingImagePicker = false
+
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                ProfileHeader(
-                    userName: "Dev P",
-                    email: "dev@gmail.com", 
-                    avatar: inputImage ?? UIImage(systemName: "person.fill")!
-                    )
-                .onTapGesture {
-                    showingImagePicker = true
-                }
+                ProfileHeader()
             }
             .padding()
-           
+            
             NavigationLink(destination: LanguageScreen(), isActive: $isShowingLanguageScreen) {
                 EmptyView()
             }
@@ -57,25 +47,14 @@ struct ProfileScreen: View {
             
             
             CustomButton(title: "Sign Out".localized(language),
-                         imageName: "arrow.right.circle", action: {
-                // action
+                         imageName: "rectangle.portrait.and.arrow.right", action: {
+                authViewModel.signOut()
             }, buttonType: .profile, isSelected: false)
             .padding()
             Spacer()
             
         }
         .navigationTitle("Profile".localized(language))
-        .onChange(of: inputImage) { _ in
-            loadImage()
-        }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: $inputImage)
-        }
-    }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
     }
 }
 
