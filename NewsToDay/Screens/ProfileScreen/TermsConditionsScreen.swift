@@ -17,7 +17,7 @@ struct TermsConditionsScreen: View {
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
-                Text(title)
+                Text("Terms".localized(language))
                     .foregroundStyle(DS.Colors.Theme.secondaryText)
             }
         }

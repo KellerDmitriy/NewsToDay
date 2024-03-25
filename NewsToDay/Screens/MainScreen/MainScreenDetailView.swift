@@ -65,7 +65,7 @@ struct MainScreenDetailView: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(item.author ?? "")
+                            Text(item.creator?.joined(separator: ", ") ?? "")
                                 .font(DS.Fonts.Inter16.semiBold600)
                                 .foregroundStyle(DS.Colors.Theme.whiteAccent)
                             

@@ -14,7 +14,7 @@ final class MainScreenVM: ObservableObject {
     @Published var searchText: String = ""
     @Published var categories: Set<Categories> = []
     @Published var bookmarks: Set<NewsResults> = []
-    @Published var selectedCategory: Categories = .general
+    @Published var selectedCategory: Categories = .other
     @Published var news: [NewsResults] = []
     @Published var state: State = .empty
     @Published var lang: Language = .en
@@ -48,15 +48,16 @@ final class MainScreenVM: ObservableObject {
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .getNewsFor(category: selectedCategory.rawValue, lang: lang.rawValue)
-                .map(\.articles)
-                .map { $0.map(State.ready) }
+                .getLatestNews()
+                .map(\.results)
+                .map(State.ready)
                 .mapError(State.error)
                 
             await MainActor.run {
                 switch newState {
                 case .success(let success):
-                    self.state = success ?? .error(.noData)
+                    self.state = success
+                    
                 case .failure(let failure):
                     self.state = failure
                 }

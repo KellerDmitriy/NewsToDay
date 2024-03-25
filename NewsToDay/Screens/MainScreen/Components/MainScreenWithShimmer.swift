@@ -20,7 +20,7 @@ struct MainScreenWithShimmer: View {
                 SearchBar(text: $query)
                 
                 HorizontalSelector(sections) { category in
-                    CategoryCell(category: category, selected: .constant(.art))
+                    CategoryCell(category: category, selected: .constant(.lifestyle))
                 }
                 .redacted(reason: .placeholder)
                 .shimmering()

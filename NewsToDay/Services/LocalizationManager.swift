@@ -8,11 +8,6 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Selected Language
-enum Language: String {
-    case ru
-    case en
-}
 
 final class LocalizationManager {
     // MARK: - Properties

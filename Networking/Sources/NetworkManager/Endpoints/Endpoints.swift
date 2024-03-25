@@ -1,48 +1,36 @@
 //
 //  Endpoints.swift
-//  
+//
 //
 //  Created by Илья Шаповалов on 21.03.2024.
 //
 
 import Foundation
 
-//для категорий https://newsapi.org/v2/top-headlines?category=business &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
-//для поиска https://newsapi.org/v2/everything?q=Apple &apiKey=2b9cf27ea13e45eb89926c533fb14c6b
-// https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
+//https://newsdata.io/api/1/news?language=en&category=domestic &apikey=pub_40669167f5b9c344181f2c7e28f917505ffd7
 
 extension Endpoint {
     static func get() -> Endpoint { Endpoint(method: .GET) }
     
-    static func categoriesWith(lang: String) -> Self {
+    static func latestNews(lang: String, categories: String) -> Self {
         Endpoint.get()
-            .path("top-headlines/sources")
+            .path("news")
             .queryItems {
                 URLQueryItem(name: "language", value: lang)
+                URLQueryItem(name: "category", value: categories)
             }
     }
     
-    static func everything(about: String) -> Self {
+    static func latestAllNews() -> Self {
         Endpoint.get()
-            .path("everything")
-            .queryItems {
-                URLQueryItem(name: "q", value: about)
-            }
+            .path("news")
     }
     
-    static func headlines(category: String) -> Self {
+    static func newsWith(searchText: String) -> Self {
         Endpoint.get()
-            .path("top-headlines")
+            .path("news")
             .queryItems {
-                URLQueryItem(name: "category", value: category)
-            }
-    }
-    
-    static func headlines(lang: String, category: String) -> Self {
-        Endpoint
-            .headlines(category: category)
-            .queryItems {
-                URLQueryItem(name: "language", value: lang)
+                URLQueryItem(name: "q", value: searchText)
             }
     }
 }
