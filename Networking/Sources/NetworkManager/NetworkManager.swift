@@ -20,6 +20,11 @@ public enum NetworkError: Error {
 
 extension NetworkError {
     init(_ error: Error) {
+        if let error = error as? NetworkError {
+            self = error
+            return
+        }
+        
         switch error {
         case is URLError:
             self = .invalidURL
@@ -86,7 +91,7 @@ private extension NetworkManager {
             .success(url)
             .map { URLRequest(url: $0) }
             .asyncMap(session.data)
-            .map(\.0)
+            .flatMap(unwrapResponse)
             .decode(T.self, decoder: decoder)
             .mapError(NetworkError.init)
     }
@@ -97,6 +102,16 @@ private extension NetworkManager {
             request.addValue(key, forHTTPHeaderField: "X-Api-Key")
             return request
         }
+    }
+    
+    func unwrapResponse(_ dataResponse: (Data, URLResponse)) -> Result<Data, Error> {
+        guard
+            let httpResponse = dataResponse.1 as? HTTPURLResponse,
+            (200...299).contains(httpResponse.statusCode)
+        else {
+            return .failure(NetworkError.invalidResponse)
+        }
+        return .success(dataResponse.0)
     }
 }
 

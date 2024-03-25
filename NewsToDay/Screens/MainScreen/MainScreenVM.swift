@@ -45,20 +45,21 @@ final class MainScreenVM: ObservableObject {
         if let firstCategory = categories.first {
             selectedCategory = firstCategory
         }
-        let categoriesString = categories.prefix(5).map { $0.rawValue }.joined(separator: ",")
-        let langString = lang.map {$0.rawValue}.joined(separator: ",")
+//        let categoriesString = categories.prefix(5).map { $0.rawValue }.joined(separator: ",")
+//        let langString = lang.map {$0.rawValue}.joined(separator: ",")
         Task(priority: .high) { [weak self] in
             guard let self else { return }
             let newState = await networkManager
-                .getLatestNews(lang: langString, categories: categoriesString)
+                .getLatestNews()
                 .map(\.results)
-                .map { $0.map(State.ready) }
+                .map(State.ready)
                 .mapError(State.error)
                 
             await MainActor.run {
                 switch newState {
                 case .success(let success):
-                    self.state = success ?? .error(.noData)
+                    self.state = success
+                    
                 case .failure(let failure):
                     self.state = failure
                 }
