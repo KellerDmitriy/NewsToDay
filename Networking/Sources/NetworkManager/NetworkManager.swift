@@ -53,8 +53,8 @@ public final class NetworkManager {
         await request(from: .everything(about: searchText))
     }
     
-    public func getNewsFor(category: String, lang: String) async -> Result<NewsModel, NetworkError> {
-        await request(from: .headlines(lang: lang, category: category))
+    public func getLatestNews() async -> Result<NewsModel, NetworkError> {
+        await request(from: .latestAllNews())
     }
     
     

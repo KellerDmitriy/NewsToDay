@@ -51,7 +51,7 @@ final class MainScreenVM: ObservableObject {
             guard let self else { return }
             let newState = await networkManager
                 .getLatestNews(lang: langString, categories: categoriesString)
-                .map(\.articles)
+                .map(\.results)
                 .map { $0.map(State.ready) }
                 .mapError(State.error)
                 

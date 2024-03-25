@@ -30,7 +30,7 @@ struct RecomendedCell: View {
                 .frame(width: Drawing.imageWidth)
             
             VStack(alignment: .leading, spacing: Drawing.spacing) {
-                Text(item.author ?? "default")
+                Text(item.creator?.joined(separator: ", ") ?? "")
                     .foregroundStyle(DS.Colors.Theme.grayLight)
                     .font(.headline.weight(Drawing.headlineFontWeight))
                 
