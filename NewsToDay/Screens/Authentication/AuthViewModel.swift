@@ -2,7 +2,7 @@
 //  AuthViewModel.swift
 //  NewsToDay
 //
-//  Created by Максим Самороковский on 23.03.2024.
+//  Created by Максим Самороковский on 25.03.2024.
 //
 
 import Foundation
@@ -69,3 +69,4 @@ class AuthViewModel: ObservableObject {
         self.currentUser = try? snapshot.data(as: UserVM.self)
     }
 }
+

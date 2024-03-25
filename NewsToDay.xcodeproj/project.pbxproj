@@ -59,9 +59,9 @@
 		F9ED4A7C2BAFDDE700444CAE /* AuthTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A722BAFDDE700444CAE /* AuthTextButton.swift */; };
 		F9ED4A7D2BAFDDE700444CAE /* AuthTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A732BAFDDE700444CAE /* AuthTitle.swift */; };
 		F9ED4A7E2BAFDDE700444CAE /* AuthScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A752BAFDDE700444CAE /* AuthScreen.swift */; };
-		F9ED4A7F2BAFDDE700444CAE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A762BAFDDE700444CAE /* AuthViewModel.swift */; };
 		F9ED4A802BAFDDE700444CAE /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A772BAFDDE700444CAE /* RegistrationScreen.swift */; };
 		F9ED4A812BAFDDE700444CAE /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A782BAFDDE700444CAE /* UserVM.swift */; };
+		F9ED4A832BB171D700444CAE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ED4A822BB171D700444CAE /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,9 +110,9 @@
 		F9ED4A722BAFDDE700444CAE /* AuthTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextButton.swift; sourceTree = "<group>"; };
 		F9ED4A732BAFDDE700444CAE /* AuthTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTitle.swift; sourceTree = "<group>"; };
 		F9ED4A752BAFDDE700444CAE /* AuthScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthScreen.swift; sourceTree = "<group>"; };
-		F9ED4A762BAFDDE700444CAE /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F9ED4A772BAFDDE700444CAE /* RegistrationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		F9ED4A782BAFDDE700444CAE /* UserVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
+		F9ED4A822BB171D700444CAE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +319,7 @@
 				F97BB44A2BAC7CD7008327E6 /* ProfileScreen.swift */,
 				F97BB44B2BAC7CD7008327E6 /* LanguageScreen.swift */,
 				F97BB44C2BAC7CD7008327E6 /* TermsConditionsScreen.swift */,
+				F9ED4A782BAFDDE700444CAE /* UserVM.swift */,
 				F97BB44D2BAC7CD7008327E6 /* Components */,
 			);
 			path = ProfileScreen;
@@ -349,8 +350,7 @@
 			children = (
 				F9ED4A752BAFDDE700444CAE /* AuthScreen.swift */,
 				F9ED4A772BAFDDE700444CAE /* RegistrationScreen.swift */,
-				F9ED4A762BAFDDE700444CAE /* AuthViewModel.swift */,
-				F9ED4A782BAFDDE700444CAE /* UserVM.swift */,
+				F9ED4A822BB171D700444CAE /* AuthViewModel.swift */,
 				F9ED4A742BAFDDE700444CAE /* Components */,
 			);
 			path = Authentication;
@@ -457,6 +457,7 @@
 				B9E158892BA9CC61000AA390 /* CustomTabBar.swift in Sources */,
 				3CEEDB8C2BAEE58A00A4D632 /* MainScreenWithShimmer.swift in Sources */,
 				3CEB33DF2BAEC9F200E9D73C /* ScreenHeader.swift in Sources */,
+				F9ED4A832BB171D700444CAE /* AuthViewModel.swift in Sources */,
 				F9ED4A7B2BAFDDE700444CAE /* AuthInputView.swift in Sources */,
 				E182C6992BA74B3400C66D3F /* NewsToDayApp.swift in Sources */,
 				3C99FD142BAB71250015C13B /* CategoriesView.swift in Sources */,
@@ -484,7 +485,6 @@
 				E11FACD22BAA0437005B06E2 /* Constants.swift in Sources */,
 				F97BB4572BAC7CD7008327E6 /* ProfileHeader.swift in Sources */,
 				86BCEC2C2BAF4CDC00AB3CB0 /* CategoryCell.swift in Sources */,
-				F9ED4A7F2BAFDDE700444CAE /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
