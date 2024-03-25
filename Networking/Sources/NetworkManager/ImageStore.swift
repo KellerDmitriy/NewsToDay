@@ -8,7 +8,9 @@
 import Foundation
 import CoreImage
 
-final class ImageStore: ObservableObject {
+final class ImageStore {
+    public let shared = ImageStore()
+    
     private let cache = NSCache<NSURL, CGImage>()
     
     func save(_ image: CGImage, for urlString: String) {
@@ -21,5 +23,7 @@ final class ImageStore: ObservableObject {
         NSURL(string: urlString)
             .flatMap(cache.object)
     }
+    
+    public init() {}
 
 }

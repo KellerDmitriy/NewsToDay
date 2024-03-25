@@ -43,40 +43,57 @@ public final class NetworkManager {
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
+    let cache: ImageStore = .init()
  
     private let apiKey1 = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
     private let apiKey = "pub_40710f81e68e7061f7ed766760a42acbb6b47"
     
     private init() {
+//        self.cache = cache
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     public func getLatestNews(lang: String, categories: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .latestNews(lang: lang, categories: categories))
+            .asyncFlatMap(loadRawImage(toCache: cache))
+            .mapError(NetworkError.init)
     }
     
     public func getNewsWith(searchText: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .newsWith(searchText: searchText))
+            .mapError(NetworkError.init)
     }
     
     public func getLatestNews() async -> Result<NewsModel, NetworkError> {
         await request(from: .latestAllNews())
+            .mapError(NetworkError.init)
     }
     
-    
-//    public func loadImages(for news: [NewsModel]) async -> Result<[CGImage], NetworkError> {
-//        Result.success(news)
-//            .map { news -> [URL] in
-//                news.compactMap(\.articles)
-//                    .flatMap { $0 }
-//                    .compactMap(\.urlToImage)
-//                    .compactMap(URL.init)
-//            }
-//    }
 }
 
 private extension NetworkManager {
-    func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, NetworkError> {
+    func loadRawImage(toCache cache: ImageStore) -> (NewsModel) async -> Result<NewsModel, Error> {
+        { model in
+            let urlStrings = model.results
+                .compactMap(\.imageUrl)
+            
+            let images = try? await urlStrings
+                    .compactMap(URL.init)
+                    .concurrentMap(self.session.data(from:))
+                    .map(\.0)
+                    .compactMap(CIImage.init)
+                    .compactMap(\.cgImage)
+                    
+            images
+                .map { ($0, urlStrings) }
+                .map(zip)?
+                .forEach(cache.save)
+            
+            return .success(model)
+        }
+    }
+    
+    func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, Error> {
         await Result
             .success(endpoint)
             .map(\.urlRequest)
@@ -84,7 +101,6 @@ private extension NetworkManager {
             .asyncMap(session.data)
             .flatMap(unwrapResponse)
             .decode(T.self, decoder: decoder)
-            .mapError(NetworkError.init)
     }
     
     func addApiKey(_ key: String) -> (URLRequest) -> URLRequest {
@@ -106,43 +122,3 @@ private extension NetworkManager {
     }
 }
 
-public extension Result where Failure == Error {
-    
-    /// Creates a new result by evaluating a asynchronous throwing closure, capturing the returned value as a success, or any thrown error as a failure.
-    /// - Parameter body: A asynchronous throwing closure to evaluate.
-    @inlinable
-    init(asyncCatch body: () async throws -> Success) async {
-        do {
-            let success = try await body()
-            self = .success(success)
-        } catch {
-            self = .failure(error)
-        }
-    }
-    
-    @inlinable
-    func asyncMap<T>(
-        _ transform: (Success) async throws -> T
-    ) async -> Result<T, Failure> {
-        switch self {
-        case .success(let success):
-            return await Result<T, Failure> { try await transform(success) }
-            
-        case .failure(let failure):
-            return .failure(failure)
-        }
-    }
-}
-
-extension Result where Success == Data{
-    @inlinable
-    func decode<T: Decodable>(_ type: T.Type, decoder: JSONDecoder) -> Result<T, Error> {
-        switch self {
-        case .success(let success):
-            return Result<T, Error> { try decoder.decode(type.self, from: success) }
-            
-        case .failure(let failure):
-            return .failure(failure)
-        }
-    }
-}
