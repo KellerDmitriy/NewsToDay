@@ -23,7 +23,6 @@ public final class NetworkManager {
     
     public func getLatestNews(lang: String, categories: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .latestNews(lang: lang, categories: categories))
-//            .asyncFlatMap(loadRawImage(toCache: cache))
             .mapError(NetworkError.init)
     }
     
@@ -36,7 +35,6 @@ public final class NetworkManager {
         await request(from: .latestAllNews())
             .mapError(NetworkError.init)
     }
-    
 }
 
 private extension NetworkManager {
@@ -51,11 +49,6 @@ private extension NetworkManager {
                 .map(\.0)
                 .compactMap(CIImage.init)
                 .compactMap(\.cgImage)
-            
-//            images
-//                .map { ($0, urlStrings) }
-//                .map(zip)?
-//                .forEach(cache.save)
             
             return .success(model)
         }

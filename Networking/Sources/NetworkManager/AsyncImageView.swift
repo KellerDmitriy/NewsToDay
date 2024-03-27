@@ -96,15 +96,3 @@ extension Optional {
     AsyncImageView("https://buffer.com/library/content/images/size/w1200/2023/09/instagram-image-size.jpg")
 }
 
-//class ImageLoader: ObservableObject {
-//    @Published var image: UIImage?
-//    private var cancellable: AnyCancellable?
-//    
-//    func loadImage(from url: URL) {
-//        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-//            .map { UIImage(data: $0.data) }
-//            .replaceError(with: nil)
-//            .receive(on: DispatchQueue.main)
-//            .assign(to: \.image, on: self)
-//    }
-//}
