@@ -25,7 +25,8 @@ final class MainScreenVM: ObservableObject {
     
     private let networkManager = NetworkManager.shared
     private var cancellables: Set<AnyCancellable> = []
-        
+      
+    //MARK: - init(_:)
     init() {
         $searchText
             .debounce(for: 0.5, scheduler: DispatchQueue.main)
@@ -36,13 +37,9 @@ final class MainScreenVM: ObservableObject {
             .store(in: &cancellables)
     }
     
+    //MARK: - public methods
     func onChangeSearch() {
         
-    }
-    
-    struct News {
-        var selectedCategory: [NewsResults] = .init()
-        var recommendedNews: [NewsResults] = .init()
     }
     
     func onAppear() {
@@ -69,6 +66,33 @@ final class MainScreenVM: ObservableObject {
         }
     }
     
+    func manage(bookmark: NewsResults) {
+        switch bookmarks.contains(bookmark) {
+        case true: bookmarks.remove(bookmark)
+        case false: bookmarks.insert(bookmark)
+        }
+    }
+    
+    //MARK: - Types
+    struct News {
+        var selectedCategory: [NewsResults] = .init()
+        var recommendedNews: [NewsResults] = .init()
+    }
+    
+    enum NewsType {
+        case selected([NewsResults])
+        case recommended([NewsResults])
+    }
+    
+    enum State: Error {
+        case empty
+        case loading
+        case error(NetworkError)
+        case ready(News)
+    }
+}
+
+private extension MainScreenVM {
     func mainScreenInfo() async throws -> News {
         try await withThrowingTaskGroup(
             of: NewsType.self,
@@ -108,22 +132,4 @@ final class MainScreenVM: ObservableObject {
         }
     }
     
-    enum NewsType {
-        case selected([NewsResults])
-        case recommended([NewsResults])
-    }
-    
-    func manage(bookmark: NewsResults) {
-        switch bookmarks.contains(bookmark) {
-        case true: bookmarks.remove(bookmark)
-        case false: bookmarks.insert(bookmark)
-        }
-    }
-    
-    enum State: Error {
-        case empty
-        case loading
-        case error(NetworkError)
-        case ready(News)
-    }
 }
