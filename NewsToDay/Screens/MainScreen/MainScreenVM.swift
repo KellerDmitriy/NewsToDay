@@ -94,10 +94,7 @@ final class MainScreenVM: ObservableObject {
 
 private extension MainScreenVM {
     func mainScreenInfo() async throws -> News {
-        try await withThrowingTaskGroup(
-            of: NewsType.self,
-            returning: News.self
-        ) { [weak self] group in
+        try await withThrowingTaskGroup(of: NewsType.self, returning: News.self) { [weak self] group in
             guard let self else {
                 group.cancelAll()
                 throw URLError(.badURL)
