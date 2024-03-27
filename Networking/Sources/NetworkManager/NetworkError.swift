@@ -18,7 +18,7 @@ public enum NetworkError: Error {
 }
 
 extension NetworkError {
-    init(_ error: Error) {
+    public init(_ error: Error) {
         if let networkError = error as? NetworkError {
             self = networkError
             return

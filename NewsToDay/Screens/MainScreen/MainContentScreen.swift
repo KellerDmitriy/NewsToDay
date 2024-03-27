@@ -19,6 +19,7 @@ struct MainContentScreen: View {
             switch viewModel.state {
             case .empty:
                 Text("Empty".localized(language))
+                
             case .loading:
                 MainScreenWithShimmer()
                 
@@ -34,7 +35,7 @@ struct MainContentScreen: View {
                     selectedCategory: $viewModel.selectedCategory,
                     categories: $viewModel.categories,
                     isSearching: viewModel.isSearching,
-                    newsResults: articles
+                    newsResults: articles.selectedCategory
                 )
                 .environmentObject(viewModel)
             }
