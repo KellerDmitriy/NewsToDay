@@ -20,14 +20,14 @@ struct News {
 struct MainScreenDetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    @StateObject private var imageLoader = ImageLoader()
     
     let item: NewsResults
     
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
-                Image(.image)
-                    .resizable()
+                AsyncImageView(url: URL(string: item.imageUrl ?? ""), placeholderImage: Image(.image))
                     .ignoresSafeArea()
                     .frame(height: UIScreen.main.bounds.height / 2.8)
                 

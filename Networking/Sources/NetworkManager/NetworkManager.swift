@@ -24,7 +24,7 @@ public final class NetworkManager {
     
     public func getLatestNews(lang: String, categories: String) async -> Result<NewsModel, NetworkError> {
         await request(from: .latestNews(lang: lang, categories: categories))
-            .asyncFlatMap(loadRawImage(toCache: cache))
+//            .asyncFlatMap(loadRawImage(toCache: cache))
             .mapError(NetworkError.init)
     }
     
@@ -41,26 +41,26 @@ public final class NetworkManager {
 }
 
 private extension NetworkManager {
-    func loadRawImage(toCache cache: ImageStore) -> (NewsModel) async -> Result<NewsModel, Error> {
-        { model in
-            let urlStrings = model.results
-                .compactMap(\.imageUrl)
-            
-            let images = try? await urlStrings
-                .compactMap(URL.init)
-                .concurrentMap(self.session.data(from:))
-                .map(\.0)
-                .compactMap(CIImage.init)
-                .compactMap(\.cgImage)
-            
-            images
-                .map { ($0, urlStrings) }
-                .map(zip)?
-                .forEach(cache.save)
-            
-            return .success(model)
-        }
-    }
+//    func loadRawImage(toCache cache: ImageStore) -> (NewsModel) async -> Result<NewsModel, Error> {
+//        { model in
+//            let urlStrings = model.results
+//                .compactMap(\.imageUrl)
+//            
+//            let images = try? await urlStrings
+//                .compactMap(URL.init)
+//                .concurrentMap(self.session.data(from:))
+//                .map(\.0)
+//                .compactMap(CIImage.init)
+//                .compactMap(\.cgImage)
+//            
+//            images
+//                .map { ($0, urlStrings) }
+//                .map(zip)?
+//                .forEach(cache.save)
+//            
+//            return .success(model)
+//        }
+//    }
     
     func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, Error> {
         print(await Result

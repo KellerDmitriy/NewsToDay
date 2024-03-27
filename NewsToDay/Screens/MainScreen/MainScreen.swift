@@ -18,8 +18,8 @@ struct MainScreen: View {
     @Binding var categories: Set<Categories>
     var isSearching: Bool
     
-    let articles: [NewsResults]
-            
+    let newsResults: [NewsResults]
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
@@ -30,11 +30,11 @@ struct MainScreen: View {
                     HorizontalSelector(Array(categories), spacing: 0) { category in
                         CategoryCell(category: category, selected: $selectedCategory)
                     }
-                    HorizontalSelector(articles) { news in
+                    HorizontalSelector(newsResults) { news in
                         NavigationLink(destination: MainScreenDetailView(item: news)) {
                             ArticleCell(
-                                nil,
-                                title: selectedCategory.rawValue.uppercased(),
+                                imageURL: URL(string:news.imageUrl ?? ""),
+                                title: (news.category?.first ?? "").uppercased(),
                                 description: news.title ?? "No title",
                                 isBookmark: vm.bookmarks.contains(news),
                                 action: { vm.manage(bookmark: news) }
@@ -46,9 +46,9 @@ struct MainScreen: View {
                         buttonTitle: "See all".localized(language),
                         item: EmptyView()
                     )
-                    VerticalRecomendedSection(item: articles)
+                    VerticalRecomendedSection(item: newsResults)
                 } else {
-                    VerticalRecomendedSection(item: articles)
+                    VerticalRecomendedSection(item: newsResults)
                 }
             }
         }
@@ -63,7 +63,7 @@ struct MainScreen: View {
             selectedCategory: .constant(.business),
             categories: .constant(Set(Categories.allCases)),
             isSearching: false,
-            articles: [NewsResults.preview, NewsResults.preview]
+            newsResults: [NewsResults.preview, NewsResults.preview]
         )
         .environmentObject(MainScreenVM())
     }

@@ -26,7 +26,7 @@ struct MainScreenWithShimmer: View {
                 .shimmering()
                 
                 HorizontalSelector([NewsResults.preview, NewsResults.preview]) { news in
-                    ArticleCell(nil, title: "", description: "", isBookmark: false, action: {})
+                    ArticleCell(imageURL: nil, title: "", description: "", isBookmark: false, action: {})
                 }
                 .redacted(reason: .placeholder)
                 .shimmering()
