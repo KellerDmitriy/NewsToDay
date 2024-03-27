@@ -22,7 +22,7 @@ final class MainScreenVM: ObservableObject {
     var isSearching: Bool {
         !searchText.isEmpty
     }
-    private let cache = ImageStore.shared
+    
     private let networkManager = NetworkManager.shared
     private var cancellables: Set<AnyCancellable> = []
         

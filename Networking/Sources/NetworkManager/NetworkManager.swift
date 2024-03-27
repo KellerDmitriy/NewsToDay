@@ -13,7 +13,6 @@ public final class NetworkManager {
     
     let session = URLSession.shared
     let decoder = JSONDecoder()
-    let cache = ImageStore.shared
     
     private let apiKey = "pub_40669167f5b9c344181f2c7e28f917505ffd7"
     private let apiKey1 = "pub_40710f81e68e7061f7ed766760a42acbb6b47"
@@ -41,36 +40,29 @@ public final class NetworkManager {
 }
 
 private extension NetworkManager {
-//    func loadRawImage(toCache cache: ImageStore) -> (NewsModel) async -> Result<NewsModel, Error> {
-//        { model in
-//            let urlStrings = model.results
-//                .compactMap(\.imageUrl)
-//            
-//            let images = try? await urlStrings
-//                .compactMap(URL.init)
-//                .concurrentMap(self.session.data(from:))
-//                .map(\.0)
-//                .compactMap(CIImage.init)
-//                .compactMap(\.cgImage)
-//            
+    func loadRawImage(toCache cache: ImageStore) -> (NewsModel) async -> Result<NewsModel, Error> {
+        { model in
+            let urlStrings = model.results
+                .compactMap(\.imageUrl)
+            
+            let images = try? await urlStrings
+                .compactMap(URL.init)
+                .concurrentMap(self.session.data(from:))
+                .map(\.0)
+                .compactMap(CIImage.init)
+                .compactMap(\.cgImage)
+            
 //            images
 //                .map { ($0, urlStrings) }
 //                .map(zip)?
 //                .forEach(cache.save)
-//            
-//            return .success(model)
-//        }
-//    }
+            
+            return .success(model)
+        }
+    }
     
     func request<T: Decodable>(from endpoint: Endpoint) async -> Result<T, Error> {
-        print(await Result
-            .success(endpoint)
-            .map(\.urlRequest)
-//            .map(addApiKey(apiKey))
-            .asyncMap(session.data)
-            .flatMap(unwrapResponse)
-            .decode(T.self, decoder: decoder))
-       return await Result
+        await Result
             .success(endpoint)
             .map(\.urlRequest)
 //            .map(addApiKey(apiKey))

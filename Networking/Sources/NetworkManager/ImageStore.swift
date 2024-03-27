@@ -5,21 +5,30 @@
 //  Created by Илья Шаповалов on 19.03.2024.
 //
 
-import UIKit
+import Foundation
+import CoreImage
 
-public final class ImageStore {
-    public static let shared = ImageStore()
+public protocol ImageStore {
+    @discardableResult
+    func save(_ image: CGImage, for url: URL) -> CGImage
+    func getImage(for url: URL) -> CGImage?
+}
+
+public final class ImageStoreImpl: ImageStore {
+    public static let shared = ImageStoreImpl()
     
-    private let cache = NSCache<NSURL, UIImage>()
+    private let cache = NSCache<NSURL, CGImage>()
     
-    func save(_ image: UIImage, for urlString: String) {
-        NSURL(string: urlString)
+    @discardableResult
+    public func save(_ image: CGImage, for url: URL) -> CGImage {
+        NSURL(string: url.absoluteString)
             .map { (image, $0) }
             .map(cache.setObject)
+        return image
     }
     
-    func getImage(for urlString: String) -> UIImage? {
-        NSURL(string: urlString)
+    public func getImage(for url: URL) -> CGImage? {
+        NSURL(string: url.absoluteString)
             .flatMap(cache.object)
     }
     

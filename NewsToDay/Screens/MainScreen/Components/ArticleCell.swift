@@ -41,7 +41,7 @@ struct ArticleCell: View {
     }
     
     @Environment(\.displayScale) private var scale
-    @StateObject private var imageLoader = ImageLoader()
+    
     
     let imageURL: URL?
     let title: String
@@ -51,14 +51,16 @@ struct ArticleCell: View {
    
     var body: some View {
         ZStack {
-            Group {
-                if let uiImage = imageLoader.image {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                } else {
-                    RoundedRectangle(cornerRadius: Drawing.cornerRadius)
-                }
-            }
+            
+//            Group {
+//                if let uiImage = imageLoader.image {
+//                    Image(uiImage: uiImage)
+//                        .resizable()
+//                } else {
+//                    RoundedRectangle(cornerRadius: Drawing.cornerRadius)
+//                }
+//            }
+            AsyncImageView(imageURL?.absoluteString)
             .frame(
                 width: Drawing.cardWidth,
                 height: Drawing.cardHeight
@@ -85,11 +87,6 @@ struct ArticleCell: View {
         }
         .foregroundColor(.white)
         .cornerRadius(Drawing.cornerRadius)
-        .onAppear {
-            if let imageURL = imageURL {
-                imageLoader.loadImage(from: imageURL)
-            }
-        }
     }
     
     init(

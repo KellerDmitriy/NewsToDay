@@ -32,7 +32,7 @@ public struct NewsResults: Codable, Hashable, Identifiable {
         creator: ["EchoLive.ie"],
         description: "",
         content: "",
-        imageUrl: "",
+        imageUrl: "https://buffer.com/library/content/images/size/w1200/2023/09/instagram-image-size.jpg",
         category: ["food"], 
         country: ["af"])
 }
