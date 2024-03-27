@@ -44,7 +44,7 @@ final class MainScreenVM: ObservableObject {
     
     func onAppear() {
         state = .loading
-         let langString = lang.map {$0.rawValue}.joined(separator: ",")
+        let langString = lang.map {$0.rawValue}.joined(separator: ",")
         
         Task(priority: .high) { [weak self] in
             guard let self else { return }
@@ -53,7 +53,7 @@ final class MainScreenVM: ObservableObject {
                 .mapError(NetworkError.init)
                 .map(State.ready)
                 .mapError(State.error)
-                            
+            
             await MainActor.run {
                 switch screenModel {
                 case .success(let success):
